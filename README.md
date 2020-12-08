@@ -1,5 +1,5 @@
 # NativeLeakProf
-Android系统Native代码（C/C++）内存泄露分析
+Android  Native代码（C/C++）内存泄露分析
 
 
 # 主要思路
