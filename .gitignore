@@ -1,0 +1,12 @@
+*.iml
+.gradle
+/local.properties
+.idea
+.DS_Store
+rifle_build
+build
+/captures
+.externalNativeBuild
+test/flamegraph/*.svg
+test/flamegraph/FlameGraph*
+test/stack/compass/stack.txt
