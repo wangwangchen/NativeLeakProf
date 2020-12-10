@@ -9,6 +9,14 @@ void* dumpThreadEntry(void *argv) {
         __android_log_print(ANDROID_LOG_INFO, "NativeLeakProf", "invoke system malloc");
         void *memory = malloc(1024);
         free(memory);
+
+
+//        void *memory = calloc(1024, 4);
+////        free(memory);
+//
+//        void *newMemory = realloc(memory, 1024);
+//        free(newMemory);
+
         sleep(3);
     }
 }

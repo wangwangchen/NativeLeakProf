@@ -5,51 +5,13 @@
 #include <jni.h>
 #include <string>
 #include "xhook.h"
+#include "malloc_method.h"
 #include <android/log.h>
+#include <map> // STL头文件没有扩展名.h
+#include "malloc_method.h"
+#include "memory_manager.h"
 
-#define TAG_ "NativeLeakProf"
-
-extern "C"
-JNIEXPORT void JNICALL
-Java_com_qiu_liang_leak_XHook_nativeInit(JNIEnv *env, jclass clazz) {
-// TODO: implement nativeInit()
-
-
-}
-
-void* my_calloc(size_t __item_count, size_t __item_size) {
-    __android_log_print(ANDROID_LOG_INFO, TAG_, "my_calloc");
-    return calloc(__item_count, __item_size);
-}
-
-void my_free(void* __ptr) {
-    __android_log_print(ANDROID_LOG_INFO, TAG_, "my_free");
-    return free(__ptr);
-}
-
-void* my_realloc(void* __ptr, size_t __byte_count) {
-    __android_log_print(ANDROID_LOG_INFO, TAG_, "my_realloc");
-    return realloc(__ptr, __byte_count);
-}
-
-void* my_malloc(size_t __byte_count) {
-    __android_log_print(ANDROID_LOG_INFO, TAG_, "my_malloc");
-    return malloc(__byte_count);
-}
-
-static int my_libtest_log_print(int prio, const char* tag, const char* fmt, ...)
-{
-    va_list ap;
-    char buf[1024];
-    int r;
-
-    snprintf(buf, sizeof(buf), "[%s] %s", (NULL == tag ? "" : tag), (NULL == fmt ? "" : fmt));
-
-    va_start(ap, fmt);
-    r = __android_log_vprint(prio, "xhook_libtest", buf, ap);
-    va_end(ap);
-    return r;
-}
+using namespace nlp;
 
 extern "C"
 JNIEXPORT void JNICALL
@@ -57,19 +19,29 @@ Java_com_qiu_liang_leak_XHook_register(JNIEnv *env, jclass clazz, jstring elf_fi
 
     const char *elfFile = env->GetStringUTFChars(elf_file, 0);
 
+
+    std::string libName = std::string(elfFile) + ".so";
     // 组装配置信息对象
     std::string soFile = ".*/" + std::string(elfFile) + "\\.so$";
 
-    __android_log_print(ANDROID_LOG_INFO, TAG_, "%s", soFile.c_str());
-
-    xhook_register(soFile.c_str(), "malloc",  (void *) my_malloc,  NULL);
-//    xhook_register(".*/libappLib\\.so$", "__android_log_print", (void *) my_libtest_log_print, NULL);
-    xhook_register(soFile.c_str(), "calloc",  (void *) my_calloc,  NULL);
-    xhook_register(soFile.c_str(), "realloc", (void *) my_realloc, NULL);
-    xhook_register(soFile.c_str(), "free",    (void *) my_free,    NULL);
+    xhook_register(soFile.c_str(), "malloc", (void *) getHookMethod(libName, MALLOC), NULL);
+    xhook_register(soFile.c_str(), "calloc",  (void *) getHookMethod(libName, CALLOC),  NULL);
+    xhook_register(soFile.c_str(), "realloc", (void *) getHookMethod(libName, REALLOC), NULL);
+    xhook_register(soFile.c_str(), "free", (void *) (void *) getHookMethod(libName, FREE), NULL);
 
     //hook now!
     xhook_refresh(1);
 
     env->ReleaseStringUTFChars(elf_file, elfFile);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_qiu_liang_leak_XHook_nativeInit(JNIEnv *env, jclass clazz) {
+    // TODO: implement nativeInit()
+}
+
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
+    nlp::initNLP();
+    return JNI_VERSION_1_6;
 }

@@ -21,6 +21,11 @@ add_library( # Sets the name of the library.
         SHARED
 
         xhookBridge.cpp
+        malloc_method.cpp
+        memory_manager.cpp
+        free_method.cpp
+        calloc_method.cpp
+        realloc_method.cpp
         xh_core.c
         xh_elf.c
         xh_jni.c
