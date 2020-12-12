@@ -58,7 +58,6 @@ class MapsMonitor {
                     if (sELFSets.contains(elfFile)) {
                         continue;
                     }
-//                    XHook.hookELF(elfFile);
                     sELFSets.add(elfFile);
                     ProfLog.i("hook:" + elfFile);
                 }

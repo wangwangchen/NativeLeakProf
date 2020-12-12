@@ -11,6 +11,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <vector>
+#include <cerrno>
 #include "nlp/malloc_method.h"
 #include "nlp/memory_manager.h"
 #include "nlp/Log.h"
@@ -18,27 +19,6 @@
 
 using namespace nlp;
 using namespace std;
-
-extern "C"
-JNIEXPORT void JNICALL
-Java_com_qiu_liang_leak_XHook_hookELF(JNIEnv *env, jclass clazz, jstring elf_file) {
-
-    const char *elfFile = env->GetStringUTFChars(elf_file, 0);
-
-    _LOGI_("Fuck");
-
-    std::string libName = std::string(elfFile) + ".so";
-    // 组装配置信息对象
-    std::string soFile = ".*/" + std::string(elfFile) + "\\.so$";
-
-    xhook_register(soFile.c_str(), "malloc", (void *) getHookMethod(libName, MALLOC), NULL);
-    xhook_register(soFile.c_str(), "calloc",  (void *) getHookMethod(libName, CALLOC),  NULL);
-    xhook_register(soFile.c_str(), "realloc", (void *) getHookMethod(libName, REALLOC), NULL);
-    xhook_register(soFile.c_str(), "free", (void *) (void *) getHookMethod(libName, FREE), NULL);
-
-    env->ReleaseStringUTFChars(elf_file, elfFile);
-
-}
 
 extern "C"
 JNIEXPORT jstring JNICALL
@@ -79,10 +59,13 @@ Java_com_qiu_liang_leak_XHook_hookELFs(JNIEnv *env, jclass clazz, jobjectArray e
         // 组装配置信息对象
         std::string soFile = ".*/" + std::string(elfFile) + "\\.so$";
 
-        xhook_register(soFile.c_str(), "malloc", (void *) getHookMethod(libName, MALLOC), NULL);
-        xhook_register(soFile.c_str(), "calloc",  (void *) getHookMethod(libName, CALLOC),  NULL);
-        xhook_register(soFile.c_str(), "realloc", (void *) getHookMethod(libName, REALLOC), NULL);
-        xhook_register(soFile.c_str(), "free", (void *) (void *) getHookMethod(libName, FREE), NULL);
+        xhook_register(soFile.c_str(), "malloc", (void *) getHookMethod(libName, MALLOC), nullptr);
+        xhook_register(soFile.c_str(), "calloc",  (void *) getHookMethod(libName, CALLOC),  nullptr);
+        xhook_register(soFile.c_str(), "realloc", (void *) getHookMethod(libName, REALLOC), nullptr);
+        xhook_register(soFile.c_str(), "free", (void *) (void *) getHookMethod(libName, FREE), nullptr);
+        xhook_register(soFile.c_str(), "memalign", (void *) (void *) getHookMethod(libName, MEMALIGN), nullptr);
+        xhook_register(soFile.c_str(), "aligned_alloc", (void *) (void *) getHookMethod(libName, ALIGNED_ALLOC), nullptr);
+        xhook_register(soFile.c_str(), "posix_memalign", (void *) (void *) getHookMethod(libName, POSIX_MEMALIGN), nullptr);
 
         iterator++;
     }
@@ -93,6 +76,5 @@ Java_com_qiu_liang_leak_XHook_hookELFs(JNIEnv *env, jclass clazz, jobjectArray e
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     onJNILoad(vm, reserved);
     nlp::initNLP();
-
     return JNI_VERSION_1_6;
 }

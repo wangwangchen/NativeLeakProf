@@ -13,7 +13,7 @@
  * 内存操作函数类型
  */
 enum MemoryMethodType {
-    MALLOC, FREE, CALLOC, REALLOC
+    MALLOC, FREE, CALLOC, REALLOC, MEMALIGN, ALIGNED_ALLOC, POSIX_MEMALIGN
 };
 
 namespace nlp {
@@ -48,6 +48,12 @@ namespace nlp {
 
     void *invokeRealloc(void *method, void *ptr, size_t byteCount);
 
+    void *invokeMemAlign(void *method, size_t boundary, size_t byteCount);
+
+    void *invokeAlignedAlloc(void *method, size_t alignment, size_t byteCount);
+
+    int invokePosixMemAlign(void *method, void **memptr, size_t boundary, size_t byteCount);
+
     void *getHookMethod(std::string &libName, MemoryMethodType methodType);
 
     void resetHookMethods();
@@ -58,6 +64,8 @@ namespace nlp {
     std::string currentRecordInfoStr();
 
     void initNLP();
+
+
 
 }
 

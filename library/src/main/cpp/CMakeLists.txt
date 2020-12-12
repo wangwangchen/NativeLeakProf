@@ -30,6 +30,9 @@ add_library( # Sets the name of the library.
         nlp/free_method.cpp
         nlp/calloc_method.cpp
         nlp/realloc_method.cpp
+        nlp/memalign_method.cpp
+        nlp/aligned_alloc_method.cpp
+        nlp/posix_memalign_method.cpp
 
         xhook/xh_core.c
         xhook/xh_elf.c

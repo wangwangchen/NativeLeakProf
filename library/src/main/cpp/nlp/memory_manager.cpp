@@ -10,6 +10,9 @@
 #include "calloc_method.h"
 #include "realloc_method.h"
 #include "threadsafe_queue.h"
+#include "memalign_method.h"
+#include "posix_memalign_method.h"
+#include "aligned_alloc_method.h"
 
 namespace nlp {
 
@@ -77,6 +80,28 @@ namespace nlp {
         return newPtr;
     }
 
+    void *invokeMemAlign(void *method, size_t boundary, size_t byteCount) {
+        void *ptr = memalign(boundary, byteCount);
+
+        onMalloc(method, ptr, byteCount);
+
+        return ptr;
+    }
+
+    void *invokeAlignedAlloc(void *method, size_t alignment, size_t byteCount) {
+        return invokeMemAlign(method, alignment, byteCount);
+    }
+
+    int invokePosixMemAlign(void *method, void **memptr, size_t boundary, size_t byteCount) {
+        int ret = posix_memalign(memptr, boundary, byteCount);
+
+        if (!ret) {
+            onMalloc(method, *memptr, byteCount);
+        }
+
+        return ret;
+    }
+
     void *getHookMethod(std::string &libName, MemoryMethodType methodType) {
         void *method;
         switch (methodType) {
@@ -92,6 +117,15 @@ namespace nlp {
             case REALLOC:
                 method = popReallocMethod(libName);
                 break;
+            case MEMALIGN:
+                method = popMemAlignMethod(libName);
+                break;
+            case ALIGNED_ALLOC:
+                method = popAlignedAllocMethod(libName);
+                break;
+            case POSIX_MEMALIGN:
+                method = popPosixMemAlignMethod(libName);
+                break;
         }
         libNameMap[method] = libName;
 //        _LOGII_("lib: %s, getHookMethod %p methodType %d", libName.c_str(), method, methodType);
@@ -104,6 +138,9 @@ namespace nlp {
         resetFreeMethod();
         resetCallocMethod();
         resetReallocMethod();
+        resetMemAlignMethod();
+        resetAlignedAllocMethod();
+        resetPosixMemAlignMethod();
         while (true) {
             if (queue.empty()) {
                 return;
@@ -145,6 +182,9 @@ namespace nlp {
         initDiyFreeMethod();
         initDiyCallocMethod();
         initDiyReallocMethod();
+        initDiyMemAlignMethod();
+        initDiyAlignedAllocMethod();
+        initDiyPosixMemAlignMethod();
         pthread_t thread;
         pthread_create(&thread, nullptr, dumpThreadEntry, nullptr);
     }
