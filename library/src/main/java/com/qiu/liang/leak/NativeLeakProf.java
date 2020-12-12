@@ -22,4 +22,8 @@ public class NativeLeakProf {
         MapsMonitor.init(context);
     }
 
+    public static String dumpLeakInfo() {
+        return XHook.dumpLeakInfo();
+    }
+
 }

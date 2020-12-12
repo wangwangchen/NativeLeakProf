@@ -194,6 +194,7 @@ namespace nlp {
 
         std::string result;
 
+        int64_t totalByteCount = 0;
         std::map<std::string, int64_t>::iterator iterator;
         iterator = localMap.begin();
         bool isFind = false;
@@ -201,12 +202,13 @@ namespace nlp {
             if (iterator->second > 0) {
                 result += (iterator->first + " leak: " + std::to_string(iterator->second) + " byte \n");
                 isFind = true;
+                totalByteCount += iterator->second;
             }
             iterator++;
         }
 
         if (isFind) {
-            return result;
+            return result + "\ntotal leak: " + std::to_string(totalByteCount) + " byte";
         } else {
             return "leak map is empty";
         }

@@ -41,7 +41,7 @@ class MapsMonitor {
 
             long timeMillis = System.currentTimeMillis();
 
-            ProfLog.i(XHook.dumpLeakInfo());
+//            ProfLog.i("Native Leak Info:\n" + XHook.dumpLeakInfo());
 
             String maps = IOUtils.readStr(sMapsFile);
             if (maps == null) {
