@@ -15,6 +15,6 @@ class ProfLog {
     }
 
     public static void i(String msg) {
-        Log.e(TAG, msg);
+        Log.i(TAG, msg);
     }
 }

@@ -7,6 +7,7 @@
 #include "memory_manager.h"
 
 std::stack<void*> reallocStk;
+std::stack<void*> reallocStkUsed;
 
 void *myRealloc1(void *ptr, size_t byteCount) {
     return nlp::invokeRealloc((void *) myRealloc1, ptr, byteCount);
@@ -476,7 +477,15 @@ void *myRealloc150(void *ptr, size_t byteCount) {
 void* popReallocMethod(std::string &libName) {
     void *method = (void*) reallocStk.top();
     reallocStk.pop();
+    reallocStkUsed.push(method);
     return method;
+}
+
+void resetReallocMethod() {
+    while (!reallocStkUsed.empty()) {
+        reallocStk.push(reallocStkUsed.top());
+        reallocStkUsed.pop();
+    }
 }
 
 void initDiyReallocMethod() {
@@ -645,4 +654,3 @@ void initDiyReallocMethod() {
     reallocStk.push((void *) myRealloc149);
     reallocStk.push((void *) myRealloc150);
 }
-

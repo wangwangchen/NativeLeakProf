@@ -177,6 +177,8 @@ void *myRealloc150(void *ptr, size_t byteCount);
 
 void* popReallocMethod(std::string &libName);
 
+void resetReallocMethod();
+
 void initDiyReallocMethod();
 
 

@@ -3,6 +3,7 @@
 #include "memory_manager.h"
 
 std::stack<void*> mallocStk;
+std::stack<void*> mallocStkUsed;
 
 void *myMalloc1(size_t byteCount) {
     return nlp::invokeMalloc((void *) myMalloc1, byteCount);
@@ -470,9 +471,18 @@ void *myMalloc150(size_t byteCount) {
 }
 
 void* popMallocMethod(std::string &libName) {
+//    _LOGI_("popMallocMethod, size: %d", mallocStk.size());
     void *method = (void*) mallocStk.top();
     mallocStk.pop();
+    mallocStkUsed.push(method);
     return method;
+}
+
+void resetMallocMethod() {
+    while (!mallocStkUsed.empty()) {
+        mallocStk.push(mallocStkUsed.top());
+        mallocStkUsed.pop();
+    }
 }
 
 void initDiyMallocMethod() {

@@ -14,25 +14,30 @@ project("prof")
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+include_directories(common handler nlp)
+
 add_library( # Sets the name of the library.
-        xhook
+        nleakprf
 
         # Sets the library as a shared library.
         SHARED
 
-        xhookBridge.cpp
-        malloc_method.cpp
-        memory_manager.cpp
-        free_method.cpp
-        calloc_method.cpp
-        realloc_method.cpp
-        xh_core.c
-        xh_elf.c
-        xh_jni.c
-        xh_log.c
-        xh_util.c
-        xh_version.c
-        xhook.c
+        native_leak_prf.cpp
+
+        nlp/common-jni.cpp
+        nlp/malloc_method.cpp
+        nlp/memory_manager.cpp
+        nlp/free_method.cpp
+        nlp/calloc_method.cpp
+        nlp/realloc_method.cpp
+
+        xhook/xh_core.c
+        xhook/xh_elf.c
+        xhook/xh_jni.c
+        xhook/xh_log.c
+        xhook/xh_util.c
+        xhook/xh_version.c
+        xhook/xhook.c
         )
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -53,7 +58,7 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-        xhook
+        nleakprf
 
         # Links the target library to the log library
         # included in the NDK.

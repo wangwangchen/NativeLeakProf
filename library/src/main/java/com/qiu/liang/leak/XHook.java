@@ -1,21 +1,20 @@
 package com.qiu.liang.leak;
 
-import android.content.Context;
-
 /**
  * Created by chenwangwang on 2020/12/8.
  */
 class XHook {
 
-    static {
-        System.loadLibrary("xhook");
-    }
+    /**
+     * hook一个动态库的内存处理函数
+     * @param elfFile 动态库名字不带.so后缀
+     */
+    public static native void hookELF(String elfFile);
 
-    static void init(Context context) {
-        nativeInit();
-    }
+    /**
+     * 将当前内存泄露的信息导出成字符串
+     */
+    public static native String dumpLeakInfo();
 
-    static native void nativeInit();
-
-    public static native void register(String elfFile);
+    public static native void hookELFs(String[] elfFileArray);
 }

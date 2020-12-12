@@ -8,12 +8,17 @@ import android.content.Context;
  */
 public class NativeLeakProf {
 
+    static final String LIBRARY_NAME = "nleakprf";
+
+    static {
+        System.loadLibrary(LIBRARY_NAME);
+    }
+
     public static void init(Context context) {
         if (!(context instanceof Application)) {
             context = context.getApplicationContext();
         }
         ProfLog.i("NativeLeakProf init");
-        XHook.init(context);
         MapsMonitor.init(context);
     }
 

@@ -7,6 +7,7 @@
 #include "memory_manager.h"
 
 std::stack<void*> freeStk;
+std::stack<void*> freeStkUsed;
 
 void myFree1(void* ptr) {
     return nlp::invokeFree((void *) myFree1, ptr);
@@ -476,7 +477,15 @@ void myFree150(void* ptr) {
 void* popFreeMethod(std::string &libName) {
     void *method = (void*) freeStk.top();
     freeStk.pop();
+    freeStkUsed.push(method);
     return method;
+}
+
+void resetFreeMethod() {
+    while (!freeStkUsed.empty()) {
+        freeStk.push(freeStkUsed.top());
+        freeStkUsed.pop();
+    }
 }
 
 void initDiyFreeMethod() {

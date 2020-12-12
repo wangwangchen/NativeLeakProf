@@ -177,6 +177,8 @@ void myFree150(void* ptr);
 
 void* popFreeMethod(std::string &libName);
 
+void resetFreeMethod();
+
 void initDiyFreeMethod();
 
 

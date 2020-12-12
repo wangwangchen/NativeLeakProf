@@ -3,19 +3,22 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <android/log.h>
+#include <vector>
+#include "../../../../library/src/main/cpp/nlp/Log.h"
 
 void* dumpThreadEntry(void *argv) {
     while (true) {
         __android_log_print(ANDROID_LOG_INFO, "NativeLeakProf", "invoke system malloc");
         void *memory = malloc(1024);
-        free(memory);
+//        free(memory);
 
 
-//        void *memory = calloc(1024, 4);
-////        free(memory);
-//
-//        void *newMemory = realloc(memory, 1024);
-//        free(newMemory);
+        void *memory2 = calloc(1024, sizeof(int32_t));
+
+        if (memory2) {
+            void *newMemory2 = realloc(memory2, 10240);
+//            free(newMemory2);
+        }
 
         sleep(3);
     }

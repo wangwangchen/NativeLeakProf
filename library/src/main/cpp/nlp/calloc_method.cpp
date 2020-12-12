@@ -7,6 +7,7 @@
 #include "memory_manager.h"
 
 std::stack<void*> callocStk;
+std::stack<void*> callocStkUsed;
 
 void *myCalloc1(size_t itemCount, size_t itemSize) {
     return nlp::invokeCalloc((void *) myCalloc1, itemCount, itemSize);
@@ -476,7 +477,15 @@ void *myCalloc150(size_t itemCount, size_t itemSize) {
 void* popCallocMethod(std::string &libName) {
     void *method = (void*) callocStk.top();
     callocStk.pop();
+    callocStkUsed.push(method);
     return method;
+}
+
+void resetCallocMethod() {
+    while (!callocStkUsed.empty()) {
+        callocStk.push(callocStkUsed.top());
+        callocStkUsed.pop();
+    }
 }
 
 void initDiyCallocMethod() {

@@ -17,6 +17,24 @@ enum MemoryMethodType {
 };
 
 namespace nlp {
+
+    class MemoryOperation {
+    public:
+        void *method;
+        virtual ~MemoryOperation(){}
+    };
+
+    class MallocOperation : public MemoryOperation {
+    public:
+        void* ptr;
+        size_t byteCount;
+    };
+
+    class FreeOperation : public MemoryOperation {
+    public:
+        void *ptr;
+    };
+
     /**
      * 申请内存
      * @param method 方法地址
@@ -31,6 +49,13 @@ namespace nlp {
     void *invokeRealloc(void *method, void *ptr, size_t byteCount);
 
     void *getHookMethod(std::string &libName, MemoryMethodType methodType);
+
+    void resetHookMethods();
+
+    /**
+     * 当前内存申请情况
+     */
+    std::string currentRecordInfoStr();
 
     void initNLP();
 
