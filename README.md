@@ -15,3 +15,6 @@ Android  Native代码（C/C++）内存泄露分析
 3. hook内存申请释放函数: `malloc  calloc realloc memalign aligned_alloc posix_memalign free`
 4. 采用消息队列的方式，使用异步线程来不断记录内存的操作
 5. 提供导出当前泄露内存信息的native接口
+
+# 下一步工作
+在内存操作函数中获取调用堆栈
