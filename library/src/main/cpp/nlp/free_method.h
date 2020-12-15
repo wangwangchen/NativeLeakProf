@@ -10,6 +10,7 @@
 #include <stack>
 #include <string>
 
+void myFree0(void* ptr);
 void myFree1(void* ptr);
 void myFree2(void* ptr);
 void myFree3(void* ptr);
@@ -174,6 +175,171 @@ void myFree147(void* ptr);
 void myFree148(void* ptr);
 void myFree149(void* ptr);
 void myFree150(void* ptr);
+
+
+void myFree151(void* ptr);
+void myFree152(void* ptr);
+void myFree153(void* ptr);
+void myFree154(void* ptr);
+void myFree155(void* ptr);
+void myFree156(void* ptr);
+void myFree157(void* ptr);
+void myFree158(void* ptr);
+void myFree159(void* ptr);
+
+void myFree160(void* ptr);
+void myFree161(void* ptr);
+void myFree162(void* ptr);
+void myFree163(void* ptr);
+void myFree164(void* ptr);
+void myFree165(void* ptr);
+void myFree166(void* ptr);
+void myFree167(void* ptr);
+void myFree168(void* ptr);
+void myFree169(void* ptr);
+
+void myFree170(void* ptr);
+void myFree171(void* ptr);
+void myFree172(void* ptr);
+void myFree173(void* ptr);
+void myFree174(void* ptr);
+void myFree175(void* ptr);
+void myFree176(void* ptr);
+void myFree177(void* ptr);
+void myFree178(void* ptr);
+void myFree179(void* ptr);
+
+void myFree180(void* ptr);
+void myFree181(void* ptr);
+void myFree182(void* ptr);
+void myFree183(void* ptr);
+void myFree184(void* ptr);
+void myFree185(void* ptr);
+void myFree186(void* ptr);
+void myFree187(void* ptr);
+void myFree188(void* ptr);
+void myFree189(void* ptr);
+
+void myFree190(void* ptr);
+void myFree191(void* ptr);
+void myFree192(void* ptr);
+void myFree193(void* ptr);
+void myFree194(void* ptr);
+void myFree195(void* ptr);
+void myFree196(void* ptr);
+void myFree197(void* ptr);
+void myFree198(void* ptr);
+void myFree199(void* ptr);
+
+void myFree200(void* ptr);
+void myFree201(void* ptr);
+void myFree202(void* ptr);
+void myFree203(void* ptr);
+void myFree204(void* ptr);
+void myFree205(void* ptr);
+void myFree206(void* ptr);
+void myFree207(void* ptr);
+void myFree208(void* ptr);
+void myFree209(void* ptr);
+
+void myFree210(void* ptr);
+void myFree211(void* ptr);
+void myFree212(void* ptr);
+void myFree213(void* ptr);
+void myFree214(void* ptr);
+void myFree215(void* ptr);
+void myFree216(void* ptr);
+void myFree217(void* ptr);
+void myFree218(void* ptr);
+void myFree219(void* ptr);
+
+void myFree220(void* ptr);
+void myFree221(void* ptr);
+void myFree222(void* ptr);
+void myFree223(void* ptr);
+void myFree224(void* ptr);
+void myFree225(void* ptr);
+void myFree226(void* ptr);
+void myFree227(void* ptr);
+void myFree228(void* ptr);
+void myFree229(void* ptr);
+
+void myFree230(void* ptr);
+void myFree231(void* ptr);
+void myFree232(void* ptr);
+void myFree233(void* ptr);
+void myFree234(void* ptr);
+void myFree235(void* ptr);
+void myFree236(void* ptr);
+void myFree237(void* ptr);
+void myFree238(void* ptr);
+void myFree239(void* ptr);
+
+void myFree240(void* ptr);
+void myFree241(void* ptr);
+void myFree242(void* ptr);
+void myFree243(void* ptr);
+void myFree244(void* ptr);
+void myFree245(void* ptr);
+void myFree246(void* ptr);
+void myFree247(void* ptr);
+void myFree248(void* ptr);
+void myFree249(void* ptr);
+
+void myFree250(void* ptr);
+void myFree251(void* ptr);
+void myFree252(void* ptr);
+void myFree253(void* ptr);
+void myFree254(void* ptr);
+void myFree255(void* ptr);
+void myFree256(void* ptr);
+void myFree257(void* ptr);
+void myFree258(void* ptr);
+void myFree259(void* ptr);
+
+void myFree260(void* ptr);
+void myFree261(void* ptr);
+void myFree262(void* ptr);
+void myFree263(void* ptr);
+void myFree264(void* ptr);
+void myFree265(void* ptr);
+void myFree266(void* ptr);
+void myFree267(void* ptr);
+void myFree268(void* ptr);
+void myFree269(void* ptr);
+
+void myFree270(void* ptr);
+void myFree271(void* ptr);
+void myFree272(void* ptr);
+void myFree273(void* ptr);
+void myFree274(void* ptr);
+void myFree275(void* ptr);
+void myFree276(void* ptr);
+void myFree277(void* ptr);
+void myFree278(void* ptr);
+void myFree279(void* ptr);
+
+void myFree280(void* ptr);
+void myFree281(void* ptr);
+void myFree282(void* ptr);
+void myFree283(void* ptr);
+void myFree284(void* ptr);
+void myFree285(void* ptr);
+void myFree286(void* ptr);
+void myFree287(void* ptr);
+void myFree288(void* ptr);
+void myFree289(void* ptr);
+
+void myFree290(void* ptr);
+void myFree291(void* ptr);
+void myFree292(void* ptr);
+void myFree293(void* ptr);
+void myFree294(void* ptr);
+void myFree295(void* ptr);
+void myFree296(void* ptr);
+void myFree297(void* ptr);
+void myFree298(void* ptr);
+void myFree299(void* ptr);
 
 void* popFreeMethod();
 

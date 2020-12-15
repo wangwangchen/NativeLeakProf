@@ -44,7 +44,7 @@ namespace nlp {
     void onMalloc(int32_t index, void *ptr, size_t byteCount) {
         if (ptr) {
             auto *mallocOperation = new MallocOperation();
-            mallocOperation->index = SLOT_NUM - index;
+            mallocOperation->index = SLOT_NUM - index - 1;
             mallocOperation->ptr = ptr;
             mallocOperation->byteCount = byteCount;
             queue.push(mallocOperation);
@@ -62,7 +62,7 @@ namespace nlp {
 
     void onFree(int32_t index, void *ptr) {
         auto *freeOperation = new FreeOperation();
-        freeOperation->index = SLOT_NUM - index;
+        freeOperation->index = SLOT_NUM - index - 1;
         freeOperation->ptr = ptr;
         queue.push(freeOperation);
     }

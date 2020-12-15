@@ -11,7 +11,7 @@
 
 namespace nlp {
 
-#define SLOT_NUM 150         // 一共只有150个坑位
+#define SLOT_NUM 500         // 一共只有500个坑位
 
     /**
      * 内存操作函数类型

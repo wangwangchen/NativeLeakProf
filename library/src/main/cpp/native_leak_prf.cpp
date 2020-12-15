@@ -44,6 +44,8 @@ Java_com_qiu_liang_leak_XHook_hookELFs(JNIEnv *env, jclass clazz, jobjectArray e
     if (lib_names_vector.empty()) {
         _LOGE_("empty libs");
         return false;
+    } else {
+        _LOGI_("HOOK ELF, size: %d", lib_names_vector.size());
     }
 
 //    xhook_enable_debug(1);
