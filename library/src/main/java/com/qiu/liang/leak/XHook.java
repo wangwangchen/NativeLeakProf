@@ -10,5 +10,5 @@ class XHook {
      */
     public static native String dumpLeakInfo();
 
-    public static native void hookELFs(String[] elfFileArray);
+    public static native boolean hookELFs(String[] elfFileArray);
 }

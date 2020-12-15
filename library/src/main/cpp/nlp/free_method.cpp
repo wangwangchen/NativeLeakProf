@@ -7,485 +7,476 @@
 #include "memory_manager.h"
 
 std::stack<void*> freeStk;
-std::stack<void*> freeStkUsed;
 
 void myFree1(void* ptr) {
-    return nlp::invokeFree((void *) myFree1, ptr);
+    return nlp::invokeFree(1, ptr);
 }
 void myFree2(void* ptr) {
-    return nlp::invokeFree((void *) myFree2, ptr);
+    return nlp::invokeFree(2, ptr);
 }
 void myFree3(void* ptr) {
-    return nlp::invokeFree((void *) myFree3, ptr);
+    return nlp::invokeFree(3, ptr);
 }
 void myFree4(void* ptr) {
-    return nlp::invokeFree((void *) myFree4, ptr);
+    return nlp::invokeFree(4, ptr);
 }
 void myFree5(void* ptr) {
-    return nlp::invokeFree((void *) myFree5, ptr);
+    return nlp::invokeFree(5, ptr);
 }
 void myFree6(void* ptr) {
-    return nlp::invokeFree((void *) myFree6, ptr);
+    return nlp::invokeFree(6, ptr);
 }
 void myFree7(void* ptr) {
-    return nlp::invokeFree((void *) myFree7, ptr);
+    return nlp::invokeFree(7, ptr);
 }
 void myFree8(void* ptr) {
-    return nlp::invokeFree((void *) myFree8, ptr);
+    return nlp::invokeFree(8, ptr);
 }
 void myFree9(void* ptr) {
-    return nlp::invokeFree((void *) myFree9, ptr);
+    return nlp::invokeFree(9, ptr);
 }
 void myFree10(void* ptr) {
-    return nlp::invokeFree((void *) myFree10, ptr);
+    return nlp::invokeFree(10, ptr);
 }
 
 void myFree11(void* ptr) {
-    return nlp::invokeFree((void *) myFree11, ptr);
+    return nlp::invokeFree(11, ptr);
 }
 void myFree12(void* ptr) {
-    return nlp::invokeFree((void *) myFree12, ptr);
+    return nlp::invokeFree(12, ptr);
 }
 void myFree13(void* ptr) {
-    return nlp::invokeFree((void *) myFree13, ptr);
+    return nlp::invokeFree(13, ptr);
 }
 void myFree14(void* ptr) {
-    return nlp::invokeFree((void *) myFree14, ptr);
+    return nlp::invokeFree(14, ptr);
 }
 void myFree15(void* ptr) {
-    return nlp::invokeFree((void *) myFree15, ptr);
+    return nlp::invokeFree(15, ptr);
 }
 void myFree16(void* ptr) {
-    return nlp::invokeFree((void *) myFree16, ptr);
+    return nlp::invokeFree(16, ptr);
 }
 void myFree17(void* ptr) {
-    return nlp::invokeFree((void *) myFree17, ptr);
+    return nlp::invokeFree(17, ptr);
 }
 void myFree18(void* ptr) {
-    return nlp::invokeFree((void *) myFree18, ptr);
+    return nlp::invokeFree(18, ptr);
 }
 void myFree19(void* ptr) {
-    return nlp::invokeFree((void *) myFree19, ptr);
+    return nlp::invokeFree(19, ptr);
 }
 void myFree20(void* ptr) {
-    return nlp::invokeFree((void *) myFree20, ptr);
+    return nlp::invokeFree(20, ptr);
 }
 
 void myFree21(void* ptr) {
-    return nlp::invokeFree((void *) myFree21, ptr);
+    return nlp::invokeFree(21, ptr);
 }
 void myFree22(void* ptr) {
-    return nlp::invokeFree((void *) myFree22, ptr);
+    return nlp::invokeFree(22, ptr);
 }
 void myFree23(void* ptr) {
-    return nlp::invokeFree((void *) myFree23, ptr);
+    return nlp::invokeFree(23, ptr);
 }
 void myFree24(void* ptr) {
-    return nlp::invokeFree((void *) myFree24, ptr);
+    return nlp::invokeFree(24, ptr);
 }
 void myFree25(void* ptr) {
-    return nlp::invokeFree((void *) myFree25, ptr);
+    return nlp::invokeFree(25, ptr);
 }
 void myFree26(void* ptr) {
-    return nlp::invokeFree((void *) myFree26, ptr);
+    return nlp::invokeFree(26, ptr);
 }
 void myFree27(void* ptr) {
-    return nlp::invokeFree((void *) myFree27, ptr);
+    return nlp::invokeFree(27, ptr);
 }
 void myFree28(void* ptr) {
-    return nlp::invokeFree((void *) myFree28, ptr);
+    return nlp::invokeFree(28, ptr);
 }
 void myFree29(void* ptr) {
-    return nlp::invokeFree((void *) myFree29, ptr);
+    return nlp::invokeFree(29, ptr);
 }
 void myFree30(void* ptr) {
-    return nlp::invokeFree((void *) myFree30, ptr);
+    return nlp::invokeFree(30, ptr);
 }
 
 void myFree31(void* ptr) {
-    return nlp::invokeFree((void *) myFree31, ptr);
+    return nlp::invokeFree(31, ptr);
 }
 void myFree32(void* ptr) {
-    return nlp::invokeFree((void *) myFree32, ptr);
+    return nlp::invokeFree(32, ptr);
 }
 void myFree33(void* ptr) {
-    return nlp::invokeFree((void *) myFree33, ptr);
+    return nlp::invokeFree(33, ptr);
 }
 void myFree34(void* ptr) {
-    return nlp::invokeFree((void *) myFree34, ptr);
+    return nlp::invokeFree(34, ptr);
 }
 void myFree35(void* ptr) {
-    return nlp::invokeFree((void *) myFree35, ptr);
+    return nlp::invokeFree(35, ptr);
 }
 void myFree36(void* ptr) {
-    return nlp::invokeFree((void *) myFree36, ptr);
+    return nlp::invokeFree(36, ptr);
 }
 void myFree37(void* ptr) {
-    return nlp::invokeFree((void *) myFree37, ptr);
+    return nlp::invokeFree(37, ptr);
 }
 void myFree38(void* ptr) {
-    return nlp::invokeFree((void *) myFree38, ptr);
+    return nlp::invokeFree(38, ptr);
 }
 void myFree39(void* ptr) {
-    return nlp::invokeFree((void *) myFree39, ptr);
+    return nlp::invokeFree(39, ptr);
 }
 void myFree40(void* ptr) {
-    return nlp::invokeFree((void *) myFree40, ptr);
+    return nlp::invokeFree(40, ptr);
 }
 
 void myFree41(void* ptr) {
-    return nlp::invokeFree((void *) myFree41, ptr);
+    return nlp::invokeFree(41, ptr);
 }
 void myFree42(void* ptr) {
-    return nlp::invokeFree((void *) myFree42, ptr);
+    return nlp::invokeFree(42, ptr);
 }
 void myFree43(void* ptr) {
-    return nlp::invokeFree((void *) myFree43, ptr);
+    return nlp::invokeFree(43, ptr);
 }
 void myFree44(void* ptr) {
-    return nlp::invokeFree((void *) myFree44, ptr);
+    return nlp::invokeFree(44, ptr);
 }
 void myFree45(void* ptr) {
-    return nlp::invokeFree((void *) myFree45, ptr);
+    return nlp::invokeFree(45, ptr);
 }
 void myFree46(void* ptr) {
-    return nlp::invokeFree((void *) myFree46, ptr);
+    return nlp::invokeFree(46, ptr);
 }
 void myFree47(void* ptr) {
-    return nlp::invokeFree((void *) myFree47, ptr);
+    return nlp::invokeFree(47, ptr);
 }
 void myFree48(void* ptr) {
-    return nlp::invokeFree((void *) myFree48, ptr);
+    return nlp::invokeFree(48, ptr);
 }
 void myFree49(void* ptr) {
-    return nlp::invokeFree((void *) myFree49, ptr);
+    return nlp::invokeFree(49, ptr);
 }
 void myFree50(void* ptr) {
-    return nlp::invokeFree((void *) myFree50, ptr);
+    return nlp::invokeFree(50, ptr);
 }
 
 void myFree51(void* ptr) {
-    return nlp::invokeFree((void *) myFree51, ptr);
+    return nlp::invokeFree(51, ptr);
 }
 void myFree52(void* ptr) {
-    return nlp::invokeFree((void *) myFree52, ptr);
+    return nlp::invokeFree(52, ptr);
 }
 void myFree53(void* ptr) {
-    return nlp::invokeFree((void *) myFree53, ptr);
+    return nlp::invokeFree(53, ptr);
 }
 void myFree54(void* ptr) {
-    return nlp::invokeFree((void *) myFree54, ptr);
+    return nlp::invokeFree(54, ptr);
 }
 void myFree55(void* ptr) {
-    return nlp::invokeFree((void *) myFree55, ptr);
+    return nlp::invokeFree(55, ptr);
 }
 void myFree56(void* ptr) {
-    return nlp::invokeFree((void *) myFree56, ptr);
+    return nlp::invokeFree(56, ptr);
 }
 void myFree57(void* ptr) {
-    return nlp::invokeFree((void *) myFree57, ptr);
+    return nlp::invokeFree(57, ptr);
 }
 void myFree58(void* ptr) {
-    return nlp::invokeFree((void *) myFree58, ptr);
+    return nlp::invokeFree(58, ptr);
 }
 void myFree59(void* ptr) {
-    return nlp::invokeFree((void *) myFree59, ptr);
+    return nlp::invokeFree(59, ptr);
 }
 void myFree60(void* ptr) {
-    return nlp::invokeFree((void *) myFree60, ptr);
+    return nlp::invokeFree(60, ptr);
 }
 
 void myFree61(void* ptr) {
-    return nlp::invokeFree((void *) myFree61, ptr);
+    return nlp::invokeFree(61, ptr);
 }
 void myFree62(void* ptr) {
-    return nlp::invokeFree((void *) myFree62, ptr);
+    return nlp::invokeFree(62, ptr);
 }
 void myFree63(void* ptr) {
-    return nlp::invokeFree((void *) myFree63, ptr);
+    return nlp::invokeFree(63, ptr);
 }
 void myFree64(void* ptr) {
-    return nlp::invokeFree((void *) myFree64, ptr);
+    return nlp::invokeFree(64, ptr);
 }
 void myFree65(void* ptr) {
-    return nlp::invokeFree((void *) myFree65, ptr);
+    return nlp::invokeFree(65, ptr);
 }
 void myFree66(void* ptr) {
-    return nlp::invokeFree((void *) myFree66, ptr);
+    return nlp::invokeFree(66, ptr);
 }
 void myFree67(void* ptr) {
-    return nlp::invokeFree((void *) myFree67, ptr);
+    return nlp::invokeFree(67, ptr);
 }
 void myFree68(void* ptr) {
-    return nlp::invokeFree((void *) myFree68, ptr);
+    return nlp::invokeFree(68, ptr);
 }
 void myFree69(void* ptr) {
-    return nlp::invokeFree((void *) myFree69, ptr);
+    return nlp::invokeFree(69, ptr);
 }
 void myFree70(void* ptr) {
-    return nlp::invokeFree((void *) myFree70, ptr);
+    return nlp::invokeFree(70, ptr);
 }
 
 void myFree71(void* ptr) {
-    return nlp::invokeFree((void *) myFree71, ptr);
+    return nlp::invokeFree(71, ptr);
 }
 void myFree72(void* ptr) {
-    return nlp::invokeFree((void *) myFree72, ptr);
+    return nlp::invokeFree(72, ptr);
 }
 void myFree73(void* ptr) {
-    return nlp::invokeFree((void *) myFree73, ptr);
+    return nlp::invokeFree(73, ptr);
 }
 void myFree74(void* ptr) {
-    return nlp::invokeFree((void *) myFree74, ptr);
+    return nlp::invokeFree(74, ptr);
 }
 void myFree75(void* ptr) {
-    return nlp::invokeFree((void *) myFree75, ptr);
+    return nlp::invokeFree(75, ptr);
 }
 void myFree76(void* ptr) {
-    return nlp::invokeFree((void *) myFree76, ptr);
+    return nlp::invokeFree(76, ptr);
 }
 void myFree77(void* ptr) {
-    return nlp::invokeFree((void *) myFree77, ptr);
+    return nlp::invokeFree(77, ptr);
 }
 void myFree78(void* ptr) {
-    return nlp::invokeFree((void *) myFree78, ptr);
+    return nlp::invokeFree(78, ptr);
 }
 void myFree79(void* ptr) {
-    return nlp::invokeFree((void *) myFree79, ptr);
+    return nlp::invokeFree(79, ptr);
 }
 void myFree80(void* ptr) {
-    return nlp::invokeFree((void *) myFree80, ptr);
+    return nlp::invokeFree(80, ptr);
 }
 
 void myFree81(void* ptr) {
-    return nlp::invokeFree((void *) myFree81, ptr);
+    return nlp::invokeFree(81, ptr);
 }
 void myFree82(void* ptr) {
-    return nlp::invokeFree((void *) myFree82, ptr);
+    return nlp::invokeFree(82, ptr);
 }
 void myFree83(void* ptr) {
-    return nlp::invokeFree((void *) myFree83, ptr);
+    return nlp::invokeFree(83, ptr);
 }
 void myFree84(void* ptr) {
-    return nlp::invokeFree((void *) myFree84, ptr);
+    return nlp::invokeFree(84, ptr);
 }
 void myFree85(void* ptr) {
-    return nlp::invokeFree((void *) myFree85, ptr);
+    return nlp::invokeFree(85, ptr);
 }
 void myFree86(void* ptr) {
-    return nlp::invokeFree((void *) myFree86, ptr);
+    return nlp::invokeFree(86, ptr);
 }
 void myFree87(void* ptr) {
-    return nlp::invokeFree((void *) myFree87, ptr);
+    return nlp::invokeFree(87, ptr);
 }
 void myFree88(void* ptr) {
-    return nlp::invokeFree((void *) myFree88, ptr);
+    return nlp::invokeFree(88, ptr);
 }
 void myFree89(void* ptr) {
-    return nlp::invokeFree((void *) myFree89, ptr);
+    return nlp::invokeFree(89, ptr);
 }
 void myFree90(void* ptr) {
-    return nlp::invokeFree((void *) myFree90, ptr);
+    return nlp::invokeFree(90, ptr);
 }
 
 void myFree91(void* ptr) {
-    return nlp::invokeFree((void *) myFree91, ptr);
+    return nlp::invokeFree(91, ptr);
 }
 void myFree92(void* ptr) {
-    return nlp::invokeFree((void *) myFree92, ptr);
+    return nlp::invokeFree(92, ptr);
 }
 void myFree93(void* ptr) {
-    return nlp::invokeFree((void *) myFree93, ptr);
+    return nlp::invokeFree(93, ptr);
 }
 void myFree94(void* ptr) {
-    return nlp::invokeFree((void *) myFree94, ptr);
+    return nlp::invokeFree(94, ptr);
 }
 void myFree95(void* ptr) {
-    return nlp::invokeFree((void *) myFree95, ptr);
+    return nlp::invokeFree(95, ptr);
 }
 void myFree96(void* ptr) {
-    return nlp::invokeFree((void *) myFree96, ptr);
+    return nlp::invokeFree(96, ptr);
 }
 void myFree97(void* ptr) {
-    return nlp::invokeFree((void *) myFree97, ptr);
+    return nlp::invokeFree(97, ptr);
 }
 void myFree98(void* ptr) {
-    return nlp::invokeFree((void *) myFree98, ptr);
+    return nlp::invokeFree(98, ptr);
 }
 void myFree99(void* ptr) {
-    return nlp::invokeFree((void *) myFree99, ptr);
+    return nlp::invokeFree(99, ptr);
 }
 void myFree100(void* ptr) {
-    return nlp::invokeFree((void *) myFree100, ptr);
+    return nlp::invokeFree(100, ptr);
 }
 
 void myFree101(void* ptr) {
-    return nlp::invokeFree((void *) myFree101, ptr);
+    return nlp::invokeFree(101, ptr);
 }
 void myFree102(void* ptr) {
-    return nlp::invokeFree((void *) myFree102, ptr);
+    return nlp::invokeFree(102, ptr);
 }
 void myFree103(void* ptr) {
-    return nlp::invokeFree((void *) myFree103, ptr);
+    return nlp::invokeFree(103, ptr);
 }
 void myFree104(void* ptr) {
-    return nlp::invokeFree((void *) myFree104, ptr);
+    return nlp::invokeFree(104, ptr);
 }
 void myFree105(void* ptr) {
-    return nlp::invokeFree((void *) myFree105, ptr);
+    return nlp::invokeFree(105, ptr);
 }
 void myFree106(void* ptr) {
-    return nlp::invokeFree((void *) myFree106, ptr);
+    return nlp::invokeFree(106, ptr);
 }
 void myFree107(void* ptr) {
-    return nlp::invokeFree((void *) myFree107, ptr);
+    return nlp::invokeFree(107, ptr);
 }
 void myFree108(void* ptr) {
-    return nlp::invokeFree((void *) myFree108, ptr);
+    return nlp::invokeFree(108, ptr);
 }
 void myFree109(void* ptr) {
-    return nlp::invokeFree((void *) myFree109, ptr);
+    return nlp::invokeFree(109, ptr);
 }
 void myFree110(void* ptr) {
-    return nlp::invokeFree((void *) myFree110, ptr);
+    return nlp::invokeFree(110, ptr);
 }
 
 void myFree111(void* ptr) {
-    return nlp::invokeFree((void *) myFree111, ptr);
+    return nlp::invokeFree(111, ptr);
 }
 void myFree112(void* ptr) {
-    return nlp::invokeFree((void *) myFree112, ptr);
+    return nlp::invokeFree(112, ptr);
 }
 void myFree113(void* ptr) {
-    return nlp::invokeFree((void *) myFree113, ptr);
+    return nlp::invokeFree(113, ptr);
 }
 void myFree114(void* ptr) {
-    return nlp::invokeFree((void *) myFree114, ptr);
+    return nlp::invokeFree(114, ptr);
 }
 void myFree115(void* ptr) {
-    return nlp::invokeFree((void *) myFree115, ptr);
+    return nlp::invokeFree(115, ptr);
 }
 void myFree116(void* ptr) {
-    return nlp::invokeFree((void *) myFree116, ptr);
+    return nlp::invokeFree(116, ptr);
 }
 void myFree117(void* ptr) {
-    return nlp::invokeFree((void *) myFree117, ptr);
+    return nlp::invokeFree(117, ptr);
 }
 void myFree118(void* ptr) {
-    return nlp::invokeFree((void *) myFree118, ptr);
+    return nlp::invokeFree(118, ptr);
 }
 void myFree119(void* ptr) {
-    return nlp::invokeFree((void *) myFree119, ptr);
+    return nlp::invokeFree(119, ptr);
 }
 void myFree120(void* ptr) {
-    return nlp::invokeFree((void *) myFree120, ptr);
+    return nlp::invokeFree(120, ptr);
 }
 
 void myFree121(void* ptr) {
-    return nlp::invokeFree((void *) myFree121, ptr);
+    return nlp::invokeFree(121, ptr);
 }
 void myFree122(void* ptr) {
-    return nlp::invokeFree((void *) myFree122, ptr);
+    return nlp::invokeFree(122, ptr);
 }
 void myFree123(void* ptr) {
-    return nlp::invokeFree((void *) myFree123, ptr);
+    return nlp::invokeFree(123, ptr);
 }
 void myFree124(void* ptr) {
-    return nlp::invokeFree((void *) myFree124, ptr);
+    return nlp::invokeFree(124, ptr);
 }
 void myFree125(void* ptr) {
-    return nlp::invokeFree((void *) myFree125, ptr);
+    return nlp::invokeFree(125, ptr);
 }
 void myFree126(void* ptr) {
-    return nlp::invokeFree((void *) myFree126, ptr);
+    return nlp::invokeFree(126, ptr);
 }
 void myFree127(void* ptr) {
-    return nlp::invokeFree((void *) myFree127, ptr);
+    return nlp::invokeFree(127, ptr);
 }
 void myFree128(void* ptr) {
-    return nlp::invokeFree((void *) myFree128, ptr);
+    return nlp::invokeFree(128, ptr);
 }
 void myFree129(void* ptr) {
-    return nlp::invokeFree((void *) myFree129, ptr);
+    return nlp::invokeFree(129, ptr);
 }
 void myFree130(void* ptr) {
-    return nlp::invokeFree((void *) myFree130, ptr);
+    return nlp::invokeFree(130, ptr);
 }
 
 void myFree131(void* ptr) {
-    return nlp::invokeFree((void *) myFree131, ptr);
+    return nlp::invokeFree(131, ptr);
 }
 void myFree132(void* ptr) {
-    return nlp::invokeFree((void *) myFree132, ptr);
+    return nlp::invokeFree(132, ptr);
 }
 void myFree133(void* ptr) {
-    return nlp::invokeFree((void *) myFree133, ptr);
+    return nlp::invokeFree(133, ptr);
 }
 void myFree134(void* ptr) {
-    return nlp::invokeFree((void *) myFree134, ptr);
+    return nlp::invokeFree(134, ptr);
 }
 void myFree135(void* ptr) {
-    return nlp::invokeFree((void *) myFree135, ptr);
+    return nlp::invokeFree(135, ptr);
 }
 void myFree136(void* ptr) {
-    return nlp::invokeFree((void *) myFree136, ptr);
+    return nlp::invokeFree(136, ptr);
 }
 void myFree137(void* ptr) {
-    return nlp::invokeFree((void *) myFree137, ptr);
+    return nlp::invokeFree(137, ptr);
 }
 void myFree138(void* ptr) {
-    return nlp::invokeFree((void *) myFree138, ptr);
+    return nlp::invokeFree(138, ptr);
 }
 void myFree139(void* ptr) {
-    return nlp::invokeFree((void *) myFree139, ptr);
+    return nlp::invokeFree(139, ptr);
 }
 void myFree140(void* ptr) {
-    return nlp::invokeFree((void *) myFree140, ptr);
+    return nlp::invokeFree(140, ptr);
 }
 
 void myFree141(void* ptr) {
-    return nlp::invokeFree((void *) myFree141, ptr);
+    return nlp::invokeFree(141, ptr);
 }
 void myFree142(void* ptr) {
-    return nlp::invokeFree((void *) myFree142, ptr);
+    return nlp::invokeFree(142, ptr);
 }
 void myFree143(void* ptr) {
-    return nlp::invokeFree((void *) myFree143, ptr);
+    return nlp::invokeFree(143, ptr);
 }
 void myFree144(void* ptr) {
-    return nlp::invokeFree((void *) myFree144, ptr);
+    return nlp::invokeFree(144, ptr);
 }
 void myFree145(void* ptr) {
-    return nlp::invokeFree((void *) myFree145, ptr);
+    return nlp::invokeFree(145, ptr);
 }
 void myFree146(void* ptr) {
-    return nlp::invokeFree((void *) myFree146, ptr);
+    return nlp::invokeFree(146, ptr);
 }
 void myFree147(void* ptr) {
-    return nlp::invokeFree((void *) myFree147, ptr);
+    return nlp::invokeFree(147, ptr);
 }
 void myFree148(void* ptr) {
-    return nlp::invokeFree((void *) myFree148, ptr);
+    return nlp::invokeFree(148, ptr);
 }
 void myFree149(void* ptr) {
-    return nlp::invokeFree((void *) myFree149, ptr);
+    return nlp::invokeFree(149, ptr);
 }
 void myFree150(void* ptr) {
-    return nlp::invokeFree((void *) myFree150, ptr);
+    return nlp::invokeFree(150, ptr);
 }
 
-void* popFreeMethod(std::string &libName) {
+void* popFreeMethod() {
     void *method = (void*) freeStk.top();
     freeStk.pop();
-    freeStkUsed.push(method);
     return method;
-}
-
-void resetFreeMethod() {
-    while (!freeStkUsed.empty()) {
-        freeStk.push(freeStkUsed.top());
-        freeStkUsed.pop();
-    }
 }
 
 void initDiyFreeMethod() {

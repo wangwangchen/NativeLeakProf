@@ -77,7 +77,8 @@ class MapsMonitor {
 
     private static boolean isSystemLibs(String line) {
         return line.endsWith("libc.so") ||  line.endsWith("libart.so")
-                || line.endsWith("libGLESv2_adreno.so") || line.endsWith("libhwui.so");
+                || line.endsWith("libGLESv2_adreno.so") || line.endsWith("libhwui.so")
+                || line.endsWith("libwebviewchromium_loader.so") || line.endsWith("libwebviewchromium_plat_support");
     }
 
 }

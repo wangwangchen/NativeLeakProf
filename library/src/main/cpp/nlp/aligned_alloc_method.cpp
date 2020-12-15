@@ -7,485 +7,476 @@
 #include "memory_manager.h"
 
 std::stack<void*> alignedAllocStk;
-std::stack<void*> alignedAllocStkUsed;
 
 void *MyAlignedAlloc1(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc1, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(1, alignment, byteCount);
 }
 void *MyAlignedAlloc2(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc2, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(2, alignment, byteCount);
 }
 void *MyAlignedAlloc3(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc3, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(3, alignment, byteCount);
 }
 void *MyAlignedAlloc4(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc4, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(4, alignment, byteCount);
 }
 void *MyAlignedAlloc5(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc5, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(5, alignment, byteCount);
 }
 void *MyAlignedAlloc6(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc6, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(6, alignment, byteCount);
 }
 void *MyAlignedAlloc7(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc7, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(7, alignment, byteCount);
 }
 void *MyAlignedAlloc8(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc8, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(8, alignment, byteCount);
 }
 void *MyAlignedAlloc9(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc9, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(9, alignment, byteCount);
 }
 void *MyAlignedAlloc10(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc10, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(10, alignment, byteCount);
 }
 
 void *MyAlignedAlloc11(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc11, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(11, alignment, byteCount);
 }
 void *MyAlignedAlloc12(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc12, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(12, alignment, byteCount);
 }
 void *MyAlignedAlloc13(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc13, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(13, alignment, byteCount);
 }
 void *MyAlignedAlloc14(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc14, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(14, alignment, byteCount);
 }
 void *MyAlignedAlloc15(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc15, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(15, alignment, byteCount);
 }
 void *MyAlignedAlloc16(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc16, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(16, alignment, byteCount);
 }
 void *MyAlignedAlloc17(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc17, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(17, alignment, byteCount);
 }
 void *MyAlignedAlloc18(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc18, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(18, alignment, byteCount);
 }
 void *MyAlignedAlloc19(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc19, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(19, alignment, byteCount);
 }
 void *MyAlignedAlloc20(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc20, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(20, alignment, byteCount);
 }
 
 void *MyAlignedAlloc21(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc21, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(21, alignment, byteCount);
 }
 void *MyAlignedAlloc22(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc22, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(22, alignment, byteCount);
 }
 void *MyAlignedAlloc23(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc23, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(23, alignment, byteCount);
 }
 void *MyAlignedAlloc24(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc24, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(24, alignment, byteCount);
 }
 void *MyAlignedAlloc25(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc25, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(25, alignment, byteCount);
 }
 void *MyAlignedAlloc26(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc26, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(26, alignment, byteCount);
 }
 void *MyAlignedAlloc27(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc27, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(27, alignment, byteCount);
 }
 void *MyAlignedAlloc28(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc28, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(28, alignment, byteCount);
 }
 void *MyAlignedAlloc29(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc29, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(29, alignment, byteCount);
 }
 void *MyAlignedAlloc30(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc30, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(30, alignment, byteCount);
 }
 
 void *MyAlignedAlloc31(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc31, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(31, alignment, byteCount);
 }
 void *MyAlignedAlloc32(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc32, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(32, alignment, byteCount);
 }
 void *MyAlignedAlloc33(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc33, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(33, alignment, byteCount);
 }
 void *MyAlignedAlloc34(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc34, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(34, alignment, byteCount);
 }
 void *MyAlignedAlloc35(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc35, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(35, alignment, byteCount);
 }
 void *MyAlignedAlloc36(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc36, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(36, alignment, byteCount);
 }
 void *MyAlignedAlloc37(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc37, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(37, alignment, byteCount);
 }
 void *MyAlignedAlloc38(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc38, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(38, alignment, byteCount);
 }
 void *MyAlignedAlloc39(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc39, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(39, alignment, byteCount);
 }
 void *MyAlignedAlloc40(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc40, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(40, alignment, byteCount);
 }
 
 void *MyAlignedAlloc41(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc41, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(41, alignment, byteCount);
 }
 void *MyAlignedAlloc42(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc42, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(42, alignment, byteCount);
 }
 void *MyAlignedAlloc43(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc43, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(43, alignment, byteCount);
 }
 void *MyAlignedAlloc44(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc44, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(44, alignment, byteCount);
 }
 void *MyAlignedAlloc45(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc45, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(45, alignment, byteCount);
 }
 void *MyAlignedAlloc46(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc46, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(46, alignment, byteCount);
 }
 void *MyAlignedAlloc47(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc47, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(47, alignment, byteCount);
 }
 void *MyAlignedAlloc48(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc48, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(48, alignment, byteCount);
 }
 void *MyAlignedAlloc49(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc49, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(49, alignment, byteCount);
 }
 void *MyAlignedAlloc50(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc50, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(50, alignment, byteCount);
 }
 
 void *MyAlignedAlloc51(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc51, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(51, alignment, byteCount);
 }
 void *MyAlignedAlloc52(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc52, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(52, alignment, byteCount);
 }
 void *MyAlignedAlloc53(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc53, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(53, alignment, byteCount);
 }
 void *MyAlignedAlloc54(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc54, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(54, alignment, byteCount);
 }
 void *MyAlignedAlloc55(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc55, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(55, alignment, byteCount);
 }
 void *MyAlignedAlloc56(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc56, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(56, alignment, byteCount);
 }
 void *MyAlignedAlloc57(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc57, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(57, alignment, byteCount);
 }
 void *MyAlignedAlloc58(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc58, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(58, alignment, byteCount);
 }
 void *MyAlignedAlloc59(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc59, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(59, alignment, byteCount);
 }
 void *MyAlignedAlloc60(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc60, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(60, alignment, byteCount);
 }
 
 void *MyAlignedAlloc61(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc61, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(61, alignment, byteCount);
 }
 void *MyAlignedAlloc62(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc62, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(62, alignment, byteCount);
 }
 void *MyAlignedAlloc63(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc63, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(63, alignment, byteCount);
 }
 void *MyAlignedAlloc64(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc64, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(64, alignment, byteCount);
 }
 void *MyAlignedAlloc65(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc65, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(65, alignment, byteCount);
 }
 void *MyAlignedAlloc66(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc66, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(66, alignment, byteCount);
 }
 void *MyAlignedAlloc67(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc67, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(67, alignment, byteCount);
 }
 void *MyAlignedAlloc68(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc68, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(68, alignment, byteCount);
 }
 void *MyAlignedAlloc69(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc69, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(69, alignment, byteCount);
 }
 void *MyAlignedAlloc70(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc70, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(70, alignment, byteCount);
 }
 
 void *MyAlignedAlloc71(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc71, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(71, alignment, byteCount);
 }
 void *MyAlignedAlloc72(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc72, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(72, alignment, byteCount);
 }
 void *MyAlignedAlloc73(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc73, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(73, alignment, byteCount);
 }
 void *MyAlignedAlloc74(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc74, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(74, alignment, byteCount);
 }
 void *MyAlignedAlloc75(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc75, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(75, alignment, byteCount);
 }
 void *MyAlignedAlloc76(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc76, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(76, alignment, byteCount);
 }
 void *MyAlignedAlloc77(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc77, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(77, alignment, byteCount);
 }
 void *MyAlignedAlloc78(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc78, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(78, alignment, byteCount);
 }
 void *MyAlignedAlloc79(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc79, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(79, alignment, byteCount);
 }
 void *MyAlignedAlloc80(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc80, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(80, alignment, byteCount);
 }
 
 void *MyAlignedAlloc81(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc81, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(81, alignment, byteCount);
 }
 void *MyAlignedAlloc82(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc82, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(82, alignment, byteCount);
 }
 void *MyAlignedAlloc83(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc83, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(83, alignment, byteCount);
 }
 void *MyAlignedAlloc84(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc84, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(84, alignment, byteCount);
 }
 void *MyAlignedAlloc85(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc85, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(85, alignment, byteCount);
 }
 void *MyAlignedAlloc86(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc86, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(86, alignment, byteCount);
 }
 void *MyAlignedAlloc87(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc87, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(87, alignment, byteCount);
 }
 void *MyAlignedAlloc88(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc88, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(88, alignment, byteCount);
 }
 void *MyAlignedAlloc89(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc89, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(89, alignment, byteCount);
 }
 void *MyAlignedAlloc90(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc90, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(90, alignment, byteCount);
 }
 
 void *MyAlignedAlloc91(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc91, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(91, alignment, byteCount);
 }
 void *MyAlignedAlloc92(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc92, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(92, alignment, byteCount);
 }
 void *MyAlignedAlloc93(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc93, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(93, alignment, byteCount);
 }
 void *MyAlignedAlloc94(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc94, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(94, alignment, byteCount);
 }
 void *MyAlignedAlloc95(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc95, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(95, alignment, byteCount);
 }
 void *MyAlignedAlloc96(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc96, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(96, alignment, byteCount);
 }
 void *MyAlignedAlloc97(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc97, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(97, alignment, byteCount);
 }
 void *MyAlignedAlloc98(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc98, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(98, alignment, byteCount);
 }
 void *MyAlignedAlloc99(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc99, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(99, alignment, byteCount);
 }
 void *MyAlignedAlloc100(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc100, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(100, alignment, byteCount);
 }
 
 void *MyAlignedAlloc101(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc101, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(101, alignment, byteCount);
 }
 void *MyAlignedAlloc102(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc102, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(102, alignment, byteCount);
 }
 void *MyAlignedAlloc103(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc103, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(103, alignment, byteCount);
 }
 void *MyAlignedAlloc104(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc104, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(104, alignment, byteCount);
 }
 void *MyAlignedAlloc105(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc105, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(105, alignment, byteCount);
 }
 void *MyAlignedAlloc106(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc106, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(106, alignment, byteCount);
 }
 void *MyAlignedAlloc107(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc107, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(107, alignment, byteCount);
 }
 void *MyAlignedAlloc108(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc108, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(108, alignment, byteCount);
 }
 void *MyAlignedAlloc109(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc109, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(109, alignment, byteCount);
 }
 void *MyAlignedAlloc110(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc110, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(110, alignment, byteCount);
 }
 
 void *MyAlignedAlloc111(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc111, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(111, alignment, byteCount);
 }
 void *MyAlignedAlloc112(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc112, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(112, alignment, byteCount);
 }
 void *MyAlignedAlloc113(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc113, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(113, alignment, byteCount);
 }
 void *MyAlignedAlloc114(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc114, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(114, alignment, byteCount);
 }
 void *MyAlignedAlloc115(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc115, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(115, alignment, byteCount);
 }
 void *MyAlignedAlloc116(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc116, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(116, alignment, byteCount);
 }
 void *MyAlignedAlloc117(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc117, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(117, alignment, byteCount);
 }
 void *MyAlignedAlloc118(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc118, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(118, alignment, byteCount);
 }
 void *MyAlignedAlloc119(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc119, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(119, alignment, byteCount);
 }
 void *MyAlignedAlloc120(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc120, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(120, alignment, byteCount);
 }
 
 void *MyAlignedAlloc121(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc121, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(121, alignment, byteCount);
 }
 void *MyAlignedAlloc122(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc122, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(122, alignment, byteCount);
 }
 void *MyAlignedAlloc123(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc123, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(123, alignment, byteCount);
 }
 void *MyAlignedAlloc124(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc124, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(124, alignment, byteCount);
 }
 void *MyAlignedAlloc125(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc125, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(125, alignment, byteCount);
 }
 void *MyAlignedAlloc126(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc126, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(126, alignment, byteCount);
 }
 void *MyAlignedAlloc127(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc127, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(127, alignment, byteCount);
 }
 void *MyAlignedAlloc128(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc128, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(128, alignment, byteCount);
 }
 void *MyAlignedAlloc129(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc129, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(129, alignment, byteCount);
 }
 void *MyAlignedAlloc130(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc130, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(130, alignment, byteCount);
 }
 
 void *MyAlignedAlloc131(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc131, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(131, alignment, byteCount);
 }
 void *MyAlignedAlloc132(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc132, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(132, alignment, byteCount);
 }
 void *MyAlignedAlloc133(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc133, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(133, alignment, byteCount);
 }
 void *MyAlignedAlloc134(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc134, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(134, alignment, byteCount);
 }
 void *MyAlignedAlloc135(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc135, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(135, alignment, byteCount);
 }
 void *MyAlignedAlloc136(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc136, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(136, alignment, byteCount);
 }
 void *MyAlignedAlloc137(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc137, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(137, alignment, byteCount);
 }
 void *MyAlignedAlloc138(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc138, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(138, alignment, byteCount);
 }
 void *MyAlignedAlloc139(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc139, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(139, alignment, byteCount);
 }
 void *MyAlignedAlloc140(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc140, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(140, alignment, byteCount);
 }
 
 void *MyAlignedAlloc141(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc141, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(141, alignment, byteCount);
 }
 void *MyAlignedAlloc142(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc142, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(142, alignment, byteCount);
 }
 void *MyAlignedAlloc143(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc143, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(143, alignment, byteCount);
 }
 void *MyAlignedAlloc144(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc144, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(144, alignment, byteCount);
 }
 void *MyAlignedAlloc145(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc145, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(145, alignment, byteCount);
 }
 void *MyAlignedAlloc146(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc146, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(146, alignment, byteCount);
 }
 void *MyAlignedAlloc147(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc147, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(147, alignment, byteCount);
 }
 void *MyAlignedAlloc148(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc148, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(148, alignment, byteCount);
 }
 void *MyAlignedAlloc149(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc149, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(149, alignment, byteCount);
 }
 void *MyAlignedAlloc150(size_t alignment, size_t byteCount) {
-    return nlp::invokeAlignedAlloc((void *) MyAlignedAlloc150, alignment, byteCount);
+    return nlp::invokeAlignedAlloc(150, alignment, byteCount);
 }
 
-void* popAlignedAllocMethod(std::string &libName) {
+void* popAlignedAllocMethod() {
     void *method = (void*) alignedAllocStk.top();
     alignedAllocStk.pop();
-    alignedAllocStkUsed.push(method);
     return method;
-}
-
-void resetAlignedAllocMethod() {
-    while (!alignedAllocStkUsed.empty()) {
-        alignedAllocStk.push(alignedAllocStkUsed.top());
-        alignedAllocStkUsed.pop();
-    }
 }
 
 void initDiyAlignedAllocMethod() {

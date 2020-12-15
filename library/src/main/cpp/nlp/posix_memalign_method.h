@@ -175,9 +175,7 @@ int MyPosixMemAlign148(void **memptr, size_t boundary, size_t byteCount);
 int MyPosixMemAlign149(void **memptr, size_t boundary, size_t byteCount);
 int MyPosixMemAlign150(void **memptr, size_t boundary, size_t byteCount);
 
-void* popPosixMemAlignMethod(std::string &libName);
-
-void resetPosixMemAlignMethod();
+void* popPosixMemAlignMethod();
 
 void initDiyPosixMemAlignMethod();
 

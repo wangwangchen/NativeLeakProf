@@ -7,485 +7,476 @@
 #include "memory_manager.h"
 
 std::stack<void*> posixMemAlignStk;
-std::stack<void*> posixMemAlignStkUsed;
 
 int MyPosixMemAlign1(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign1, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(1, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign2(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign2, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(2, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign3(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign3, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(3, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign4(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign4, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(4, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign5(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign5, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(5, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign6(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign6, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(6, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign7(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign7, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(7, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign8(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign8, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(8, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign9(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign9, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(9, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign10(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign10, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(10, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign11(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign11, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(11, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign12(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign12, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(12, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign13(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign13, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(13, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign14(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign14, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(14, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign15(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign15, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(15, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign16(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign16, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(16, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign17(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign17, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(17, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign18(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign18, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(18, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign19(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign19, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(19, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign20(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign20, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(20, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign21(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign21, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(21, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign22(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign22, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(22, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign23(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign23, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(23, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign24(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign24, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(24, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign25(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign25, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(25, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign26(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign26, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(26, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign27(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign27, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(27, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign28(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign28, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(28, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign29(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign29, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(29, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign30(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign30, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(30, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign31(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign31, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(31, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign32(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign32, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(32, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign33(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign33, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(33, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign34(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign34, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(34, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign35(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign35, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(35, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign36(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign36, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(36, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign37(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign37, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(37, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign38(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign38, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(38, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign39(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign39, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(39, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign40(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign40, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(40, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign41(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign41, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(41, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign42(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign42, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(42, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign43(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign43, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(43, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign44(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign44, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(44, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign45(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign45, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(45, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign46(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign46, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(46, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign47(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign47, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(47, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign48(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign48, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(48, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign49(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign49, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(49, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign50(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign50, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(50, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign51(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign51, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(51, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign52(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign52, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(52, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign53(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign53, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(53, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign54(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign54, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(54, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign55(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign55, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(55, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign56(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign56, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(56, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign57(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign57, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(57, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign58(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign58, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(58, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign59(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign59, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(59, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign60(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign60, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(60, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign61(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign61, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(61, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign62(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign62, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(62, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign63(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign63, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(63, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign64(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign64, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(64, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign65(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign65, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(65, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign66(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign66, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(66, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign67(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign67, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(67, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign68(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign68, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(68, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign69(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign69, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(69, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign70(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign70, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(70, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign71(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign71, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(71, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign72(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign72, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(72, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign73(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign73, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(73, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign74(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign74, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(74, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign75(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign75, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(75, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign76(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign76, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(76, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign77(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign77, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(77, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign78(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign78, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(78, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign79(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign79, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(79, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign80(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign80, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(80, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign81(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign81, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(81, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign82(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign82, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(82, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign83(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign83, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(83, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign84(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign84, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(84, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign85(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign85, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(85, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign86(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign86, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(86, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign87(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign87, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(87, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign88(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign88, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(88, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign89(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign89, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(89, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign90(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign90, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(90, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign91(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign91, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(91, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign92(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign92, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(92, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign93(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign93, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(93, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign94(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign94, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(94, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign95(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign95, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(95, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign96(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign96, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(96, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign97(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign97, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(97, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign98(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign98, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(98, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign99(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign99, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(99, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign100(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign100, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(100, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign101(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign101, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(101, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign102(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign102, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(102, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign103(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign103, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(103, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign104(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign104, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(104, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign105(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign105, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(105, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign106(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign106, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(106, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign107(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign107, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(107, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign108(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign108, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(108, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign109(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign109, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(109, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign110(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign110, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(110, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign111(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign111, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(111, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign112(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign112, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(112, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign113(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign113, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(113, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign114(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign114, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(114, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign115(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign115, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(115, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign116(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign116, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(116, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign117(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign117, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(117, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign118(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign118, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(118, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign119(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign119, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(119, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign120(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign120, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(120, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign121(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign121, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(121, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign122(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign122, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(122, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign123(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign123, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(123, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign124(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign124, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(124, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign125(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign125, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(125, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign126(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign126, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(126, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign127(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign127, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(127, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign128(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign128, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(128, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign129(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign129, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(129, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign130(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign130, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(130, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign131(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign131, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(131, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign132(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign132, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(132, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign133(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign133, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(133, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign134(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign134, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(134, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign135(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign135, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(135, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign136(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign136, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(136, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign137(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign137, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(137, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign138(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign138, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(138, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign139(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign139, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(139, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign140(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign140, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(140, memptr, boundary, byteCount);
 }
 
 int MyPosixMemAlign141(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign141, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(141, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign142(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign142, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(142, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign143(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign143, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(143, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign144(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign144, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(144, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign145(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign145, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(145, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign146(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign146, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(146, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign147(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign147, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(147, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign148(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign148, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(148, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign149(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign149, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(149, memptr, boundary, byteCount);
 }
 int MyPosixMemAlign150(void **memptr, size_t boundary, size_t byteCount) {
-    return nlp::invokePosixMemAlign((void *) MyPosixMemAlign150, memptr, boundary, byteCount);
+    return nlp::invokePosixMemAlign(150, memptr, boundary, byteCount);
 }
 
-void* popPosixMemAlignMethod(std::string &libName) {
+void* popPosixMemAlignMethod() {
     void *method = (void*) posixMemAlignStk.top();
     posixMemAlignStk.pop();
-    posixMemAlignStkUsed.push(method);
     return method;
-}
-
-void resetPosixMemAlignMethod() {
-    while (!posixMemAlignStkUsed.empty()) {
-        posixMemAlignStk.push(posixMemAlignStkUsed.top());
-        posixMemAlignStkUsed.pop();
-    }
 }
 
 void initDiyPosixMemAlignMethod() {

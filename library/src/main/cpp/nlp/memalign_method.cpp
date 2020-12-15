@@ -7,485 +7,476 @@
 #include "memory_manager.h"
 
 std::stack<void*> memAlignStk;
-std::stack<void*> memAlignStkUsed;
 
 void *MyMemAlign1(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign1, boundary, byteCount);
+    return nlp::invokeMemAlign(1, boundary, byteCount);
 }
 void *MyMemAlign2(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign2, boundary, byteCount);
+    return nlp::invokeMemAlign(2, boundary, byteCount);
 }
 void *MyMemAlign3(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign3, boundary, byteCount);
+    return nlp::invokeMemAlign(3, boundary, byteCount);
 }
 void *MyMemAlign4(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign4, boundary, byteCount);
+    return nlp::invokeMemAlign(4, boundary, byteCount);
 }
 void *MyMemAlign5(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign5, boundary, byteCount);
+    return nlp::invokeMemAlign(5, boundary, byteCount);
 }
 void *MyMemAlign6(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign6, boundary, byteCount);
+    return nlp::invokeMemAlign(6, boundary, byteCount);
 }
 void *MyMemAlign7(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign7, boundary, byteCount);
+    return nlp::invokeMemAlign(7, boundary, byteCount);
 }
 void *MyMemAlign8(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign8, boundary, byteCount);
+    return nlp::invokeMemAlign(8, boundary, byteCount);
 }
 void *MyMemAlign9(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign9, boundary, byteCount);
+    return nlp::invokeMemAlign(9, boundary, byteCount);
 }
 void *MyMemAlign10(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign10, boundary, byteCount);
+    return nlp::invokeMemAlign(10, boundary, byteCount);
 }
 
 void *MyMemAlign11(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign11, boundary, byteCount);
+    return nlp::invokeMemAlign(11, boundary, byteCount);
 }
 void *MyMemAlign12(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign12, boundary, byteCount);
+    return nlp::invokeMemAlign(12, boundary, byteCount);
 }
 void *MyMemAlign13(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign13, boundary, byteCount);
+    return nlp::invokeMemAlign(13, boundary, byteCount);
 }
 void *MyMemAlign14(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign14, boundary, byteCount);
+    return nlp::invokeMemAlign(14, boundary, byteCount);
 }
 void *MyMemAlign15(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign15, boundary, byteCount);
+    return nlp::invokeMemAlign(15, boundary, byteCount);
 }
 void *MyMemAlign16(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign16, boundary, byteCount);
+    return nlp::invokeMemAlign(16, boundary, byteCount);
 }
 void *MyMemAlign17(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign17, boundary, byteCount);
+    return nlp::invokeMemAlign(17, boundary, byteCount);
 }
 void *MyMemAlign18(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign18, boundary, byteCount);
+    return nlp::invokeMemAlign(18, boundary, byteCount);
 }
 void *MyMemAlign19(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign19, boundary, byteCount);
+    return nlp::invokeMemAlign(19, boundary, byteCount);
 }
 void *MyMemAlign20(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign20, boundary, byteCount);
+    return nlp::invokeMemAlign(20, boundary, byteCount);
 }
 
 void *MyMemAlign21(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign21, boundary, byteCount);
+    return nlp::invokeMemAlign(21, boundary, byteCount);
 }
 void *MyMemAlign22(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign22, boundary, byteCount);
+    return nlp::invokeMemAlign(22, boundary, byteCount);
 }
 void *MyMemAlign23(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign23, boundary, byteCount);
+    return nlp::invokeMemAlign(23, boundary, byteCount);
 }
 void *MyMemAlign24(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign24, boundary, byteCount);
+    return nlp::invokeMemAlign(24, boundary, byteCount);
 }
 void *MyMemAlign25(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign25, boundary, byteCount);
+    return nlp::invokeMemAlign(25, boundary, byteCount);
 }
 void *MyMemAlign26(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign26, boundary, byteCount);
+    return nlp::invokeMemAlign(26, boundary, byteCount);
 }
 void *MyMemAlign27(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign27, boundary, byteCount);
+    return nlp::invokeMemAlign(27, boundary, byteCount);
 }
 void *MyMemAlign28(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign28, boundary, byteCount);
+    return nlp::invokeMemAlign(28, boundary, byteCount);
 }
 void *MyMemAlign29(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign29, boundary, byteCount);
+    return nlp::invokeMemAlign(29, boundary, byteCount);
 }
 void *MyMemAlign30(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign30, boundary, byteCount);
+    return nlp::invokeMemAlign(30, boundary, byteCount);
 }
 
 void *MyMemAlign31(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign31, boundary, byteCount);
+    return nlp::invokeMemAlign(31, boundary, byteCount);
 }
 void *MyMemAlign32(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign32, boundary, byteCount);
+    return nlp::invokeMemAlign(32, boundary, byteCount);
 }
 void *MyMemAlign33(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign33, boundary, byteCount);
+    return nlp::invokeMemAlign(33, boundary, byteCount);
 }
 void *MyMemAlign34(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign34, boundary, byteCount);
+    return nlp::invokeMemAlign(34, boundary, byteCount);
 }
 void *MyMemAlign35(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign35, boundary, byteCount);
+    return nlp::invokeMemAlign(35, boundary, byteCount);
 }
 void *MyMemAlign36(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign36, boundary, byteCount);
+    return nlp::invokeMemAlign(36, boundary, byteCount);
 }
 void *MyMemAlign37(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign37, boundary, byteCount);
+    return nlp::invokeMemAlign(37, boundary, byteCount);
 }
 void *MyMemAlign38(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign38, boundary, byteCount);
+    return nlp::invokeMemAlign(38, boundary, byteCount);
 }
 void *MyMemAlign39(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign39, boundary, byteCount);
+    return nlp::invokeMemAlign(39, boundary, byteCount);
 }
 void *MyMemAlign40(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign40, boundary, byteCount);
+    return nlp::invokeMemAlign(40, boundary, byteCount);
 }
 
 void *MyMemAlign41(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign41, boundary, byteCount);
+    return nlp::invokeMemAlign(41, boundary, byteCount);
 }
 void *MyMemAlign42(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign42, boundary, byteCount);
+    return nlp::invokeMemAlign(42, boundary, byteCount);
 }
 void *MyMemAlign43(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign43, boundary, byteCount);
+    return nlp::invokeMemAlign(43, boundary, byteCount);
 }
 void *MyMemAlign44(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign44, boundary, byteCount);
+    return nlp::invokeMemAlign(44, boundary, byteCount);
 }
 void *MyMemAlign45(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign45, boundary, byteCount);
+    return nlp::invokeMemAlign(45, boundary, byteCount);
 }
 void *MyMemAlign46(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign46, boundary, byteCount);
+    return nlp::invokeMemAlign(46, boundary, byteCount);
 }
 void *MyMemAlign47(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign47, boundary, byteCount);
+    return nlp::invokeMemAlign(47, boundary, byteCount);
 }
 void *MyMemAlign48(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign48, boundary, byteCount);
+    return nlp::invokeMemAlign(48, boundary, byteCount);
 }
 void *MyMemAlign49(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign49, boundary, byteCount);
+    return nlp::invokeMemAlign(49, boundary, byteCount);
 }
 void *MyMemAlign50(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign50, boundary, byteCount);
+    return nlp::invokeMemAlign(50, boundary, byteCount);
 }
 
 void *MyMemAlign51(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign51, boundary, byteCount);
+    return nlp::invokeMemAlign(51, boundary, byteCount);
 }
 void *MyMemAlign52(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign52, boundary, byteCount);
+    return nlp::invokeMemAlign(52, boundary, byteCount);
 }
 void *MyMemAlign53(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign53, boundary, byteCount);
+    return nlp::invokeMemAlign(53, boundary, byteCount);
 }
 void *MyMemAlign54(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign54, boundary, byteCount);
+    return nlp::invokeMemAlign(54, boundary, byteCount);
 }
 void *MyMemAlign55(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign55, boundary, byteCount);
+    return nlp::invokeMemAlign(55, boundary, byteCount);
 }
 void *MyMemAlign56(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign56, boundary, byteCount);
+    return nlp::invokeMemAlign(56, boundary, byteCount);
 }
 void *MyMemAlign57(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign57, boundary, byteCount);
+    return nlp::invokeMemAlign(57, boundary, byteCount);
 }
 void *MyMemAlign58(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign58, boundary, byteCount);
+    return nlp::invokeMemAlign(58, boundary, byteCount);
 }
 void *MyMemAlign59(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign59, boundary, byteCount);
+    return nlp::invokeMemAlign(59, boundary, byteCount);
 }
 void *MyMemAlign60(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign60, boundary, byteCount);
+    return nlp::invokeMemAlign(60, boundary, byteCount);
 }
 
 void *MyMemAlign61(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign61, boundary, byteCount);
+    return nlp::invokeMemAlign(61, boundary, byteCount);
 }
 void *MyMemAlign62(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign62, boundary, byteCount);
+    return nlp::invokeMemAlign(62, boundary, byteCount);
 }
 void *MyMemAlign63(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign63, boundary, byteCount);
+    return nlp::invokeMemAlign(63, boundary, byteCount);
 }
 void *MyMemAlign64(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign64, boundary, byteCount);
+    return nlp::invokeMemAlign(64, boundary, byteCount);
 }
 void *MyMemAlign65(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign65, boundary, byteCount);
+    return nlp::invokeMemAlign(65, boundary, byteCount);
 }
 void *MyMemAlign66(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign66, boundary, byteCount);
+    return nlp::invokeMemAlign(66, boundary, byteCount);
 }
 void *MyMemAlign67(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign67, boundary, byteCount);
+    return nlp::invokeMemAlign(67, boundary, byteCount);
 }
 void *MyMemAlign68(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign68, boundary, byteCount);
+    return nlp::invokeMemAlign(68, boundary, byteCount);
 }
 void *MyMemAlign69(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign69, boundary, byteCount);
+    return nlp::invokeMemAlign(69, boundary, byteCount);
 }
 void *MyMemAlign70(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign70, boundary, byteCount);
+    return nlp::invokeMemAlign(70, boundary, byteCount);
 }
 
 void *MyMemAlign71(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign71, boundary, byteCount);
+    return nlp::invokeMemAlign(71, boundary, byteCount);
 }
 void *MyMemAlign72(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign72, boundary, byteCount);
+    return nlp::invokeMemAlign(72, boundary, byteCount);
 }
 void *MyMemAlign73(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign73, boundary, byteCount);
+    return nlp::invokeMemAlign(73, boundary, byteCount);
 }
 void *MyMemAlign74(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign74, boundary, byteCount);
+    return nlp::invokeMemAlign(74, boundary, byteCount);
 }
 void *MyMemAlign75(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign75, boundary, byteCount);
+    return nlp::invokeMemAlign(75, boundary, byteCount);
 }
 void *MyMemAlign76(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign76, boundary, byteCount);
+    return nlp::invokeMemAlign(76, boundary, byteCount);
 }
 void *MyMemAlign77(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign77, boundary, byteCount);
+    return nlp::invokeMemAlign(77, boundary, byteCount);
 }
 void *MyMemAlign78(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign78, boundary, byteCount);
+    return nlp::invokeMemAlign(78, boundary, byteCount);
 }
 void *MyMemAlign79(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign79, boundary, byteCount);
+    return nlp::invokeMemAlign(79, boundary, byteCount);
 }
 void *MyMemAlign80(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign80, boundary, byteCount);
+    return nlp::invokeMemAlign(80, boundary, byteCount);
 }
 
 void *MyMemAlign81(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign81, boundary, byteCount);
+    return nlp::invokeMemAlign(81, boundary, byteCount);
 }
 void *MyMemAlign82(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign82, boundary, byteCount);
+    return nlp::invokeMemAlign(82, boundary, byteCount);
 }
 void *MyMemAlign83(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign83, boundary, byteCount);
+    return nlp::invokeMemAlign(83, boundary, byteCount);
 }
 void *MyMemAlign84(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign84, boundary, byteCount);
+    return nlp::invokeMemAlign(84, boundary, byteCount);
 }
 void *MyMemAlign85(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign85, boundary, byteCount);
+    return nlp::invokeMemAlign(85, boundary, byteCount);
 }
 void *MyMemAlign86(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign86, boundary, byteCount);
+    return nlp::invokeMemAlign(86, boundary, byteCount);
 }
 void *MyMemAlign87(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign87, boundary, byteCount);
+    return nlp::invokeMemAlign(87, boundary, byteCount);
 }
 void *MyMemAlign88(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign88, boundary, byteCount);
+    return nlp::invokeMemAlign(88, boundary, byteCount);
 }
 void *MyMemAlign89(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign89, boundary, byteCount);
+    return nlp::invokeMemAlign(89, boundary, byteCount);
 }
 void *MyMemAlign90(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign90, boundary, byteCount);
+    return nlp::invokeMemAlign(90, boundary, byteCount);
 }
 
 void *MyMemAlign91(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign91, boundary, byteCount);
+    return nlp::invokeMemAlign(91, boundary, byteCount);
 }
 void *MyMemAlign92(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign92, boundary, byteCount);
+    return nlp::invokeMemAlign(92, boundary, byteCount);
 }
 void *MyMemAlign93(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign93, boundary, byteCount);
+    return nlp::invokeMemAlign(93, boundary, byteCount);
 }
 void *MyMemAlign94(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign94, boundary, byteCount);
+    return nlp::invokeMemAlign(94, boundary, byteCount);
 }
 void *MyMemAlign95(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign95, boundary, byteCount);
+    return nlp::invokeMemAlign(95, boundary, byteCount);
 }
 void *MyMemAlign96(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign96, boundary, byteCount);
+    return nlp::invokeMemAlign(96, boundary, byteCount);
 }
 void *MyMemAlign97(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign97, boundary, byteCount);
+    return nlp::invokeMemAlign(97, boundary, byteCount);
 }
 void *MyMemAlign98(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign98, boundary, byteCount);
+    return nlp::invokeMemAlign(98, boundary, byteCount);
 }
 void *MyMemAlign99(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign99, boundary, byteCount);
+    return nlp::invokeMemAlign(99, boundary, byteCount);
 }
 void *MyMemAlign100(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign100, boundary, byteCount);
+    return nlp::invokeMemAlign(100, boundary, byteCount);
 }
 
 void *MyMemAlign101(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign101, boundary, byteCount);
+    return nlp::invokeMemAlign(101, boundary, byteCount);
 }
 void *MyMemAlign102(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign102, boundary, byteCount);
+    return nlp::invokeMemAlign(102, boundary, byteCount);
 }
 void *MyMemAlign103(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign103, boundary, byteCount);
+    return nlp::invokeMemAlign(103, boundary, byteCount);
 }
 void *MyMemAlign104(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign104, boundary, byteCount);
+    return nlp::invokeMemAlign(104, boundary, byteCount);
 }
 void *MyMemAlign105(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign105, boundary, byteCount);
+    return nlp::invokeMemAlign(105, boundary, byteCount);
 }
 void *MyMemAlign106(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign106, boundary, byteCount);
+    return nlp::invokeMemAlign(106, boundary, byteCount);
 }
 void *MyMemAlign107(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign107, boundary, byteCount);
+    return nlp::invokeMemAlign(107, boundary, byteCount);
 }
 void *MyMemAlign108(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign108, boundary, byteCount);
+    return nlp::invokeMemAlign(108, boundary, byteCount);
 }
 void *MyMemAlign109(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign109, boundary, byteCount);
+    return nlp::invokeMemAlign(109, boundary, byteCount);
 }
 void *MyMemAlign110(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign110, boundary, byteCount);
+    return nlp::invokeMemAlign(110, boundary, byteCount);
 }
 
 void *MyMemAlign111(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign111, boundary, byteCount);
+    return nlp::invokeMemAlign(111, boundary, byteCount);
 }
 void *MyMemAlign112(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign112, boundary, byteCount);
+    return nlp::invokeMemAlign(112, boundary, byteCount);
 }
 void *MyMemAlign113(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign113, boundary, byteCount);
+    return nlp::invokeMemAlign(113, boundary, byteCount);
 }
 void *MyMemAlign114(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign114, boundary, byteCount);
+    return nlp::invokeMemAlign(114, boundary, byteCount);
 }
 void *MyMemAlign115(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign115, boundary, byteCount);
+    return nlp::invokeMemAlign(115, boundary, byteCount);
 }
 void *MyMemAlign116(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign116, boundary, byteCount);
+    return nlp::invokeMemAlign(116, boundary, byteCount);
 }
 void *MyMemAlign117(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign117, boundary, byteCount);
+    return nlp::invokeMemAlign(117, boundary, byteCount);
 }
 void *MyMemAlign118(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign118, boundary, byteCount);
+    return nlp::invokeMemAlign(118, boundary, byteCount);
 }
 void *MyMemAlign119(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign119, boundary, byteCount);
+    return nlp::invokeMemAlign(119, boundary, byteCount);
 }
 void *MyMemAlign120(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign120, boundary, byteCount);
+    return nlp::invokeMemAlign(120, boundary, byteCount);
 }
 
 void *MyMemAlign121(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign121, boundary, byteCount);
+    return nlp::invokeMemAlign(121, boundary, byteCount);
 }
 void *MyMemAlign122(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign122, boundary, byteCount);
+    return nlp::invokeMemAlign(122, boundary, byteCount);
 }
 void *MyMemAlign123(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign123, boundary, byteCount);
+    return nlp::invokeMemAlign(123, boundary, byteCount);
 }
 void *MyMemAlign124(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign124, boundary, byteCount);
+    return nlp::invokeMemAlign(124, boundary, byteCount);
 }
 void *MyMemAlign125(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign125, boundary, byteCount);
+    return nlp::invokeMemAlign(125, boundary, byteCount);
 }
 void *MyMemAlign126(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign126, boundary, byteCount);
+    return nlp::invokeMemAlign(126, boundary, byteCount);
 }
 void *MyMemAlign127(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign127, boundary, byteCount);
+    return nlp::invokeMemAlign(127, boundary, byteCount);
 }
 void *MyMemAlign128(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign128, boundary, byteCount);
+    return nlp::invokeMemAlign(128, boundary, byteCount);
 }
 void *MyMemAlign129(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign129, boundary, byteCount);
+    return nlp::invokeMemAlign(129, boundary, byteCount);
 }
 void *MyMemAlign130(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign130, boundary, byteCount);
+    return nlp::invokeMemAlign(130, boundary, byteCount);
 }
 
 void *MyMemAlign131(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign131, boundary, byteCount);
+    return nlp::invokeMemAlign(131, boundary, byteCount);
 }
 void *MyMemAlign132(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign132, boundary, byteCount);
+    return nlp::invokeMemAlign(132, boundary, byteCount);
 }
 void *MyMemAlign133(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign133, boundary, byteCount);
+    return nlp::invokeMemAlign(133, boundary, byteCount);
 }
 void *MyMemAlign134(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign134, boundary, byteCount);
+    return nlp::invokeMemAlign(134, boundary, byteCount);
 }
 void *MyMemAlign135(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign135, boundary, byteCount);
+    return nlp::invokeMemAlign(135, boundary, byteCount);
 }
 void *MyMemAlign136(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign136, boundary, byteCount);
+    return nlp::invokeMemAlign(136, boundary, byteCount);
 }
 void *MyMemAlign137(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign137, boundary, byteCount);
+    return nlp::invokeMemAlign(137, boundary, byteCount);
 }
 void *MyMemAlign138(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign138, boundary, byteCount);
+    return nlp::invokeMemAlign(138, boundary, byteCount);
 }
 void *MyMemAlign139(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign139, boundary, byteCount);
+    return nlp::invokeMemAlign(139, boundary, byteCount);
 }
 void *MyMemAlign140(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign140, boundary, byteCount);
+    return nlp::invokeMemAlign(140, boundary, byteCount);
 }
 
 void *MyMemAlign141(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign141, boundary, byteCount);
+    return nlp::invokeMemAlign(141, boundary, byteCount);
 }
 void *MyMemAlign142(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign142, boundary, byteCount);
+    return nlp::invokeMemAlign(142, boundary, byteCount);
 }
 void *MyMemAlign143(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign143, boundary, byteCount);
+    return nlp::invokeMemAlign(143, boundary, byteCount);
 }
 void *MyMemAlign144(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign144, boundary, byteCount);
+    return nlp::invokeMemAlign(144, boundary, byteCount);
 }
 void *MyMemAlign145(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign145, boundary, byteCount);
+    return nlp::invokeMemAlign(145, boundary, byteCount);
 }
 void *MyMemAlign146(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign146, boundary, byteCount);
+    return nlp::invokeMemAlign(146, boundary, byteCount);
 }
 void *MyMemAlign147(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign147, boundary, byteCount);
+    return nlp::invokeMemAlign(147, boundary, byteCount);
 }
 void *MyMemAlign148(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign148, boundary, byteCount);
+    return nlp::invokeMemAlign(148, boundary, byteCount);
 }
 void *MyMemAlign149(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign149, boundary, byteCount);
+    return nlp::invokeMemAlign(149, boundary, byteCount);
 }
 void *MyMemAlign150(size_t boundary, size_t byteCount) {
-    return nlp::invokeMemAlign((void *) MyMemAlign150, boundary, byteCount);
+    return nlp::invokeMemAlign(150, boundary, byteCount);
 }
 
-void* popMemAlignMethod(std::string &libName) {
+void* popMemAlignMethod() {
     void *method = (void*) memAlignStk.top();
     memAlignStk.pop();
-    memAlignStkUsed.push(method);
     return method;
-}
-
-void resetMemAlignMethod() {
-    while (!memAlignStkUsed.empty()) {
-        memAlignStk.push(memAlignStkUsed.top());
-        memAlignStkUsed.pop();
-    }
 }
 
 void initDiyMemAlignMethod() {

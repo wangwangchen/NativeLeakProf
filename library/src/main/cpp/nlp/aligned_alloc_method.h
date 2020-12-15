@@ -175,9 +175,7 @@ void *MyAlignedAlloc148(size_t alignment, size_t byteCount);
 void *MyAlignedAlloc149(size_t alignment, size_t byteCount);
 void *MyAlignedAlloc150(size_t alignment, size_t byteCount);
 
-void* popAlignedAllocMethod(std::string &libName);
-
-void resetAlignedAllocMethod();
+void* popAlignedAllocMethod();
 
 void initDiyAlignedAllocMethod();
 

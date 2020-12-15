@@ -7,485 +7,476 @@
 #include "memory_manager.h"
 
 std::stack<void*> reallocStk;
-std::stack<void*> reallocStkUsed;
 
 void *myRealloc1(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc1, ptr, byteCount);
+    return nlp::invokeRealloc(1, ptr, byteCount);
 }
 void *myRealloc2(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc2, ptr, byteCount);
+    return nlp::invokeRealloc(2, ptr, byteCount);
 }
 void *myRealloc3(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc3, ptr, byteCount);
+    return nlp::invokeRealloc(3, ptr, byteCount);
 }
 void *myRealloc4(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc4, ptr, byteCount);
+    return nlp::invokeRealloc(4, ptr, byteCount);
 }
 void *myRealloc5(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc5, ptr, byteCount);
+    return nlp::invokeRealloc(5, ptr, byteCount);
 }
 void *myRealloc6(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc6, ptr, byteCount);
+    return nlp::invokeRealloc(6, ptr, byteCount);
 }
 void *myRealloc7(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc7, ptr, byteCount);
+    return nlp::invokeRealloc(7, ptr, byteCount);
 }
 void *myRealloc8(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc8, ptr, byteCount);
+    return nlp::invokeRealloc(8, ptr, byteCount);
 }
 void *myRealloc9(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc9, ptr, byteCount);
+    return nlp::invokeRealloc(9, ptr, byteCount);
 }
 void *myRealloc10(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc10, ptr, byteCount);
+    return nlp::invokeRealloc(10, ptr, byteCount);
 }
 
 void *myRealloc11(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc11, ptr, byteCount);
+    return nlp::invokeRealloc(11, ptr, byteCount);
 }
 void *myRealloc12(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc12, ptr, byteCount);
+    return nlp::invokeRealloc(12, ptr, byteCount);
 }
 void *myRealloc13(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc13, ptr, byteCount);
+    return nlp::invokeRealloc(13, ptr, byteCount);
 }
 void *myRealloc14(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc14, ptr, byteCount);
+    return nlp::invokeRealloc(14, ptr, byteCount);
 }
 void *myRealloc15(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc15, ptr, byteCount);
+    return nlp::invokeRealloc(15, ptr, byteCount);
 }
 void *myRealloc16(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc16, ptr, byteCount);
+    return nlp::invokeRealloc(16, ptr, byteCount);
 }
 void *myRealloc17(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc17, ptr, byteCount);
+    return nlp::invokeRealloc(17, ptr, byteCount);
 }
 void *myRealloc18(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc18, ptr, byteCount);
+    return nlp::invokeRealloc(18, ptr, byteCount);
 }
 void *myRealloc19(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc19, ptr, byteCount);
+    return nlp::invokeRealloc(19, ptr, byteCount);
 }
 void *myRealloc20(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc20, ptr, byteCount);
+    return nlp::invokeRealloc(20, ptr, byteCount);
 }
 
 void *myRealloc21(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc21, ptr, byteCount);
+    return nlp::invokeRealloc(21, ptr, byteCount);
 }
 void *myRealloc22(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc22, ptr, byteCount);
+    return nlp::invokeRealloc(22, ptr, byteCount);
 }
 void *myRealloc23(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc23, ptr, byteCount);
+    return nlp::invokeRealloc(23, ptr, byteCount);
 }
 void *myRealloc24(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc24, ptr, byteCount);
+    return nlp::invokeRealloc(24, ptr, byteCount);
 }
 void *myRealloc25(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc25, ptr, byteCount);
+    return nlp::invokeRealloc(25, ptr, byteCount);
 }
 void *myRealloc26(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc26, ptr, byteCount);
+    return nlp::invokeRealloc(26, ptr, byteCount);
 }
 void *myRealloc27(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc27, ptr, byteCount);
+    return nlp::invokeRealloc(27, ptr, byteCount);
 }
 void *myRealloc28(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc28, ptr, byteCount);
+    return nlp::invokeRealloc(28, ptr, byteCount);
 }
 void *myRealloc29(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc29, ptr, byteCount);
+    return nlp::invokeRealloc(29, ptr, byteCount);
 }
 void *myRealloc30(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc30, ptr, byteCount);
+    return nlp::invokeRealloc(30, ptr, byteCount);
 }
 
 void *myRealloc31(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc31, ptr, byteCount);
+    return nlp::invokeRealloc(31, ptr, byteCount);
 }
 void *myRealloc32(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc32, ptr, byteCount);
+    return nlp::invokeRealloc(32, ptr, byteCount);
 }
 void *myRealloc33(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc33, ptr, byteCount);
+    return nlp::invokeRealloc(33, ptr, byteCount);
 }
 void *myRealloc34(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc34, ptr, byteCount);
+    return nlp::invokeRealloc(34, ptr, byteCount);
 }
 void *myRealloc35(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc35, ptr, byteCount);
+    return nlp::invokeRealloc(35, ptr, byteCount);
 }
 void *myRealloc36(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc36, ptr, byteCount);
+    return nlp::invokeRealloc(36, ptr, byteCount);
 }
 void *myRealloc37(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc37, ptr, byteCount);
+    return nlp::invokeRealloc(37, ptr, byteCount);
 }
 void *myRealloc38(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc38, ptr, byteCount);
+    return nlp::invokeRealloc(38, ptr, byteCount);
 }
 void *myRealloc39(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc39, ptr, byteCount);
+    return nlp::invokeRealloc(39, ptr, byteCount);
 }
 void *myRealloc40(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc40, ptr, byteCount);
+    return nlp::invokeRealloc(40, ptr, byteCount);
 }
 
 void *myRealloc41(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc41, ptr, byteCount);
+    return nlp::invokeRealloc(41, ptr, byteCount);
 }
 void *myRealloc42(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc42, ptr, byteCount);
+    return nlp::invokeRealloc(42, ptr, byteCount);
 }
 void *myRealloc43(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc43, ptr, byteCount);
+    return nlp::invokeRealloc(43, ptr, byteCount);
 }
 void *myRealloc44(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc44, ptr, byteCount);
+    return nlp::invokeRealloc(44, ptr, byteCount);
 }
 void *myRealloc45(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc45, ptr, byteCount);
+    return nlp::invokeRealloc(45, ptr, byteCount);
 }
 void *myRealloc46(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc46, ptr, byteCount);
+    return nlp::invokeRealloc(46, ptr, byteCount);
 }
 void *myRealloc47(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc47, ptr, byteCount);
+    return nlp::invokeRealloc(47, ptr, byteCount);
 }
 void *myRealloc48(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc48, ptr, byteCount);
+    return nlp::invokeRealloc(48, ptr, byteCount);
 }
 void *myRealloc49(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc49, ptr, byteCount);
+    return nlp::invokeRealloc(49, ptr, byteCount);
 }
 void *myRealloc50(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc50, ptr, byteCount);
+    return nlp::invokeRealloc(50, ptr, byteCount);
 }
 
 void *myRealloc51(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc51, ptr, byteCount);
+    return nlp::invokeRealloc(51, ptr, byteCount);
 }
 void *myRealloc52(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc52, ptr, byteCount);
+    return nlp::invokeRealloc(52, ptr, byteCount);
 }
 void *myRealloc53(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc53, ptr, byteCount);
+    return nlp::invokeRealloc(53, ptr, byteCount);
 }
 void *myRealloc54(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc54, ptr, byteCount);
+    return nlp::invokeRealloc(54, ptr, byteCount);
 }
 void *myRealloc55(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc55, ptr, byteCount);
+    return nlp::invokeRealloc(55, ptr, byteCount);
 }
 void *myRealloc56(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc56, ptr, byteCount);
+    return nlp::invokeRealloc(56, ptr, byteCount);
 }
 void *myRealloc57(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc57, ptr, byteCount);
+    return nlp::invokeRealloc(57, ptr, byteCount);
 }
 void *myRealloc58(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc58, ptr, byteCount);
+    return nlp::invokeRealloc(58, ptr, byteCount);
 }
 void *myRealloc59(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc59, ptr, byteCount);
+    return nlp::invokeRealloc(59, ptr, byteCount);
 }
 void *myRealloc60(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc60, ptr, byteCount);
+    return nlp::invokeRealloc(60, ptr, byteCount);
 }
 
 void *myRealloc61(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc61, ptr, byteCount);
+    return nlp::invokeRealloc(61, ptr, byteCount);
 }
 void *myRealloc62(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc62, ptr, byteCount);
+    return nlp::invokeRealloc(62, ptr, byteCount);
 }
 void *myRealloc63(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc63, ptr, byteCount);
+    return nlp::invokeRealloc(63, ptr, byteCount);
 }
 void *myRealloc64(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc64, ptr, byteCount);
+    return nlp::invokeRealloc(64, ptr, byteCount);
 }
 void *myRealloc65(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc65, ptr, byteCount);
+    return nlp::invokeRealloc(65, ptr, byteCount);
 }
 void *myRealloc66(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc66, ptr, byteCount);
+    return nlp::invokeRealloc(66, ptr, byteCount);
 }
 void *myRealloc67(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc67, ptr, byteCount);
+    return nlp::invokeRealloc(67, ptr, byteCount);
 }
 void *myRealloc68(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc68, ptr, byteCount);
+    return nlp::invokeRealloc(68, ptr, byteCount);
 }
 void *myRealloc69(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc69, ptr, byteCount);
+    return nlp::invokeRealloc(69, ptr, byteCount);
 }
 void *myRealloc70(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc70, ptr, byteCount);
+    return nlp::invokeRealloc(70, ptr, byteCount);
 }
 
 void *myRealloc71(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc71, ptr, byteCount);
+    return nlp::invokeRealloc(71, ptr, byteCount);
 }
 void *myRealloc72(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc72, ptr, byteCount);
+    return nlp::invokeRealloc(72, ptr, byteCount);
 }
 void *myRealloc73(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc73, ptr, byteCount);
+    return nlp::invokeRealloc(73, ptr, byteCount);
 }
 void *myRealloc74(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc74, ptr, byteCount);
+    return nlp::invokeRealloc(74, ptr, byteCount);
 }
 void *myRealloc75(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc75, ptr, byteCount);
+    return nlp::invokeRealloc(75, ptr, byteCount);
 }
 void *myRealloc76(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc76, ptr, byteCount);
+    return nlp::invokeRealloc(76, ptr, byteCount);
 }
 void *myRealloc77(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc77, ptr, byteCount);
+    return nlp::invokeRealloc(77, ptr, byteCount);
 }
 void *myRealloc78(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc78, ptr, byteCount);
+    return nlp::invokeRealloc(78, ptr, byteCount);
 }
 void *myRealloc79(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc79, ptr, byteCount);
+    return nlp::invokeRealloc(79, ptr, byteCount);
 }
 void *myRealloc80(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc80, ptr, byteCount);
+    return nlp::invokeRealloc(80, ptr, byteCount);
 }
 
 void *myRealloc81(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc81, ptr, byteCount);
+    return nlp::invokeRealloc(81, ptr, byteCount);
 }
 void *myRealloc82(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc82, ptr, byteCount);
+    return nlp::invokeRealloc(82, ptr, byteCount);
 }
 void *myRealloc83(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc83, ptr, byteCount);
+    return nlp::invokeRealloc(83, ptr, byteCount);
 }
 void *myRealloc84(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc84, ptr, byteCount);
+    return nlp::invokeRealloc(84, ptr, byteCount);
 }
 void *myRealloc85(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc85, ptr, byteCount);
+    return nlp::invokeRealloc(85, ptr, byteCount);
 }
 void *myRealloc86(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc86, ptr, byteCount);
+    return nlp::invokeRealloc(86, ptr, byteCount);
 }
 void *myRealloc87(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc87, ptr, byteCount);
+    return nlp::invokeRealloc(87, ptr, byteCount);
 }
 void *myRealloc88(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc88, ptr, byteCount);
+    return nlp::invokeRealloc(88, ptr, byteCount);
 }
 void *myRealloc89(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc89, ptr, byteCount);
+    return nlp::invokeRealloc(89, ptr, byteCount);
 }
 void *myRealloc90(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc90, ptr, byteCount);
+    return nlp::invokeRealloc(90, ptr, byteCount);
 }
 
 void *myRealloc91(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc91, ptr, byteCount);
+    return nlp::invokeRealloc(91, ptr, byteCount);
 }
 void *myRealloc92(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc92, ptr, byteCount);
+    return nlp::invokeRealloc(92, ptr, byteCount);
 }
 void *myRealloc93(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc93, ptr, byteCount);
+    return nlp::invokeRealloc(93, ptr, byteCount);
 }
 void *myRealloc94(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc94, ptr, byteCount);
+    return nlp::invokeRealloc(94, ptr, byteCount);
 }
 void *myRealloc95(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc95, ptr, byteCount);
+    return nlp::invokeRealloc(95, ptr, byteCount);
 }
 void *myRealloc96(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc96, ptr, byteCount);
+    return nlp::invokeRealloc(96, ptr, byteCount);
 }
 void *myRealloc97(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc97, ptr, byteCount);
+    return nlp::invokeRealloc(97, ptr, byteCount);
 }
 void *myRealloc98(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc98, ptr, byteCount);
+    return nlp::invokeRealloc(98, ptr, byteCount);
 }
 void *myRealloc99(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc99, ptr, byteCount);
+    return nlp::invokeRealloc(99, ptr, byteCount);
 }
 void *myRealloc100(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc100, ptr, byteCount);
+    return nlp::invokeRealloc(100, ptr, byteCount);
 }
 
 void *myRealloc101(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc101, ptr, byteCount);
+    return nlp::invokeRealloc(101, ptr, byteCount);
 }
 void *myRealloc102(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc102, ptr, byteCount);
+    return nlp::invokeRealloc(102, ptr, byteCount);
 }
 void *myRealloc103(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc103, ptr, byteCount);
+    return nlp::invokeRealloc(103, ptr, byteCount);
 }
 void *myRealloc104(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc104, ptr, byteCount);
+    return nlp::invokeRealloc(104, ptr, byteCount);
 }
 void *myRealloc105(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc105, ptr, byteCount);
+    return nlp::invokeRealloc(105, ptr, byteCount);
 }
 void *myRealloc106(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc106, ptr, byteCount);
+    return nlp::invokeRealloc(106, ptr, byteCount);
 }
 void *myRealloc107(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc107, ptr, byteCount);
+    return nlp::invokeRealloc(107, ptr, byteCount);
 }
 void *myRealloc108(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc108, ptr, byteCount);
+    return nlp::invokeRealloc(108, ptr, byteCount);
 }
 void *myRealloc109(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc109, ptr, byteCount);
+    return nlp::invokeRealloc(109, ptr, byteCount);
 }
 void *myRealloc110(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc110, ptr, byteCount);
+    return nlp::invokeRealloc(110, ptr, byteCount);
 }
 
 void *myRealloc111(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc111, ptr, byteCount);
+    return nlp::invokeRealloc(111, ptr, byteCount);
 }
 void *myRealloc112(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc112, ptr, byteCount);
+    return nlp::invokeRealloc(112, ptr, byteCount);
 }
 void *myRealloc113(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc113, ptr, byteCount);
+    return nlp::invokeRealloc(113, ptr, byteCount);
 }
 void *myRealloc114(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc114, ptr, byteCount);
+    return nlp::invokeRealloc(114, ptr, byteCount);
 }
 void *myRealloc115(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc115, ptr, byteCount);
+    return nlp::invokeRealloc(115, ptr, byteCount);
 }
 void *myRealloc116(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc116, ptr, byteCount);
+    return nlp::invokeRealloc(116, ptr, byteCount);
 }
 void *myRealloc117(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc117, ptr, byteCount);
+    return nlp::invokeRealloc(117, ptr, byteCount);
 }
 void *myRealloc118(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc118, ptr, byteCount);
+    return nlp::invokeRealloc(118, ptr, byteCount);
 }
 void *myRealloc119(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc119, ptr, byteCount);
+    return nlp::invokeRealloc(119, ptr, byteCount);
 }
 void *myRealloc120(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc120, ptr, byteCount);
+    return nlp::invokeRealloc(120, ptr, byteCount);
 }
 
 void *myRealloc121(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc121, ptr, byteCount);
+    return nlp::invokeRealloc(121, ptr, byteCount);
 }
 void *myRealloc122(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc122, ptr, byteCount);
+    return nlp::invokeRealloc(122, ptr, byteCount);
 }
 void *myRealloc123(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc123, ptr, byteCount);
+    return nlp::invokeRealloc(123, ptr, byteCount);
 }
 void *myRealloc124(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc124, ptr, byteCount);
+    return nlp::invokeRealloc(124, ptr, byteCount);
 }
 void *myRealloc125(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc125, ptr, byteCount);
+    return nlp::invokeRealloc(125, ptr, byteCount);
 }
 void *myRealloc126(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc126, ptr, byteCount);
+    return nlp::invokeRealloc(126, ptr, byteCount);
 }
 void *myRealloc127(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc127, ptr, byteCount);
+    return nlp::invokeRealloc(127, ptr, byteCount);
 }
 void *myRealloc128(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc128, ptr, byteCount);
+    return nlp::invokeRealloc(128, ptr, byteCount);
 }
 void *myRealloc129(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc129, ptr, byteCount);
+    return nlp::invokeRealloc(129, ptr, byteCount);
 }
 void *myRealloc130(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc130, ptr, byteCount);
+    return nlp::invokeRealloc(130, ptr, byteCount);
 }
 
 void *myRealloc131(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc131, ptr, byteCount);
+    return nlp::invokeRealloc(131, ptr, byteCount);
 }
 void *myRealloc132(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc132, ptr, byteCount);
+    return nlp::invokeRealloc(132, ptr, byteCount);
 }
 void *myRealloc133(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc133, ptr, byteCount);
+    return nlp::invokeRealloc(133, ptr, byteCount);
 }
 void *myRealloc134(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc134, ptr, byteCount);
+    return nlp::invokeRealloc(134, ptr, byteCount);
 }
 void *myRealloc135(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc135, ptr, byteCount);
+    return nlp::invokeRealloc(135, ptr, byteCount);
 }
 void *myRealloc136(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc136, ptr, byteCount);
+    return nlp::invokeRealloc(136, ptr, byteCount);
 }
 void *myRealloc137(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc137, ptr, byteCount);
+    return nlp::invokeRealloc(137, ptr, byteCount);
 }
 void *myRealloc138(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc138, ptr, byteCount);
+    return nlp::invokeRealloc(138, ptr, byteCount);
 }
 void *myRealloc139(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc139, ptr, byteCount);
+    return nlp::invokeRealloc(139, ptr, byteCount);
 }
 void *myRealloc140(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc140, ptr, byteCount);
+    return nlp::invokeRealloc(140, ptr, byteCount);
 }
 
 void *myRealloc141(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc141, ptr, byteCount);
+    return nlp::invokeRealloc(141, ptr, byteCount);
 }
 void *myRealloc142(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc142, ptr, byteCount);
+    return nlp::invokeRealloc(142, ptr, byteCount);
 }
 void *myRealloc143(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc143, ptr, byteCount);
+    return nlp::invokeRealloc(143, ptr, byteCount);
 }
 void *myRealloc144(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc144, ptr, byteCount);
+    return nlp::invokeRealloc(144, ptr, byteCount);
 }
 void *myRealloc145(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc145, ptr, byteCount);
+    return nlp::invokeRealloc(145, ptr, byteCount);
 }
 void *myRealloc146(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc146, ptr, byteCount);
+    return nlp::invokeRealloc(146, ptr, byteCount);
 }
 void *myRealloc147(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc147, ptr, byteCount);
+    return nlp::invokeRealloc(147, ptr, byteCount);
 }
 void *myRealloc148(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc148, ptr, byteCount);
+    return nlp::invokeRealloc(148, ptr, byteCount);
 }
 void *myRealloc149(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc149, ptr, byteCount);
+    return nlp::invokeRealloc(149, ptr, byteCount);
 }
 void *myRealloc150(void *ptr, size_t byteCount) {
-    return nlp::invokeRealloc((void *) myRealloc150, ptr, byteCount);
+    return nlp::invokeRealloc(150, ptr, byteCount);
 }
 
-void* popReallocMethod(std::string &libName) {
+void* popReallocMethod() {
     void *method = (void*) reallocStk.top();
     reallocStk.pop();
-    reallocStkUsed.push(method);
     return method;
-}
-
-void resetReallocMethod() {
-    while (!reallocStkUsed.empty()) {
-        reallocStk.push(reallocStkUsed.top());
-        reallocStkUsed.pop();
-    }
 }
 
 void initDiyReallocMethod() {

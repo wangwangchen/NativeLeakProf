@@ -175,9 +175,7 @@ void *myMalloc148(size_t byteCount);
 void *myMalloc149(size_t byteCount);
 void *myMalloc150(size_t byteCount);
 
-void* popMallocMethod(std::string &libName);
-
-void resetMallocMethod();
+void* popMallocMethod();
 
 void initDiyMallocMethod();
 

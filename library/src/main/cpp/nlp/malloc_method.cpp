@@ -3,486 +3,476 @@
 #include "memory_manager.h"
 
 std::stack<void*> mallocStk;
-std::stack<void*> mallocStkUsed;
 
 void *myMalloc1(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc1, byteCount);
+    return nlp::invokeMalloc(1, byteCount);
 }
 void *myMalloc2(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc2, byteCount);
+    return nlp::invokeMalloc(2, byteCount);
 }
 void *myMalloc3(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc3, byteCount);
+    return nlp::invokeMalloc(3, byteCount);
 }
 void *myMalloc4(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc4, byteCount);
+    return nlp::invokeMalloc(4, byteCount);
 }
 void *myMalloc5(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc5, byteCount);
+    return nlp::invokeMalloc(5, byteCount);
 }
 void *myMalloc6(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc6, byteCount);
+    return nlp::invokeMalloc(6, byteCount);
 }
 void *myMalloc7(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc7, byteCount);
+    return nlp::invokeMalloc(7, byteCount);
 }
 void *myMalloc8(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc8, byteCount);
+    return nlp::invokeMalloc(8, byteCount);
 }
 void *myMalloc9(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc9, byteCount);
+    return nlp::invokeMalloc(9, byteCount);
 }
 void *myMalloc10(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc10, byteCount);
+    return nlp::invokeMalloc(10, byteCount);
 }
 
 void *myMalloc11(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc11, byteCount);
+    return nlp::invokeMalloc(11, byteCount);
 }
 void *myMalloc12(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc12, byteCount);
+    return nlp::invokeMalloc(12, byteCount);
 }
 void *myMalloc13(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc13, byteCount);
+    return nlp::invokeMalloc(13, byteCount);
 }
 void *myMalloc14(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc14, byteCount);
+    return nlp::invokeMalloc(14, byteCount);
 }
 void *myMalloc15(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc15, byteCount);
+    return nlp::invokeMalloc(15, byteCount);
 }
 void *myMalloc16(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc16, byteCount);
+    return nlp::invokeMalloc(16, byteCount);
 }
 void *myMalloc17(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc17, byteCount);
+    return nlp::invokeMalloc(17, byteCount);
 }
 void *myMalloc18(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc18, byteCount);
+    return nlp::invokeMalloc(18, byteCount);
 }
 void *myMalloc19(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc19, byteCount);
+    return nlp::invokeMalloc(19, byteCount);
 }
 void *myMalloc20(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc20, byteCount);
+    return nlp::invokeMalloc(20, byteCount);
 }
 
 void *myMalloc21(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc21, byteCount);
+    return nlp::invokeMalloc(21, byteCount);
 }
 void *myMalloc22(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc22, byteCount);
+    return nlp::invokeMalloc(22, byteCount);
 }
 void *myMalloc23(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc23, byteCount);
+    return nlp::invokeMalloc(23, byteCount);
 }
 void *myMalloc24(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc24, byteCount);
+    return nlp::invokeMalloc(24, byteCount);
 }
 void *myMalloc25(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc25, byteCount);
+    return nlp::invokeMalloc(25, byteCount);
 }
 void *myMalloc26(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc26, byteCount);
+    return nlp::invokeMalloc(26, byteCount);
 }
 void *myMalloc27(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc27, byteCount);
+    return nlp::invokeMalloc(27, byteCount);
 }
 void *myMalloc28(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc28, byteCount);
+    return nlp::invokeMalloc(28, byteCount);
 }
 void *myMalloc29(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc29, byteCount);
+    return nlp::invokeMalloc(29, byteCount);
 }
 void *myMalloc30(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc30, byteCount);
+    return nlp::invokeMalloc(30, byteCount);
 }
 
 void *myMalloc31(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc31, byteCount);
+    return nlp::invokeMalloc(31, byteCount);
 }
 void *myMalloc32(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc32, byteCount);
+    return nlp::invokeMalloc(32, byteCount);
 }
 void *myMalloc33(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc33, byteCount);
+    return nlp::invokeMalloc(33, byteCount);
 }
 void *myMalloc34(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc34, byteCount);
+    return nlp::invokeMalloc(34, byteCount);
 }
 void *myMalloc35(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc35, byteCount);
+    return nlp::invokeMalloc(35, byteCount);
 }
 void *myMalloc36(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc36, byteCount);
+    return nlp::invokeMalloc(36, byteCount);
 }
 void *myMalloc37(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc37, byteCount);
+    return nlp::invokeMalloc(37, byteCount);
 }
 void *myMalloc38(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc38, byteCount);
+    return nlp::invokeMalloc(38, byteCount);
 }
 void *myMalloc39(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc39, byteCount);
+    return nlp::invokeMalloc(39, byteCount);
 }
 void *myMalloc40(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc40, byteCount);
+    return nlp::invokeMalloc(40, byteCount);
 }
 
 void *myMalloc41(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc41, byteCount);
+    return nlp::invokeMalloc(41, byteCount);
 }
 void *myMalloc42(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc42, byteCount);
+    return nlp::invokeMalloc(42, byteCount);
 }
 void *myMalloc43(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc43, byteCount);
+    return nlp::invokeMalloc(43, byteCount);
 }
 void *myMalloc44(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc44, byteCount);
+    return nlp::invokeMalloc(44, byteCount);
 }
 void *myMalloc45(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc45, byteCount);
+    return nlp::invokeMalloc(45, byteCount);
 }
 void *myMalloc46(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc46, byteCount);
+    return nlp::invokeMalloc(46, byteCount);
 }
 void *myMalloc47(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc47, byteCount);
+    return nlp::invokeMalloc(47, byteCount);
 }
 void *myMalloc48(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc48, byteCount);
+    return nlp::invokeMalloc(48, byteCount);
 }
 void *myMalloc49(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc49, byteCount);
+    return nlp::invokeMalloc(49, byteCount);
 }
 void *myMalloc50(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc50, byteCount);
+    return nlp::invokeMalloc(50, byteCount);
 }
 
 void *myMalloc51(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc51, byteCount);
+    return nlp::invokeMalloc(51, byteCount);
 }
 void *myMalloc52(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc52, byteCount);
+    return nlp::invokeMalloc(52, byteCount);
 }
 void *myMalloc53(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc53, byteCount);
+    return nlp::invokeMalloc(53, byteCount);
 }
 void *myMalloc54(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc54, byteCount);
+    return nlp::invokeMalloc(54, byteCount);
 }
 void *myMalloc55(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc55, byteCount);
+    return nlp::invokeMalloc(55, byteCount);
 }
 void *myMalloc56(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc56, byteCount);
+    return nlp::invokeMalloc(56, byteCount);
 }
 void *myMalloc57(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc57, byteCount);
+    return nlp::invokeMalloc(57, byteCount);
 }
 void *myMalloc58(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc58, byteCount);
+    return nlp::invokeMalloc(58, byteCount);
 }
 void *myMalloc59(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc59, byteCount);
+    return nlp::invokeMalloc(59, byteCount);
 }
 void *myMalloc60(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc60, byteCount);
+    return nlp::invokeMalloc(60, byteCount);
 }
 
 void *myMalloc61(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc61, byteCount);
+    return nlp::invokeMalloc(61, byteCount);
 }
 void *myMalloc62(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc62, byteCount);
+    return nlp::invokeMalloc(62, byteCount);
 }
 void *myMalloc63(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc63, byteCount);
+    return nlp::invokeMalloc(63, byteCount);
 }
 void *myMalloc64(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc64, byteCount);
+    return nlp::invokeMalloc(64, byteCount);
 }
 void *myMalloc65(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc65, byteCount);
+    return nlp::invokeMalloc(65, byteCount);
 }
 void *myMalloc66(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc66, byteCount);
+    return nlp::invokeMalloc(66, byteCount);
 }
 void *myMalloc67(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc67, byteCount);
+    return nlp::invokeMalloc(67, byteCount);
 }
 void *myMalloc68(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc68, byteCount);
+    return nlp::invokeMalloc(68, byteCount);
 }
 void *myMalloc69(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc69, byteCount);
+    return nlp::invokeMalloc(69, byteCount);
 }
 void *myMalloc70(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc70, byteCount);
+    return nlp::invokeMalloc(70, byteCount);
 }
 
 void *myMalloc71(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc71, byteCount);
+    return nlp::invokeMalloc(71, byteCount);
 }
 void *myMalloc72(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc72, byteCount);
+    return nlp::invokeMalloc(72, byteCount);
 }
 void *myMalloc73(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc73, byteCount);
+    return nlp::invokeMalloc(73, byteCount);
 }
 void *myMalloc74(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc74, byteCount);
+    return nlp::invokeMalloc(74, byteCount);
 }
 void *myMalloc75(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc75, byteCount);
+    return nlp::invokeMalloc(75, byteCount);
 }
 void *myMalloc76(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc76, byteCount);
+    return nlp::invokeMalloc(76, byteCount);
 }
 void *myMalloc77(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc77, byteCount);
+    return nlp::invokeMalloc(77, byteCount);
 }
 void *myMalloc78(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc78, byteCount);
+    return nlp::invokeMalloc(78, byteCount);
 }
 void *myMalloc79(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc79, byteCount);
+    return nlp::invokeMalloc(79, byteCount);
 }
 void *myMalloc80(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc80, byteCount);
+    return nlp::invokeMalloc(80, byteCount);
 }
 
 void *myMalloc81(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc81, byteCount);
+    return nlp::invokeMalloc(81, byteCount);
 }
 void *myMalloc82(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc82, byteCount);
+    return nlp::invokeMalloc(82, byteCount);
 }
 void *myMalloc83(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc83, byteCount);
+    return nlp::invokeMalloc(83, byteCount);
 }
 void *myMalloc84(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc84, byteCount);
+    return nlp::invokeMalloc(84, byteCount);
 }
 void *myMalloc85(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc85, byteCount);
+    return nlp::invokeMalloc(85, byteCount);
 }
 void *myMalloc86(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc86, byteCount);
+    return nlp::invokeMalloc(86, byteCount);
 }
 void *myMalloc87(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc87, byteCount);
+    return nlp::invokeMalloc(87, byteCount);
 }
 void *myMalloc88(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc88, byteCount);
+    return nlp::invokeMalloc(88, byteCount);
 }
 void *myMalloc89(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc89, byteCount);
+    return nlp::invokeMalloc(89, byteCount);
 }
 void *myMalloc90(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc90, byteCount);
+    return nlp::invokeMalloc(90, byteCount);
 }
 
 void *myMalloc91(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc91, byteCount);
+    return nlp::invokeMalloc(91, byteCount);
 }
 void *myMalloc92(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc92, byteCount);
+    return nlp::invokeMalloc(92, byteCount);
 }
 void *myMalloc93(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc93, byteCount);
+    return nlp::invokeMalloc(93, byteCount);
 }
 void *myMalloc94(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc94, byteCount);
+    return nlp::invokeMalloc(94, byteCount);
 }
 void *myMalloc95(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc95, byteCount);
+    return nlp::invokeMalloc(95, byteCount);
 }
 void *myMalloc96(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc96, byteCount);
+    return nlp::invokeMalloc(96, byteCount);
 }
 void *myMalloc97(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc97, byteCount);
+    return nlp::invokeMalloc(97, byteCount);
 }
 void *myMalloc98(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc98, byteCount);
+    return nlp::invokeMalloc(98, byteCount);
 }
 void *myMalloc99(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc99, byteCount);
+    return nlp::invokeMalloc(99, byteCount);
 }
 void *myMalloc100(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc100, byteCount);
+    return nlp::invokeMalloc(100, byteCount);
 }
 
 void *myMalloc101(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc101, byteCount);
+    return nlp::invokeMalloc(101, byteCount);
 }
 void *myMalloc102(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc102, byteCount);
+    return nlp::invokeMalloc(102, byteCount);
 }
 void *myMalloc103(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc103, byteCount);
+    return nlp::invokeMalloc(103, byteCount);
 }
 void *myMalloc104(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc104, byteCount);
+    return nlp::invokeMalloc(104, byteCount);
 }
 void *myMalloc105(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc105, byteCount);
+    return nlp::invokeMalloc(105, byteCount);
 }
 void *myMalloc106(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc106, byteCount);
+    return nlp::invokeMalloc(106, byteCount);
 }
 void *myMalloc107(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc107, byteCount);
+    return nlp::invokeMalloc(107, byteCount);
 }
 void *myMalloc108(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc108, byteCount);
+    return nlp::invokeMalloc(108, byteCount);
 }
 void *myMalloc109(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc109, byteCount);
+    return nlp::invokeMalloc(109, byteCount);
 }
 void *myMalloc110(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc110, byteCount);
+    return nlp::invokeMalloc(110, byteCount);
 }
 
 void *myMalloc111(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc111, byteCount);
+    return nlp::invokeMalloc(111, byteCount);
 }
 void *myMalloc112(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc112, byteCount);
+    return nlp::invokeMalloc(112, byteCount);
 }
 void *myMalloc113(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc113, byteCount);
+    return nlp::invokeMalloc(113, byteCount);
 }
 void *myMalloc114(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc114, byteCount);
+    return nlp::invokeMalloc(114, byteCount);
 }
 void *myMalloc115(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc115, byteCount);
+    return nlp::invokeMalloc(115, byteCount);
 }
 void *myMalloc116(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc116, byteCount);
+    return nlp::invokeMalloc(116, byteCount);
 }
 void *myMalloc117(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc117, byteCount);
+    return nlp::invokeMalloc(117, byteCount);
 }
 void *myMalloc118(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc118, byteCount);
+    return nlp::invokeMalloc(118, byteCount);
 }
 void *myMalloc119(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc119, byteCount);
+    return nlp::invokeMalloc(119, byteCount);
 }
 void *myMalloc120(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc120, byteCount);
+    return nlp::invokeMalloc(120, byteCount);
 }
 
 void *myMalloc121(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc121, byteCount);
+    return nlp::invokeMalloc(121, byteCount);
 }
 void *myMalloc122(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc122, byteCount);
+    return nlp::invokeMalloc(122, byteCount);
 }
 void *myMalloc123(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc123, byteCount);
+    return nlp::invokeMalloc(123, byteCount);
 }
 void *myMalloc124(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc124, byteCount);
+    return nlp::invokeMalloc(124, byteCount);
 }
 void *myMalloc125(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc125, byteCount);
+    return nlp::invokeMalloc(125, byteCount);
 }
 void *myMalloc126(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc126, byteCount);
+    return nlp::invokeMalloc(126, byteCount);
 }
 void *myMalloc127(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc127, byteCount);
+    return nlp::invokeMalloc(127, byteCount);
 }
 void *myMalloc128(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc128, byteCount);
+    return nlp::invokeMalloc(128, byteCount);
 }
 void *myMalloc129(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc129, byteCount);
+    return nlp::invokeMalloc(129, byteCount);
 }
 void *myMalloc130(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc130, byteCount);
+    return nlp::invokeMalloc(130, byteCount);
 }
 
 void *myMalloc131(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc131, byteCount);
+    return nlp::invokeMalloc(131, byteCount);
 }
 void *myMalloc132(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc132, byteCount);
+    return nlp::invokeMalloc(132, byteCount);
 }
 void *myMalloc133(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc133, byteCount);
+    return nlp::invokeMalloc(133, byteCount);
 }
 void *myMalloc134(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc134, byteCount);
+    return nlp::invokeMalloc(134, byteCount);
 }
 void *myMalloc135(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc135, byteCount);
+    return nlp::invokeMalloc(135, byteCount);
 }
 void *myMalloc136(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc136, byteCount);
+    return nlp::invokeMalloc(136, byteCount);
 }
 void *myMalloc137(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc137, byteCount);
+    return nlp::invokeMalloc(137, byteCount);
 }
 void *myMalloc138(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc138, byteCount);
+    return nlp::invokeMalloc(138, byteCount);
 }
 void *myMalloc139(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc139, byteCount);
+    return nlp::invokeMalloc(139, byteCount);
 }
 void *myMalloc140(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc140, byteCount);
+    return nlp::invokeMalloc(140, byteCount);
 }
 
 void *myMalloc141(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc141, byteCount);
+    return nlp::invokeMalloc(141, byteCount);
 }
 void *myMalloc142(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc142, byteCount);
+    return nlp::invokeMalloc(142, byteCount);
 }
 void *myMalloc143(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc143, byteCount);
+    return nlp::invokeMalloc(143, byteCount);
 }
 void *myMalloc144(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc144, byteCount);
+    return nlp::invokeMalloc(144, byteCount);
 }
 void *myMalloc145(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc145, byteCount);
+    return nlp::invokeMalloc(145, byteCount);
 }
 void *myMalloc146(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc146, byteCount);
+    return nlp::invokeMalloc(146, byteCount);
 }
 void *myMalloc147(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc147, byteCount);
+    return nlp::invokeMalloc(147, byteCount);
 }
 void *myMalloc148(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc148, byteCount);
+    return nlp::invokeMalloc(148, byteCount);
 }
 void *myMalloc149(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc149, byteCount);
+    return nlp::invokeMalloc(149, byteCount);
 }
 void *myMalloc150(size_t byteCount) {
-    return nlp::invokeMalloc((void *) myMalloc150, byteCount);
+    return nlp::invokeMalloc(150, byteCount);
 }
 
-void* popMallocMethod(std::string &libName) {
-//    _LOGI_("popMallocMethod, size: %d", mallocStk.size());
+void* popMallocMethod() {
     void *method = (void*) mallocStk.top();
     mallocStk.pop();
-    mallocStkUsed.push(method);
     return method;
-}
-
-void resetMallocMethod() {
-    while (!mallocStkUsed.empty()) {
-        mallocStk.push(mallocStkUsed.top());
-        mallocStkUsed.pop();
-    }
 }
 
 void initDiyMallocMethod() {

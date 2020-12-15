@@ -7,486 +7,476 @@
 #include "memory_manager.h"
 
 std::stack<void*> callocStk;
-std::stack<void*> callocStkUsed;
 
 void *myCalloc1(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc1, itemCount, itemSize);
+    return nlp::invokeCalloc(1, itemCount, itemSize);
 }
 void *myCalloc2(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc2, itemCount, itemSize);
+    return nlp::invokeCalloc(2, itemCount, itemSize);
 }
 void *myCalloc3(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc3, itemCount, itemSize);
+    return nlp::invokeCalloc(3, itemCount, itemSize);
 }
 void *myCalloc4(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc4, itemCount, itemSize);
+    return nlp::invokeCalloc(4, itemCount, itemSize);
 }
 void *myCalloc5(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc5, itemCount, itemSize);
+    return nlp::invokeCalloc(5, itemCount, itemSize);
 }
 void *myCalloc6(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc6, itemCount, itemSize);
+    return nlp::invokeCalloc(6, itemCount, itemSize);
 }
 void *myCalloc7(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc7, itemCount, itemSize);
+    return nlp::invokeCalloc(7, itemCount, itemSize);
 }
 void *myCalloc8(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc8, itemCount, itemSize);
+    return nlp::invokeCalloc(8, itemCount, itemSize);
 }
 void *myCalloc9(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc9, itemCount, itemSize);
+    return nlp::invokeCalloc(9, itemCount, itemSize);
 }
 void *myCalloc10(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc10, itemCount, itemSize);
+    return nlp::invokeCalloc(10, itemCount, itemSize);
 }
 
 void *myCalloc11(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc11, itemCount, itemSize);
+    return nlp::invokeCalloc(11, itemCount, itemSize);
 }
 void *myCalloc12(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc12, itemCount, itemSize);
+    return nlp::invokeCalloc(12, itemCount, itemSize);
 }
 void *myCalloc13(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc13, itemCount, itemSize);
+    return nlp::invokeCalloc(13, itemCount, itemSize);
 }
 void *myCalloc14(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc14, itemCount, itemSize);
+    return nlp::invokeCalloc(14, itemCount, itemSize);
 }
 void *myCalloc15(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc15, itemCount, itemSize);
+    return nlp::invokeCalloc(15, itemCount, itemSize);
 }
 void *myCalloc16(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc16, itemCount, itemSize);
+    return nlp::invokeCalloc(16, itemCount, itemSize);
 }
 void *myCalloc17(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc17, itemCount, itemSize);
+    return nlp::invokeCalloc(17, itemCount, itemSize);
 }
 void *myCalloc18(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc18, itemCount, itemSize);
+    return nlp::invokeCalloc(18, itemCount, itemSize);
 }
 void *myCalloc19(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc19, itemCount, itemSize);
+    return nlp::invokeCalloc(19, itemCount, itemSize);
 }
 void *myCalloc20(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc20, itemCount, itemSize);
+    return nlp::invokeCalloc(20, itemCount, itemSize);
 }
 
 void *myCalloc21(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc21, itemCount, itemSize);
+    return nlp::invokeCalloc(21, itemCount, itemSize);
 }
 void *myCalloc22(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc22, itemCount, itemSize);
+    return nlp::invokeCalloc(22, itemCount, itemSize);
 }
 void *myCalloc23(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc23, itemCount, itemSize);
+    return nlp::invokeCalloc(23, itemCount, itemSize);
 }
 void *myCalloc24(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc24, itemCount, itemSize);
+    return nlp::invokeCalloc(24, itemCount, itemSize);
 }
 void *myCalloc25(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc25, itemCount, itemSize);
+    return nlp::invokeCalloc(25, itemCount, itemSize);
 }
 void *myCalloc26(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc26, itemCount, itemSize);
+    return nlp::invokeCalloc(26, itemCount, itemSize);
 }
 void *myCalloc27(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc27, itemCount, itemSize);
+    return nlp::invokeCalloc(27, itemCount, itemSize);
 }
 void *myCalloc28(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc28, itemCount, itemSize);
+    return nlp::invokeCalloc(28, itemCount, itemSize);
 }
 void *myCalloc29(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc29, itemCount, itemSize);
+    return nlp::invokeCalloc(29, itemCount, itemSize);
 }
 void *myCalloc30(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc30, itemCount, itemSize);
+    return nlp::invokeCalloc(30, itemCount, itemSize);
 }
 
 void *myCalloc31(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc31, itemCount, itemSize);
+    return nlp::invokeCalloc(31, itemCount, itemSize);
 }
 void *myCalloc32(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc32, itemCount, itemSize);
+    return nlp::invokeCalloc(32, itemCount, itemSize);
 }
 void *myCalloc33(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc33, itemCount, itemSize);
+    return nlp::invokeCalloc(33, itemCount, itemSize);
 }
 void *myCalloc34(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc34, itemCount, itemSize);
+    return nlp::invokeCalloc(34, itemCount, itemSize);
 }
 void *myCalloc35(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc35, itemCount, itemSize);
+    return nlp::invokeCalloc(35, itemCount, itemSize);
 }
 void *myCalloc36(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc36, itemCount, itemSize);
+    return nlp::invokeCalloc(36, itemCount, itemSize);
 }
 void *myCalloc37(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc37, itemCount, itemSize);
+    return nlp::invokeCalloc(37, itemCount, itemSize);
 }
 void *myCalloc38(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc38, itemCount, itemSize);
+    return nlp::invokeCalloc(38, itemCount, itemSize);
 }
 void *myCalloc39(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc39, itemCount, itemSize);
+    return nlp::invokeCalloc(39, itemCount, itemSize);
 }
 void *myCalloc40(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc40, itemCount, itemSize);
+    return nlp::invokeCalloc(40, itemCount, itemSize);
 }
 
 void *myCalloc41(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc41, itemCount, itemSize);
+    return nlp::invokeCalloc(41, itemCount, itemSize);
 }
 void *myCalloc42(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc42, itemCount, itemSize);
+    return nlp::invokeCalloc(42, itemCount, itemSize);
 }
 void *myCalloc43(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc43, itemCount, itemSize);
+    return nlp::invokeCalloc(43, itemCount, itemSize);
 }
 void *myCalloc44(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc44, itemCount, itemSize);
+    return nlp::invokeCalloc(44, itemCount, itemSize);
 }
 void *myCalloc45(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc45, itemCount, itemSize);
+    return nlp::invokeCalloc(45, itemCount, itemSize);
 }
 void *myCalloc46(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc46, itemCount, itemSize);
+    return nlp::invokeCalloc(46, itemCount, itemSize);
 }
 void *myCalloc47(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc47, itemCount, itemSize);
+    return nlp::invokeCalloc(47, itemCount, itemSize);
 }
 void *myCalloc48(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc48, itemCount, itemSize);
+    return nlp::invokeCalloc(48, itemCount, itemSize);
 }
 void *myCalloc49(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc49, itemCount, itemSize);
+    return nlp::invokeCalloc(49, itemCount, itemSize);
 }
 void *myCalloc50(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc50, itemCount, itemSize);
+    return nlp::invokeCalloc(50, itemCount, itemSize);
 }
 
 void *myCalloc51(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc51, itemCount, itemSize);
+    return nlp::invokeCalloc(51, itemCount, itemSize);
 }
 void *myCalloc52(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc52, itemCount, itemSize);
+    return nlp::invokeCalloc(52, itemCount, itemSize);
 }
 void *myCalloc53(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc53, itemCount, itemSize);
+    return nlp::invokeCalloc(53, itemCount, itemSize);
 }
 void *myCalloc54(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc54, itemCount, itemSize);
+    return nlp::invokeCalloc(54, itemCount, itemSize);
 }
 void *myCalloc55(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc55, itemCount, itemSize);
+    return nlp::invokeCalloc(55, itemCount, itemSize);
 }
 void *myCalloc56(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc56, itemCount, itemSize);
+    return nlp::invokeCalloc(56, itemCount, itemSize);
 }
 void *myCalloc57(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc57, itemCount, itemSize);
+    return nlp::invokeCalloc(57, itemCount, itemSize);
 }
 void *myCalloc58(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc58, itemCount, itemSize);
+    return nlp::invokeCalloc(58, itemCount, itemSize);
 }
 void *myCalloc59(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc59, itemCount, itemSize);
+    return nlp::invokeCalloc(59, itemCount, itemSize);
 }
 void *myCalloc60(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc60, itemCount, itemSize);
+    return nlp::invokeCalloc(60, itemCount, itemSize);
 }
 
 void *myCalloc61(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc61, itemCount, itemSize);
+    return nlp::invokeCalloc(61, itemCount, itemSize);
 }
 void *myCalloc62(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc62, itemCount, itemSize);
+    return nlp::invokeCalloc(62, itemCount, itemSize);
 }
 void *myCalloc63(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc63, itemCount, itemSize);
+    return nlp::invokeCalloc(63, itemCount, itemSize);
 }
 void *myCalloc64(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc64, itemCount, itemSize);
+    return nlp::invokeCalloc(64, itemCount, itemSize);
 }
 void *myCalloc65(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc65, itemCount, itemSize);
+    return nlp::invokeCalloc(65, itemCount, itemSize);
 }
 void *myCalloc66(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc66, itemCount, itemSize);
+    return nlp::invokeCalloc(66, itemCount, itemSize);
 }
 void *myCalloc67(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc67, itemCount, itemSize);
+    return nlp::invokeCalloc(67, itemCount, itemSize);
 }
 void *myCalloc68(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc68, itemCount, itemSize);
+    return nlp::invokeCalloc(68, itemCount, itemSize);
 }
 void *myCalloc69(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc69, itemCount, itemSize);
+    return nlp::invokeCalloc(69, itemCount, itemSize);
 }
 void *myCalloc70(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc70, itemCount, itemSize);
+    return nlp::invokeCalloc(70, itemCount, itemSize);
 }
 
 void *myCalloc71(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc71, itemCount, itemSize);
+    return nlp::invokeCalloc(71, itemCount, itemSize);
 }
 void *myCalloc72(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc72, itemCount, itemSize);
+    return nlp::invokeCalloc(72, itemCount, itemSize);
 }
 void *myCalloc73(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc73, itemCount, itemSize);
+    return nlp::invokeCalloc(73, itemCount, itemSize);
 }
 void *myCalloc74(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc74, itemCount, itemSize);
+    return nlp::invokeCalloc(74, itemCount, itemSize);
 }
 void *myCalloc75(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc75, itemCount, itemSize);
+    return nlp::invokeCalloc(75, itemCount, itemSize);
 }
 void *myCalloc76(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc76, itemCount, itemSize);
+    return nlp::invokeCalloc(76, itemCount, itemSize);
 }
 void *myCalloc77(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc77, itemCount, itemSize);
+    return nlp::invokeCalloc(77, itemCount, itemSize);
 }
 void *myCalloc78(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc78, itemCount, itemSize);
+    return nlp::invokeCalloc(78, itemCount, itemSize);
 }
 void *myCalloc79(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc79, itemCount, itemSize);
+    return nlp::invokeCalloc(79, itemCount, itemSize);
 }
 void *myCalloc80(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc80, itemCount, itemSize);
+    return nlp::invokeCalloc(80, itemCount, itemSize);
 }
 
 void *myCalloc81(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc81, itemCount, itemSize);
+    return nlp::invokeCalloc(81, itemCount, itemSize);
 }
 void *myCalloc82(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc82, itemCount, itemSize);
+    return nlp::invokeCalloc(82, itemCount, itemSize);
 }
 void *myCalloc83(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc83, itemCount, itemSize);
+    return nlp::invokeCalloc(83, itemCount, itemSize);
 }
 void *myCalloc84(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc84, itemCount, itemSize);
+    return nlp::invokeCalloc(84, itemCount, itemSize);
 }
 void *myCalloc85(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc85, itemCount, itemSize);
+    return nlp::invokeCalloc(85, itemCount, itemSize);
 }
 void *myCalloc86(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc86, itemCount, itemSize);
+    return nlp::invokeCalloc(86, itemCount, itemSize);
 }
 void *myCalloc87(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc87, itemCount, itemSize);
+    return nlp::invokeCalloc(87, itemCount, itemSize);
 }
 void *myCalloc88(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc88, itemCount, itemSize);
+    return nlp::invokeCalloc(88, itemCount, itemSize);
 }
 void *myCalloc89(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc89, itemCount, itemSize);
+    return nlp::invokeCalloc(89, itemCount, itemSize);
 }
 void *myCalloc90(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc90, itemCount, itemSize);
+    return nlp::invokeCalloc(90, itemCount, itemSize);
 }
 
 void *myCalloc91(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc91, itemCount, itemSize);
+    return nlp::invokeCalloc(91, itemCount, itemSize);
 }
 void *myCalloc92(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc92, itemCount, itemSize);
+    return nlp::invokeCalloc(92, itemCount, itemSize);
 }
 void *myCalloc93(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc93, itemCount, itemSize);
+    return nlp::invokeCalloc(93, itemCount, itemSize);
 }
 void *myCalloc94(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc94, itemCount, itemSize);
+    return nlp::invokeCalloc(94, itemCount, itemSize);
 }
 void *myCalloc95(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc95, itemCount, itemSize);
+    return nlp::invokeCalloc(95, itemCount, itemSize);
 }
 void *myCalloc96(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc96, itemCount, itemSize);
+    return nlp::invokeCalloc(96, itemCount, itemSize);
 }
 void *myCalloc97(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc97, itemCount, itemSize);
+    return nlp::invokeCalloc(97, itemCount, itemSize);
 }
 void *myCalloc98(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc98, itemCount, itemSize);
+    return nlp::invokeCalloc(98, itemCount, itemSize);
 }
 void *myCalloc99(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc99, itemCount, itemSize);
+    return nlp::invokeCalloc(99, itemCount, itemSize);
 }
 void *myCalloc100(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc100, itemCount, itemSize);
+    return nlp::invokeCalloc(100, itemCount, itemSize);
 }
 
 void *myCalloc101(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc101, itemCount, itemSize);
+    return nlp::invokeCalloc(101, itemCount, itemSize);
 }
 void *myCalloc102(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc102, itemCount, itemSize);
+    return nlp::invokeCalloc(102, itemCount, itemSize);
 }
 void *myCalloc103(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc103, itemCount, itemSize);
+    return nlp::invokeCalloc(103, itemCount, itemSize);
 }
 void *myCalloc104(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc104, itemCount, itemSize);
+    return nlp::invokeCalloc(104, itemCount, itemSize);
 }
 void *myCalloc105(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc105, itemCount, itemSize);
+    return nlp::invokeCalloc(105, itemCount, itemSize);
 }
 void *myCalloc106(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc106, itemCount, itemSize);
+    return nlp::invokeCalloc(106, itemCount, itemSize);
 }
 void *myCalloc107(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc107, itemCount, itemSize);
+    return nlp::invokeCalloc(107, itemCount, itemSize);
 }
 void *myCalloc108(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc108, itemCount, itemSize);
+    return nlp::invokeCalloc(108, itemCount, itemSize);
 }
 void *myCalloc109(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc109, itemCount, itemSize);
+    return nlp::invokeCalloc(109, itemCount, itemSize);
 }
 void *myCalloc110(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc110, itemCount, itemSize);
+    return nlp::invokeCalloc(110, itemCount, itemSize);
 }
 
 void *myCalloc111(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc111, itemCount, itemSize);
+    return nlp::invokeCalloc(111, itemCount, itemSize);
 }
 void *myCalloc112(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc112, itemCount, itemSize);
+    return nlp::invokeCalloc(112, itemCount, itemSize);
 }
 void *myCalloc113(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc113, itemCount, itemSize);
+    return nlp::invokeCalloc(113, itemCount, itemSize);
 }
 void *myCalloc114(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc114, itemCount, itemSize);
+    return nlp::invokeCalloc(114, itemCount, itemSize);
 }
 void *myCalloc115(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc115, itemCount, itemSize);
+    return nlp::invokeCalloc(115, itemCount, itemSize);
 }
 void *myCalloc116(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc116, itemCount, itemSize);
+    return nlp::invokeCalloc(116, itemCount, itemSize);
 }
 void *myCalloc117(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc117, itemCount, itemSize);
+    return nlp::invokeCalloc(117, itemCount, itemSize);
 }
 void *myCalloc118(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc118, itemCount, itemSize);
+    return nlp::invokeCalloc(118, itemCount, itemSize);
 }
 void *myCalloc119(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc119, itemCount, itemSize);
+    return nlp::invokeCalloc(119, itemCount, itemSize);
 }
 void *myCalloc120(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc120, itemCount, itemSize);
+    return nlp::invokeCalloc(120, itemCount, itemSize);
 }
 
 void *myCalloc121(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc121, itemCount, itemSize);
+    return nlp::invokeCalloc(121, itemCount, itemSize);
 }
 void *myCalloc122(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc122, itemCount, itemSize);
+    return nlp::invokeCalloc(122, itemCount, itemSize);
 }
 void *myCalloc123(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc123, itemCount, itemSize);
+    return nlp::invokeCalloc(123, itemCount, itemSize);
 }
 void *myCalloc124(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc124, itemCount, itemSize);
+    return nlp::invokeCalloc(124, itemCount, itemSize);
 }
 void *myCalloc125(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc125, itemCount, itemSize);
+    return nlp::invokeCalloc(125, itemCount, itemSize);
 }
 void *myCalloc126(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc126, itemCount, itemSize);
+    return nlp::invokeCalloc(126, itemCount, itemSize);
 }
 void *myCalloc127(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc127, itemCount, itemSize);
+    return nlp::invokeCalloc(127, itemCount, itemSize);
 }
 void *myCalloc128(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc128, itemCount, itemSize);
+    return nlp::invokeCalloc(128, itemCount, itemSize);
 }
 void *myCalloc129(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc129, itemCount, itemSize);
+    return nlp::invokeCalloc(129, itemCount, itemSize);
 }
 void *myCalloc130(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc130, itemCount, itemSize);
+    return nlp::invokeCalloc(130, itemCount, itemSize);
 }
 
 void *myCalloc131(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc131, itemCount, itemSize);
+    return nlp::invokeCalloc(131, itemCount, itemSize);
 }
 void *myCalloc132(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc132, itemCount, itemSize);
+    return nlp::invokeCalloc(132, itemCount, itemSize);
 }
 void *myCalloc133(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc133, itemCount, itemSize);
+    return nlp::invokeCalloc(133, itemCount, itemSize);
 }
 void *myCalloc134(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc134, itemCount, itemSize);
+    return nlp::invokeCalloc(134, itemCount, itemSize);
 }
 void *myCalloc135(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc135, itemCount, itemSize);
+    return nlp::invokeCalloc(135, itemCount, itemSize);
 }
 void *myCalloc136(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc136, itemCount, itemSize);
+    return nlp::invokeCalloc(136, itemCount, itemSize);
 }
 void *myCalloc137(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc137, itemCount, itemSize);
+    return nlp::invokeCalloc(137, itemCount, itemSize);
 }
 void *myCalloc138(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc138, itemCount, itemSize);
+    return nlp::invokeCalloc(138, itemCount, itemSize);
 }
 void *myCalloc139(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc139, itemCount, itemSize);
+    return nlp::invokeCalloc(139, itemCount, itemSize);
 }
 void *myCalloc140(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc140, itemCount, itemSize);
+    return nlp::invokeCalloc(140, itemCount, itemSize);
 }
 
 void *myCalloc141(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc141, itemCount, itemSize);
+    return nlp::invokeCalloc(141, itemCount, itemSize);
 }
 void *myCalloc142(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc142, itemCount, itemSize);
+    return nlp::invokeCalloc(142, itemCount, itemSize);
 }
 void *myCalloc143(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc143, itemCount, itemSize);
+    return nlp::invokeCalloc(143, itemCount, itemSize);
 }
 void *myCalloc144(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc144, itemCount, itemSize);
+    return nlp::invokeCalloc(144, itemCount, itemSize);
 }
 void *myCalloc145(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc145, itemCount, itemSize);
+    return nlp::invokeCalloc(145, itemCount, itemSize);
 }
 void *myCalloc146(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc146, itemCount, itemSize);
+    return nlp::invokeCalloc(146, itemCount, itemSize);
 }
 void *myCalloc147(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc147, itemCount, itemSize);
+    return nlp::invokeCalloc(147, itemCount, itemSize);
 }
 void *myCalloc148(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc148, itemCount, itemSize);
+    return nlp::invokeCalloc(148, itemCount, itemSize);
 }
 void *myCalloc149(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc149, itemCount, itemSize);
+    return nlp::invokeCalloc(149, itemCount, itemSize);
 }
 void *myCalloc150(size_t itemCount, size_t itemSize) {
-    return nlp::invokeCalloc((void *) myCalloc150, itemCount, itemSize);
+    return nlp::invokeCalloc(150, itemCount, itemSize);
 }
 
-void* popCallocMethod(std::string &libName) {
-    // _LOGI_("popCallocMethod, size: %d", callocStk.size());
+void* popCallocMethod() {
     void *method = (void*) callocStk.top();
     callocStk.pop();
-    callocStkUsed.push(method);
     return method;
-}
-
-void resetCallocMethod() {
-    while (!callocStkUsed.empty()) {
-        callocStk.push(callocStkUsed.top());
-        callocStkUsed.pop();
-    }
 }
 
 void initDiyCallocMethod() {

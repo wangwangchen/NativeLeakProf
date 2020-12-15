@@ -175,9 +175,7 @@ void *MyMemAlign148(size_t boundary, size_t byteCount);
 void *MyMemAlign149(size_t boundary, size_t byteCount);
 void *MyMemAlign150(size_t boundary, size_t byteCount);
 
-void* popMemAlignMethod(std::string &libName);
-
-void resetMemAlignMethod();
+void* popMemAlignMethod();
 
 void initDiyMemAlignMethod();
 

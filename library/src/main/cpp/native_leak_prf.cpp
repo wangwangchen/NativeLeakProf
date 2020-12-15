@@ -28,7 +28,7 @@ Java_com_qiu_liang_leak_XHook_dumpLeakInfo(JNIEnv *env, jclass clazz) {
 }
 
 extern "C"
-JNIEXPORT void JNICALL
+JNIEXPORT jboolean JNICALL
 Java_com_qiu_liang_leak_XHook_hookELFs(JNIEnv *env, jclass clazz, jobjectArray elf_file_array) {
     jsize length = env->GetArrayLength(elf_file_array);
 
@@ -42,14 +42,15 @@ Java_com_qiu_liang_leak_XHook_hookELFs(JNIEnv *env, jclass clazz, jobjectArray e
     }
 
     if (lib_names_vector.empty()) {
-        return;
+        _LOGE_("empty libs");
+        return false;
     }
 
 //    xhook_enable_debug(1);
 //    xhook_enable_sigsegv_protection(1);
     xhook_clear();
 
-    resetHookMethods();
+//    resetHookMethods();
 
     auto iterator = lib_names_vector.begin();
 
@@ -59,22 +60,31 @@ Java_com_qiu_liang_leak_XHook_hookELFs(JNIEnv *env, jclass clazz, jobjectArray e
         // 组装配置信息对象
         std::string soFile = ".*/" + std::string(elfFile) + "\\.so$";
 
-        xhook_register(soFile.c_str(), "malloc", (void *) getHookMethod(libName, MALLOC), nullptr);
-        xhook_register(soFile.c_str(), "calloc",  (void *) getHookMethod(libName, CALLOC),  nullptr);
-        xhook_register(soFile.c_str(), "realloc", (void *) getHookMethod(libName, REALLOC), nullptr);
-        xhook_register(soFile.c_str(), "free", (void *) (void *) getHookMethod(libName, FREE), nullptr);
-        xhook_register(soFile.c_str(), "memalign", (void *) (void *) getHookMethod(libName, MEMALIGN), nullptr);
-        xhook_register(soFile.c_str(), "aligned_alloc", (void *) (void *) getHookMethod(libName, ALIGNED_ALLOC), nullptr);
-        xhook_register(soFile.c_str(), "posix_memalign", (void *) (void *) getHookMethod(libName, POSIX_MEMALIGN), nullptr);
+        auto libWrapper = getHookMethod(libName);
+        if (!libWrapper) {
+            _LOGE_("memory method out of index");
+            return false;
+        }
+
+        xhook_register(soFile.c_str(), "malloc", (void *) libWrapper->malloc, nullptr);
+        xhook_register(soFile.c_str(), "calloc",  (void *) libWrapper->calloc,  nullptr);
+        xhook_register(soFile.c_str(), "realloc", (void *) libWrapper->realloc, nullptr);
+        xhook_register(soFile.c_str(), "free", (void *) libWrapper->free, nullptr);
+        xhook_register(soFile.c_str(), "memalign", (void *) libWrapper->memalign, nullptr);
+        xhook_register(soFile.c_str(), "aligned_alloc", (void *) libWrapper->alignedAlloc, nullptr);
+        xhook_register(soFile.c_str(), "posix_memalign", (void *) libWrapper->posixMemAlign, nullptr);
 
         iterator++;
     }
 
     xhook_refresh(0);
+
+    return true;
 }
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     onJNILoad(vm, reserved);
     nlp::initNLP();
+
     return JNI_VERSION_1_6;
 }

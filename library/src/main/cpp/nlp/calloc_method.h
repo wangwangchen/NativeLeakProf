@@ -175,9 +175,7 @@ void *myCalloc148(size_t itemCount, size_t itemSize);
 void *myCalloc149(size_t itemCount, size_t itemSize);
 void *myCalloc150(size_t itemCount, size_t itemSize);
 
-void* popCallocMethod(std::string &libName);
-
-void resetCallocMethod();
+void* popCallocMethod();
 
 void initDiyCallocMethod();
 
