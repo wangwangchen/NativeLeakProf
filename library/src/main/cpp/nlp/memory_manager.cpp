@@ -70,7 +70,6 @@ namespace nlp {
     void *invokeRealloc(void *method, void *ptr, size_t byteCount) {
         void * newPtr = realloc(ptr, byteCount);
 
-        std::basic_string<char, std::char_traits<char>, std::allocator<char>> &libName = libNameMap[method];
 //        _LOGII_("lib: %s, realloc %p return %p", libName.c_str(), ptr, newPtr);
 
         onFree(method, ptr);

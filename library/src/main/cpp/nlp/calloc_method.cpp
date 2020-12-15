@@ -475,6 +475,7 @@ void *myCalloc150(size_t itemCount, size_t itemSize) {
 }
 
 void* popCallocMethod(std::string &libName) {
+    // _LOGI_("popCallocMethod, size: %d", callocStk.size());
     void *method = (void*) callocStk.top();
     callocStk.pop();
     callocStkUsed.push(method);

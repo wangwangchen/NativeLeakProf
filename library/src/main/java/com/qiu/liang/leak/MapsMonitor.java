@@ -28,7 +28,7 @@ class MapsMonitor {
             while (true) {
                 check();
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(1500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -53,13 +53,16 @@ class MapsMonitor {
             int oldSize = sELFSets.size();
             String[] split = maps.split("\n");
             for (String line : split) {
-                if (line.contains(sPackageName) && line.endsWith(".so") && !line.contains(LIBRARY_NAME) && !line.contains("libc++_shared")) {
+                if (!line.endsWith(".so") || line.contains(LIBRARY_NAME)) {
+                    continue;
+                }
+                if (line.contains(sPackageName) || isSystemLibs(line)) {
                     String elfFile = line.substring(line.lastIndexOf("/") + 1, line.lastIndexOf(".so"));
                     if (sELFSets.contains(elfFile)) {
                         continue;
                     }
                     sELFSets.add(elfFile);
-                    ProfLog.i("hook:" + elfFile);
+                    ProfLog.i("hook:" + line);
                 }
             }
             if (sELFSets.size() != oldSize) {
@@ -70,6 +73,11 @@ class MapsMonitor {
         } catch (IOException e) {
             ProfLog.printErrStackTrace(e);
         }
+    }
+
+    private static boolean isSystemLibs(String line) {
+        return line.endsWith("libc.so") ||  line.endsWith("libart.so")
+                || line.endsWith("libGLESv2_adreno.so") || line.endsWith("libhwui.so");
     }
 
 }
