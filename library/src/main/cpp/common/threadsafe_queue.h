@@ -5,6 +5,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <initializer_list>
+#include <unordered_set>
 
 namespace nlp {
     inline namespace mt {
@@ -88,6 +89,18 @@ namespace nlp {
             auto empty() const -> decltype(data_queue.empty()) {
                 std::lock_guard<std::mutex> lk(mut);
                 return data_queue.empty();
+            }
+
+            /**
+             * 将所有数据都倒出来
+             * @param result_set 倒出的目标容器
+             */
+            void drop(std::unordered_set<value_type> &result_set) {
+                std::lock_guard<std::mutex> lk(mut);
+                while (!data_queue.empty()) {
+                    data_queue.pop();
+                    result_set.erase(std::move(data_queue.front()));
+                }
             }
 
             /*

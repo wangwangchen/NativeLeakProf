@@ -69,7 +69,7 @@ class MapsMonitor {
                 XHook.hookELFs(sELFSets.toArray(new String[0]));
             }
 
-            ProfLog.i("check proc/pid/maps cost time: " + (System.currentTimeMillis() - timeMillis));
+//            ProfLog.i("check proc/pid/maps cost time: " + (System.currentTimeMillis() - timeMillis));
         } catch (IOException e) {
             ProfLog.printErrStackTrace(e);
         }

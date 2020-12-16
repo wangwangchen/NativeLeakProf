@@ -52,7 +52,7 @@ namespace nlp {
 
     int invokePosixMemAlign(int32_t index, void **memptr, size_t boundary, size_t byteCount);
 
-    LibWrapper *getHookMethod(std::string &libName);
+    LibWrapper *getHookMethod(const std::string& libName);
 
     /**
      * 当前内存申请情况
