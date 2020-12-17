@@ -16,10 +16,19 @@
 #include "unit.h"
 #include <unordered_set>
 #include <utility>
+#include <thread>
 
 namespace nlp {
 
     using namespace std;
+
+    int32_t libIndex = 0;
+    LibWrapper libWrapperArray[SLOT_NUM];
+    // 内存地址 - 库名
+    std::map<void *, int64_t> memoryPtrMap;
+    // 库名 - 已申请的内存大小
+    std::map<std::string, int64_t> mallocRecordMap;
+    std::thread *nlpThread;
 
     class MemoryOperation {
     public:
@@ -29,6 +38,8 @@ namespace nlp {
                 : index(index) {}
 
         virtual ~MemoryOperation() = default;
+
+        virtual void handle() = 0;
     };
 
     class MallocOperation : public MemoryOperation {
@@ -38,21 +49,31 @@ namespace nlp {
         MallocOperation(int32_t index, void *ptr, size_t byteCount) : MemoryOperation(index),
                                                                       ptr(ptr),
                                                                       byteCount(byteCount) {}
+
+        void handle() override {
+//                _LOGI_("dumpThreadEntry matched MallocOperation type id");
+            auto libWrapper = &libWrapperArray[index];
+            std::string libName = libWrapper->libName;
+            memoryPtrMap[ptr] = byteCount;
+            mallocRecordMap[libName] += byteCount;
+        }
     };
 
     class FreeOperation : public MemoryOperation {
     public:
         FreeOperation(int32_t index, void *ptr) : MemoryOperation(index), ptr(ptr) {}
 
+        void handle() override {
+//                _LOGI_("dumpThreadEntry matched FreeOperation type id");
+            auto libWrapper = &libWrapperArray[index];
+            std::string libName = libWrapper->libName;
+            mallocRecordMap[libName] -= memoryPtrMap[ptr];
+            memoryPtrMap.erase(ptr);
+        }
+
         void *ptr;
     };
 
-    int32_t libIndex = 0;
-    LibWrapper libWrapperArray[SLOT_NUM];
-    // 内存地址 - 库名
-    std::map<void *, int64_t> memoryPtrMap;
-    // 库名 - 已申请的内存大小
-    std::map<std::string, int64_t> mallocRecordMap;
     threadsafe_queue<MemoryOperation *> queue;
 
     void onMalloc(int32_t index, void *ptr, size_t byteCount) {
@@ -154,39 +175,6 @@ namespace nlp {
         return libWrapper;
     }
 
-    inline void handleMemoryOperate(MemoryOperation *operation) {
-        auto *mallocOperation = dynamic_cast<MallocOperation *>(operation);
-        if (mallocOperation != nullptr) {
-//                _LOGI_("dumpThreadEntry matched MallocOperation type id");
-            auto libWrapper = &libWrapperArray[mallocOperation->index];
-            std::string libName = libWrapper->libName;
-            memoryPtrMap[mallocOperation->ptr] = mallocOperation->byteCount;
-            mallocRecordMap[libName] += mallocOperation->byteCount;
-            return;
-        }
-
-        auto *freeOperation = dynamic_cast<FreeOperation *>(operation);
-        if (freeOperation != nullptr) {
-//                _LOGI_("dumpThreadEntry matched FreeOperation type id");
-            auto libWrapper = &libWrapperArray[freeOperation->index];
-            std::string libName = libWrapper->libName;
-            mallocRecordMap[libName] -= memoryPtrMap[freeOperation->ptr];
-            memoryPtrMap.erase(freeOperation->ptr);
-            return;
-        }
-
-        _LOGE_("dumpThreadEntry not matched type id");
-    }
-
-    [[noreturn]] void *dumpThreadEntry(__unused void *argv) {
-        while (true) {
-            MemoryOperation *operation = queue.wait_and_pop();
-            handleMemoryOperate(operation);
-            delete operation;
-//            _LOGE_("queue size: %d", queue.size());
-        }
-    }
-
     void initNLP() {
         initDiyMallocMethod();
         initDiyFreeMethod();
@@ -195,8 +183,17 @@ namespace nlp {
         initDiyMemAlignMethod();
         initDiyAlignedAllocMethod();
         initDiyPosixMemAlignMethod();
-        pthread_t thread;
-        pthread_create(&thread, nullptr, dumpThreadEntry, nullptr);
+        nlpThread = new std::thread([] {
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "EndlessLoop"
+            while (true) {
+                auto *operation = queue.wait_and_pop();
+                operation->handle();
+                delete operation;
+//            _LOGE_("queue size: %d", queue.size());
+            }
+#pragma clang diagnostic pop
+        });
     }
 
     bool cmp(const pair<std::string, int64_t> &p1, const pair<std::string, int64_t> &p2) {
@@ -204,12 +201,12 @@ namespace nlp {
     }
 
     std::string currentRecordInfoStr() {
-        _LOGI_("dump currentRecordInfoStr, queue size: %d", queue.size());
+//        _LOGI_("dump currentRecordInfoStr, queue size: %d", queue.size());
         // 处理所有数据
         std::unordered_set<MemoryOperation *> localSet;
         queue.drop(localSet);
         for (auto &item : localSet) {
-            handleMemoryOperate(item);
+            item->handle();
             delete item;
         }
         localSet.clear();
