@@ -2,11 +2,12 @@
 // Created by chenwangwang on 2020/12/10.
 //
 
+#include <queue>
 #include "calloc_method.h"
 #include "Log.h"
 #include "memory_manager.h"
 
-std::stack<void*> callocStk;
+std::queue<void*> callocStk;
 
 void *myCalloc0(size_t itemCount, size_t itemSize) {
     return nlp::invokeCalloc(0, itemCount, itemSize);
@@ -832,7 +833,7 @@ void *myCalloc498(size_t itemCount, size_t itemSize) {return nlp::invokeCalloc(4
 void *myCalloc499(size_t itemCount, size_t itemSize) {return nlp::invokeCalloc(499, itemCount, itemSize);}
 
 void* popCallocMethod() {
-    void *method = (void*) callocStk.top();
+    void *method = (void*) callocStk.front();
     callocStk.pop();
     return method;
 }

@@ -2,11 +2,12 @@
 // Created by chenwangwang on 2020/12/10.
 //
 
+#include <queue>
 #include "free_method.h"
 #include "Log.h"
 #include "memory_manager.h"
 
-std::stack<void*> freeStk;
+std::queue<void*> freeStk;
 
 void myFree0(void* ptr) {
     nlp::invokeFree(0, ptr);
@@ -639,7 +640,7 @@ void myFree298(void* ptr) {nlp::invokeFree(298, ptr);}
 void myFree299(void* ptr) {nlp::invokeFree(299, ptr);}
 
 void* popFreeMethod() {
-    void *method = (void*) freeStk.top();
+    void *method = (void*) freeStk.front();
     freeStk.pop();
     return method;
 }

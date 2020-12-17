@@ -2,11 +2,12 @@
 // Created by chenwangwang on 2020/12/10.
 //
 
+#include <queue>
 #include "posix_memalign_method.h"
 #include "Log.h"
 #include "memory_manager.h"
 
-std::stack<void*> posixMemAlignStk;
+std::queue<void*> posixMemAlignStk;
 
 int MyPosixMemAlign0(void **memptr, size_t boundary, size_t byteCount) {
     return nlp::invokePosixMemAlign(0, memptr, boundary, byteCount);
@@ -831,7 +832,7 @@ int MyPosixMemAlign498(void **memptr, size_t boundary, size_t byteCount) {return
 int MyPosixMemAlign499(void **memptr, size_t boundary, size_t byteCount) {return nlp::invokePosixMemAlign(499, memptr, boundary, byteCount);}
 
 void* popPosixMemAlignMethod() {
-    void *method = (void*) posixMemAlignStk.top();
+    void *method = (void*) posixMemAlignStk.front();
     posixMemAlignStk.pop();
     return method;
 }

@@ -15,6 +15,7 @@
 #include "aligned_alloc_method.h"
 #include "unit.h"
 #include <unordered_set>
+#include <utility>
 
 namespace nlp {
 
@@ -24,18 +25,19 @@ namespace nlp {
     public:
         int32_t index;
 
-        explicit MemoryOperation(int32_t index) : index(index) {}
+        explicit MemoryOperation(int32_t index)
+                : index(index) {}
 
         virtual ~MemoryOperation() = default;
     };
 
     class MallocOperation : public MemoryOperation {
     public:
+        void *ptr;
+        size_t byteCount;
         MallocOperation(int32_t index, void *ptr, size_t byteCount) : MemoryOperation(index),
                                                                       ptr(ptr),
                                                                       byteCount(byteCount) {}
-        void *ptr;
-        size_t byteCount;
     };
 
     class FreeOperation : public MemoryOperation {
@@ -55,7 +57,7 @@ namespace nlp {
 
     void onMalloc(int32_t index, void *ptr, size_t byteCount) {
         if (ptr) {
-            auto *mallocOperation = new MallocOperation(SLOT_NUM - index - 1, ptr, byteCount);
+            auto *mallocOperation = new MallocOperation(index, ptr, byteCount);
             queue.push(mallocOperation);
         }
     }
@@ -70,7 +72,7 @@ namespace nlp {
     }
 
     void onFree(int32_t index, void *ptr) {
-        auto *freeOperation = new FreeOperation(SLOT_NUM - index - 1, ptr);
+        auto *freeOperation = new FreeOperation(index, ptr);
         queue.push(freeOperation);
     }
 
@@ -146,6 +148,7 @@ namespace nlp {
         libWrapper->alignedAlloc = popAlignedAllocMethod();
         libWrapper->posixMemAlign = popPosixMemAlignMethod();
         libWrapper->libName = libName;
+        libWrapper->index = index;
 
         _LOGI_("lib: %s, getHookMethod %d", libName.c_str(), index);
         return libWrapper;

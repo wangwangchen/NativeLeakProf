@@ -1,8 +1,9 @@
+#include <queue>
 #include "malloc_method.h"
 #include "Log.h"
 #include "memory_manager.h"
 
-std::stack<void*> mallocStk;
+std::queue<void*> mallocStk;
 
 void *myMalloc0(size_t byteCount) {
     return nlp::invokeMalloc(0, byteCount);
@@ -829,7 +830,7 @@ void *myMalloc498(size_t byteCount) {return nlp::invokeMalloc(498, byteCount);}
 void *myMalloc499(size_t byteCount) {return nlp::invokeMalloc(499, byteCount);}
 
 void* popMallocMethod() {
-    void *method = (void*) mallocStk.top();
+    void *method = (void*) mallocStk.front();
     mallocStk.pop();
     return method;
 }

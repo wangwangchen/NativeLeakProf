@@ -2,11 +2,12 @@
 // Created by chenwangwang on 2020/12/10.
 //
 
+#include <queue>
 #include "memalign_method.h"
 #include "Log.h"
 #include "memory_manager.h"
 
-std::stack<void*> memAlignStk;
+std::queue<void*> memAlignStk;
 
 void *MyMemAlign0(size_t boundary, size_t byteCount) {
     return nlp::invokeMemAlign(0, boundary, byteCount);
@@ -832,7 +833,7 @@ void *MyMemAlign498(size_t boundary, size_t byteCount) {return nlp::invokeMemAli
 void *MyMemAlign499(size_t boundary, size_t byteCount) {return nlp::invokeMemAlign(499, boundary, byteCount);}
 
 void* popMemAlignMethod() {
-    void *method = (void*) memAlignStk.top();
+    void *method = (void*) memAlignStk.front();
     memAlignStk.pop();
     return method;
 }

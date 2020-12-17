@@ -2,11 +2,12 @@
 // Created by chenwangwang on 2020/12/10.
 //
 
+#include <queue>
 #include "realloc_method.h"
 #include "Log.h"
 #include "memory_manager.h"
 
-std::stack<void*> reallocStk;
+std::queue<void*> reallocStk;
 
 void *myRealloc0(void *ptr, size_t byteCount) {
     return nlp::invokeRealloc(0, ptr, byteCount);
@@ -831,7 +832,7 @@ void *myRealloc498(void *ptr, size_t byteCount) {return nlp::invokeRealloc(498, 
 void *myRealloc499(void *ptr, size_t byteCount) {return nlp::invokeRealloc(499, ptr, byteCount);}
 
 void* popReallocMethod() {
-    void *method = (void*) reallocStk.top();
+    void *method = (void*) reallocStk.front();
     reallocStk.pop();
     return method;
 }

@@ -2,11 +2,12 @@
 // Created by chenwangwang on 2020/12/10.
 //
 
+#include <queue>
 #include "aligned_alloc_method.h"
 #include "Log.h"
 #include "memory_manager.h"
 
-std::stack<void*> alignedAllocStk;
+std::queue<void*> alignedAllocStk;
 
 void *MyAlignedAlloc0(size_t alignment, size_t byteCount) {
     return nlp::invokeAlignedAlloc(0, alignment, byteCount);
@@ -832,7 +833,7 @@ void *MyAlignedAlloc498(size_t alignment, size_t byteCount) {return nlp::invokeA
 void *MyAlignedAlloc499(size_t alignment, size_t byteCount) {return nlp::invokeAlignedAlloc(499, alignment, byteCount);}
 
 void* popAlignedAllocMethod() {
-    void *method = (void*) alignedAllocStk.top();
+    void *method = (void*) alignedAllocStk.front();
     alignedAllocStk.pop();
     return method;
 }
