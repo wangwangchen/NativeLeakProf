@@ -2,6 +2,7 @@ package com.qiu.liang.leak.prof
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import com.qiu.liang.leak.NativeLeakProf
 import kotlin.concurrent.thread
@@ -17,7 +18,9 @@ class MainActivity : AppCompatActivity() {
 
         thread {
             while (true) {
+                val currentTimeMillis = System.currentTimeMillis();
                 val dumpLeakInfo = NativeLeakProf.dumpLeakInfo()
+                Log.i("NativeLeakProf", "dumpLeakInfo cast time: " + (System.currentTimeMillis() - currentTimeMillis));
                 runOnUiThread {
                     textView.text = dumpLeakInfo
                 }
