@@ -10,7 +10,7 @@ Android  Native代码（C/C++）内存泄露分析
 
 
 # 已完成
-1. 轮询（5s）监控proc/pid/maps内容，解析出包含包名的动态库，并调用native方法注册hook函数
+1. 轮询监控proc/pid/maps内容，解析出包含包名的动态库，并调用native方法注册hook函数
 2. hook函数需要是一个`void*`类型的函数，这里采用占坑的方式提前注册好
 3. hook内存申请释放函数: `malloc  calloc realloc memalign aligned_alloc posix_memalign free`
 4. 采用消息队列的方式，使用异步线程来不断记录内存的操作
