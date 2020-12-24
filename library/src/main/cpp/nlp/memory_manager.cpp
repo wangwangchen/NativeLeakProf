@@ -28,7 +28,6 @@ namespace nlp {
     std::map<void *, int64_t> memoryPtrMap;
     // 库名 - 已申请的内存大小
     std::map<std::string, int64_t> mallocRecordMap;
-    std::thread *nlpThread;
 
     class MemoryOperation {
     public:
@@ -175,6 +174,15 @@ namespace nlp {
         return libWrapper;
     }
 
+    [[noreturn]] void handleThread() {
+        while (true) {
+            auto *operation = queue.wait_and_pop();
+            operation->handle();
+            delete operation;
+//            _LOGE_("queue size: %d", queue.size());
+        }
+    }
+
     void initNLP() {
         initDiyMallocMethod();
         initDiyFreeMethod();
@@ -183,17 +191,7 @@ namespace nlp {
         initDiyMemAlignMethod();
         initDiyAlignedAllocMethod();
         initDiyPosixMemAlignMethod();
-        nlpThread = new std::thread([] {
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "EndlessLoop"
-            while (true) {
-                auto *operation = queue.wait_and_pop();
-                operation->handle();
-                delete operation;
-//            _LOGE_("queue size: %d", queue.size());
-            }
-#pragma clang diagnostic pop
-        });
+        new thread(handleThread);
     }
 
     bool cmp(const pair<std::string, int64_t> &p1, const pair<std::string, int64_t> &p2) {
