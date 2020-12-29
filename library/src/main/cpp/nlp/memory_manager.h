@@ -12,13 +12,8 @@
 namespace nlp {
 
 #define SLOT_NUM 500         // 一共只有500个坑位
-
-    /**
-     * 内存操作函数类型
-     */
-    enum MemoryMethodType {
-        MALLOC, FREE, CALLOC, REALLOC, MEMALIGN, ALIGNED_ALLOC, POSIX_MEMALIGN
-    };
+#define TYPE_MALLOC 0
+#define TYPE_FREE 1
 
     struct LibWrapper {
         void *malloc;

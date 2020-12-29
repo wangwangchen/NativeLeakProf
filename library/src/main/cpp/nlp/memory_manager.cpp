@@ -29,107 +29,80 @@ namespace nlp {
     // 库名 - 已申请的内存大小
     std::map<std::string, int64_t> mallocRecordMap;
 
-    class MemoryOperation {
-    public:
-        int32_t index;
-
-        explicit MemoryOperation(int32_t index)
-                : index(index) {}
-
-        virtual ~MemoryOperation() = default;
-
-        virtual void handle() = 0;
-    };
-
-    class MallocOperation : public MemoryOperation {
-    public:
+    struct MemoryStruct {
+        uint32_t type;
         void *ptr;
         size_t byteCount;
-        MallocOperation(int32_t index, void *ptr, size_t byteCount) : MemoryOperation(index),
-                                                                      ptr(ptr),
-                                                                      byteCount(byteCount) {}
-
-        void handle() override {
-//                _LOGI_("dumpThreadEntry matched MallocOperation type id");
-            auto libWrapper = &libWrapperArray[index];
-            std::string libName = libWrapper->libName;
-            memoryPtrMap[ptr] = byteCount;
-            mallocRecordMap[libName] += byteCount;
-        }
+        int32_t index;
     };
 
-    class FreeOperation : public MemoryOperation {
-    public:
-        FreeOperation(int32_t index, void *ptr) : MemoryOperation(index), ptr(ptr) {}
-
-        void handle() override {
-//                _LOGI_("dumpThreadEntry matched FreeOperation type id");
-            auto libWrapper = &libWrapperArray[index];
+    /**
+     * 处理内存操作
+     */
+    void handle(MemoryStruct *memoryStruct) {
+        if (memoryStruct->type == TYPE_MALLOC) {
+            auto libWrapper = &libWrapperArray[memoryStruct->index];
             std::string libName = libWrapper->libName;
-            mallocRecordMap[libName] -= memoryPtrMap[ptr];
-            memoryPtrMap.erase(ptr);
+            memoryPtrMap[memoryStruct->ptr] = memoryStruct->byteCount;
+            mallocRecordMap[libName] += memoryStruct->byteCount;
+        } else {
+            auto libWrapper = &libWrapperArray[memoryStruct->index];
+            std::string libName = libWrapper->libName;
+            mallocRecordMap[libName] -= memoryPtrMap[memoryStruct->ptr];
+            memoryPtrMap.erase(memoryStruct->ptr);
         }
+        free(memoryStruct);
+    }
 
-        void *ptr;
-    };
-
-    threadsafe_queue<MemoryOperation *> queue;
+    threadsafe_queue<MemoryStruct *> queue;
 
     void onMalloc(int32_t index, void *ptr, size_t byteCount) {
         if (ptr) {
-            auto *mallocOperation = new MallocOperation(index, ptr, byteCount);
-            queue.push(mallocOperation);
+            auto * mallocStruct = static_cast<MemoryStruct *>(malloc(sizeof(MemoryStruct)));
+            mallocStruct->type = TYPE_MALLOC;
+            mallocStruct->index = index;
+            mallocStruct->ptr = ptr;
+            mallocStruct->byteCount = byteCount;
+            queue.push(mallocStruct);
         }
     }
 
     void *invokeMalloc(int32_t index, size_t byteCount) {
         void *ptr = malloc(byteCount);
-//        _LOGII_("lib: %s, malloc %zu byte, return %p", libName.c_str(), byteCount, ptr);
-
         onMalloc(index, ptr, byteCount);
-
         return ptr;
     }
 
     void onFree(int32_t index, void *ptr) {
-        auto *freeOperation = new FreeOperation(index, ptr);
-        queue.push(freeOperation);
+        auto * mallocStruct = static_cast<MemoryStruct *>(malloc(sizeof(MemoryStruct)));
+        mallocStruct->type = TYPE_FREE;
+        mallocStruct->index = index;
+        mallocStruct->ptr = ptr;
+        queue.push(mallocStruct);
     }
 
     void invokeFree(int32_t index, void *ptr) {
-//        _LOGII_("lib: %s, free %p", libName.c_str(), ptr);
         free(ptr);
-
         onFree(index, ptr);
     }
 
     void *invokeCalloc(int32_t index, size_t itemCount, size_t itemSize) {
         void *ptr = calloc(itemCount, itemSize);
         size_t byteCount = (itemCount * itemSize);
-//        _LOGII_("lib: %s, calloc %zu byte, return %p", libName.c_str(), byteCount, ptr);
-
         onMalloc(index, ptr, byteCount);
-
         return ptr;
     }
 
     void *invokeRealloc(int32_t index, void *ptr, size_t byteCount) {
         void *newPtr = realloc(ptr, byteCount);
-
-//        _LOGII_("lib: %s, realloc %p return %p", libName.c_str(), ptr, newPtr);
-
         onFree(index, ptr);
-
         onMalloc(index, newPtr, byteCount);
-
         return newPtr;
     }
 
     void *invokeMemAlign(int32_t index, size_t boundary, size_t byteCount) {
         void *ptr = memalign(boundary, byteCount);
-
         onMalloc(index, ptr, byteCount);
-
         return ptr;
     }
 
@@ -139,11 +112,9 @@ namespace nlp {
 
     int invokePosixMemAlign(int32_t index, void **memptr, size_t boundary, size_t byteCount) {
         int ret = posix_memalign(memptr, boundary, byteCount);
-
         if (!ret) {
             onMalloc(index, *memptr, byteCount);
         }
-
         return ret;
     }
 
@@ -170,16 +141,13 @@ namespace nlp {
         libWrapper->libName = libName;
         libWrapper->index = index;
 
-        _LOGI_("lib: %s, getHookMethod %d", libName.c_str(), index);
+//        _LOGI_("lib: %s, getHookMethod %d", libName.c_str(), index);
         return libWrapper;
     }
 
-    [[noreturn]] void handleThread() {
+    [[noreturn]] void* handleThread(void *argv) {
         while (true) {
-            auto *operation = queue.wait_and_pop();
-            operation->handle();
-            delete operation;
-//            _LOGE_("queue size: %d", queue.size());
+            handle(queue.wait_and_pop());
         }
     }
 
@@ -191,7 +159,8 @@ namespace nlp {
         initDiyMemAlignMethod();
         initDiyAlignedAllocMethod();
         initDiyPosixMemAlignMethod();
-        new thread(handleThread);
+        pthread_t thd;
+        pthread_create(&thd, NULL, handleThread, NULL);
     }
 
     bool cmp(const pair<std::string, int64_t> &p1, const pair<std::string, int64_t> &p2) {
@@ -201,11 +170,10 @@ namespace nlp {
     std::string currentRecordInfoStr() {
 //        _LOGI_("dump currentRecordInfoStr, queue size: %d", queue.size());
         // 处理所有数据
-        std::unordered_set<MemoryOperation *> localSet;
+        std::unordered_set<MemoryStruct *> localSet;
         queue.drop(localSet);
         for (auto &item : localSet) {
-            item->handle();
-            delete item;
+            handle(item);
         }
         localSet.clear();
 
