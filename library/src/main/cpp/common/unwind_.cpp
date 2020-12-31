@@ -18,18 +18,17 @@ _Unwind_Reason_Code unwindCallback(struct _Unwind_Context *context, void *arg) {
 }
 
 
-Backtrace *captureBacktrace(size_t maxCount) {
-    auto *state = new Backtrace(maxCount);
-    _Unwind_Backtrace(unwindCallback, state);
+shared_ptr<Backtrace> captureBacktrace(size_t maxCount) {
+    auto state = make_shared<Backtrace>(maxCount);
+    _Unwind_Backtrace(unwindCallback, state.get());
     return state;
 }
 
 
 void backtraceToLogcat() {
     const size_t max = 300; // 调用的层数
-    Backtrace *stack = captureBacktrace(max);
+    shared_ptr<Backtrace> stack = captureBacktrace(max);
     stack->log();
-    delete stack;
 }
 
 template <typename ...Args>
@@ -50,7 +49,7 @@ static std::string format_string(const char* format, Args... args) {
 }
 
 void Backtrace::dladdr_() {
-    list<StackElement *>::iterator iter;
+    list<shared_ptr<StackElement>>::iterator iter;
     for (iter = mStackElementList->begin(); iter != mStackElementList->end(); iter++) {
         auto stackElement = *iter;
         stackElement->dladdr_();
@@ -59,13 +58,13 @@ void Backtrace::dladdr_() {
 
 void Backtrace::log() {
     int i = 0;
-    list<StackElement *>::iterator iter;
+    list<shared_ptr<StackElement>>::iterator iter;
 
     for (iter = mStackElementList->begin(); iter != mStackElementList->end(); iter++) {
         auto stackElement = *iter;
         stackElement->dladdr_();
         uintptr_t pc = stackElement->getPc();
-        Dl_info *dlInfo = stackElement->getDLInfo();
+        shared_ptr<Dl_info> dlInfo = stackElement->getDLInfo();
         int32_t dladdr = stackElement->getDladdr();
         void *dli_fbase = dlInfo->dli_fbase;
         void *dli_saddr = dlInfo->dli_saddr;

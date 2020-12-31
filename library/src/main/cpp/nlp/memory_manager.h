@@ -21,6 +21,7 @@
 #include <unordered_set>
 #include <utility>
 #include <thread>
+#include <stdint.h>
 #include "unwind_.h"
 #include "threadsafe_queue.h"
 
@@ -36,30 +37,16 @@ namespace nlp {
     class MallocList {
     public:
         int64_t mallocSize;
-        unordered_set<Backtrace *> *set;
-
-        MallocList() {
-            set = new unordered_set<Backtrace *>();
-        }
-
-        virtual ~MallocList() {
-            for (auto & it : *set) {
-                delete it;
-            }
-            delete set;
-        }
+        shared_ptr<unordered_set<shared_ptr<Backtrace>>> set = make_shared<unordered_set<shared_ptr<Backtrace>>>();
     };
 
     class MallocInfo {
     public:
         int64_t mallocSize;
-        Backtrace *mallocStack;
+        shared_ptr<Backtrace> mallocStack;
 
-        MallocInfo(Backtrace *mallocStack) : mallocStack(mallocStack) {}
-
-        virtual ~MallocInfo() {
-            delete mallocStack;
-        }
+        MallocInfo(const shared_ptr<Backtrace> &mallocStack, int64_t mallocSize)
+                : mallocStack(mallocStack), mallocSize(mallocSize) {}
     };
 
     struct LibWrapper {
@@ -83,14 +70,13 @@ namespace nlp {
         void *ptr;
         size_t byteCount;
         int32_t index;
-        Backtrace *trace;
+        shared_ptr<Backtrace> trace;
     };
 
 #define onMalloc(index, ptr, byteCount, queue)                                              \
     if (ptr) {                                                                              \
-        auto *trace = new Backtrace(15, SKIP_COUNT);                                        \
-        backtrace(trace);                                                                   \
-        auto * mallocStruct = static_cast<MemoryStruct *>(malloc(sizeof(MemoryStruct)));    \
+        shared_ptr<Backtrace> trace = backtrace(15, SKIP_COUNT);                            \
+        auto mallocStruct = make_shared<MemoryStruct>();                                    \
         mallocStruct->type = TYPE_MALLOC;                                                   \
         mallocStruct->index = index;                                                        \
         mallocStruct->ptr = ptr;                                                            \
@@ -101,7 +87,7 @@ namespace nlp {
                                                                                             \
 
 #define onFree(index, ptrToFree, queue)                                                   \
-    auto * freeStruct = static_cast<MemoryStruct *>(malloc(sizeof(MemoryStruct)));        \
+    auto freeStruct = make_shared<MemoryStruct>();                                        \
     freeStruct->type = TYPE_FREE;                                                         \
     freeStruct->index = index;                                                            \
     freeStruct->ptr = ptrToFree;                                                          \

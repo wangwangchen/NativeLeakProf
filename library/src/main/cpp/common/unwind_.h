@@ -19,38 +19,38 @@
 #include <dlfcn.h>
 #include <unwind.h>
 
-extern _Unwind_Reason_Code unwindCallback(struct _Unwind_Context *context, void *arg);
-
-#define backtrace(trace) \
-_Unwind_Backtrace(unwindCallback, trace)
 
 using namespace std;
 
+extern _Unwind_Reason_Code unwindCallback(struct _Unwind_Context *context, void *arg);
+
+#define backtrace(maxSize, skipCount) \
+({                                                                                            \
+    shared_ptr<Backtrace> localTrace = make_shared<Backtrace>(maxSize, skipCount);                 \
+    _Unwind_Backtrace(unwindCallback, localTrace.get());                                           \
+    localTrace;                                                                                    \
+})                                                                                            \
+
+
 class StackElement {
 private:
-    Dl_info *mDLInfo;
+    shared_ptr<Dl_info> mDLInfo = make_shared<Dl_info>();
     uintptr_t pc;
     uint32_t mDladdr;
 
 public:
-    StackElement(uintptr_t pc) :pc(pc) {
-        mDLInfo = new Dl_info();
-    }
-
-    virtual ~StackElement() {
-        delete mDLInfo;
-    }
+    StackElement(uintptr_t pc) : pc(pc) {}
 
     uintptr_t getPc() const {
         return pc;
     }
 
-    Dl_info *getDLInfo() const {
+    shared_ptr<Dl_info> getDLInfo() const {
         return mDLInfo;
     }
 
     void dladdr_() {
-        dladdr((void *) pc, mDLInfo);
+        dladdr((void *) pc, mDLInfo.get());
     }
 
     uint32_t getDladdr() const {
@@ -62,25 +62,16 @@ public:
 
 class Backtrace {
 private:
-    list<StackElement *> *mStackElementList;
+    shared_ptr<list<shared_ptr<StackElement>>> mStackElementList = make_shared<list<shared_ptr<StackElement>>>();
     size_t mMaxSize;
     size_t mSkipCount;
 
 public:
     explicit Backtrace(size_t maxSize) : mMaxSize(maxSize) {
-        mStackElementList = new list<StackElement *>();
         mSkipCount = 0;
     }
 
     explicit Backtrace(size_t maxSize, size_t skipCount) : mMaxSize(maxSize), mSkipCount(skipCount) {
-        mStackElementList = new list<StackElement *>();
-    }
-
-    virtual ~Backtrace() {
-        for (auto &it : *mStackElementList) {
-            delete it;
-        }
-        delete mStackElementList;
     }
 
     void log();
@@ -100,7 +91,7 @@ public:
     }
 
     void push(uintptr_t pc) const {
-        mStackElementList->push_back(new StackElement(pc));
+        mStackElementList->push_back(make_shared<StackElement>(StackElement(pc)));
     }
 
 };

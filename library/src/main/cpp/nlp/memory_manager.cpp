@@ -4,24 +4,22 @@ namespace nlp {
 
     int32_t libIndex = 0;
     // 库index - 已申请的内存大小
-    std::map<int32_t, MallocList*> mallocRecordMap;
+    std::map<int32_t, shared_ptr<MallocList>> mallocRecordMap;
     LibWrapper libWrapperArray[SLOT_NUM];
     // 内存地址 - 申请的内存
-    std::map<void *, MallocInfo*> memoryPtrMap;
-    threadsafe_queue<MemoryStruct *> queue;
+    std::map<void *, shared_ptr<MallocInfo>> memoryPtrMap;
+    threadsafe_queue<shared_ptr<MemoryStruct>> queue;
 
     /**
      * 处理内存操作
      */
-    void handle(MemoryStruct *memoryStruct) {
+    void handle(const shared_ptr<MemoryStruct>& memoryStruct) {
         if (memoryStruct->type == TYPE_MALLOC) {
-            auto* mallocInfo = new MallocInfo(memoryStruct->trace);
-            mallocInfo->mallocSize = memoryStruct->byteCount;
-            memoryPtrMap[memoryStruct->ptr] = mallocInfo;
+            memoryPtrMap[memoryStruct->ptr] = make_shared<MallocInfo>(memoryStruct->trace, memoryStruct->byteCount);
             auto iterator = mallocRecordMap.find(memoryStruct->index);
-            MallocList * mallocList;
+            shared_ptr<MallocList> mallocList;
             if (iterator == mallocRecordMap.end()) {
-                mallocList = new MallocList();
+                mallocList = make_shared<MallocList>();
                 mallocRecordMap[memoryStruct->index] = mallocList;
             } else {
                 mallocList = iterator->second;
@@ -37,15 +35,13 @@ namespace nlp {
             auto listIterator = mallocRecordMap.find(memoryStruct->index);
             auto infoIterator = memoryPtrMap.find(memoryStruct->ptr);
             if (listIterator != mallocRecordMap.end() && infoIterator != memoryPtrMap.end()) {
-                MallocList* mallocList = listIterator->second;
-                MallocInfo* mallocInfo = infoIterator->second;
+                shared_ptr<MallocList> mallocList = listIterator->second;
+                shared_ptr<MallocInfo> mallocInfo = infoIterator->second;
                 mallocList->mallocSize -= mallocInfo->mallocSize;
                 mallocList->set->erase(mallocInfo->mallocStack);
-                delete mallocInfo;
             }
             memoryPtrMap.erase(memoryStruct->ptr);
         }
-        free(memoryStruct);
     }
 
     void *invokeMalloc(int32_t index, size_t byteCount) {
@@ -119,7 +115,7 @@ namespace nlp {
         return libWrapper;
     }
 
-    [[noreturn]] void* handleThread(void *argv) {
+    [[noreturn]] void* handleThread(__unused void *argv) {
         while (true) {
             handle(queue.wait_and_pop());
         }
@@ -134,30 +130,30 @@ namespace nlp {
         initDiyAlignedAllocMethod();
         initDiyPosixMemAlignMethod();
         pthread_t thd;
-        pthread_create(&thd, NULL, handleThread, NULL);
+        pthread_create(&thd, nullptr, handleThread, nullptr);
     }
 
-    bool cmp(const pair<int32_t, MallocList*> &p1, const pair<int32_t, MallocList*> &p2) {
+    bool cmp(const pair<int32_t, shared_ptr<MallocList>> &p1, const pair<int32_t, shared_ptr<MallocList>> &p2) {
         return p1.second->mallocSize > p2.second->mallocSize;
     }
 
     std::string currentRecordInfoStr() {
 //        _LOGI_("dump currentRecordInfoStr, queue size: %d", queue.size());
         // 处理所有数据
-        std::unordered_set<MemoryStruct *> localSet;
+        std::unordered_set<shared_ptr<MemoryStruct>> localSet;
         queue.drop(localSet);
         for (auto &item : localSet) {
             handle(item);
         }
         localSet.clear();
 
-        std::map<int32_t, MallocList*> localMap = mallocRecordMap;
+        std::map<int32_t, shared_ptr<MallocList>> localMap = mallocRecordMap;
 
         std::string result;
 
         int64_t totalByteCount = 0;
-        std::map<int32_t , MallocList*>::iterator iterator;
-        vector<pair<int32_t, MallocList*> > arr;
+        std::map<int32_t , shared_ptr<MallocList>>::iterator iterator;
+        vector<pair<int32_t, shared_ptr<MallocList>> > arr;
         iterator = localMap.begin();
         bool isFind = false;
         while (iterator != localMap.end()) {
