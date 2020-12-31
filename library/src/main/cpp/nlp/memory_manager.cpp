@@ -1,108 +1,81 @@
-#include <elf.h>
-//
-// Created by chenwangwang on 2020/12/10.
-//
-
 #include "memory_manager.h"
-#include "Log.h"
-#include "malloc_method.h"
-#include "free_method.h"
-#include "calloc_method.h"
-#include "realloc_method.h"
-#include "threadsafe_queue.h"
-#include "memalign_method.h"
-#include "posix_memalign_method.h"
-#include "aligned_alloc_method.h"
-#include "unit.h"
-#include <unordered_set>
-#include <utility>
-#include <thread>
 
 namespace nlp {
 
-    using namespace std;
-
     int32_t libIndex = 0;
+    // 库index - 已申请的内存大小
+    std::map<int32_t, MallocList*> mallocRecordMap;
     LibWrapper libWrapperArray[SLOT_NUM];
-    // 内存地址 - 库名
-    std::map<void *, int64_t> memoryPtrMap;
-    // 库名 - 已申请的内存大小
-    std::map<std::string, int64_t> mallocRecordMap;
-
-    struct MemoryStruct {
-        uint32_t type;
-        void *ptr;
-        size_t byteCount;
-        int32_t index;
-    };
+    // 内存地址 - 申请的内存
+    std::map<void *, MallocInfo*> memoryPtrMap;
+    threadsafe_queue<MemoryStruct *> queue;
 
     /**
      * 处理内存操作
      */
     void handle(MemoryStruct *memoryStruct) {
         if (memoryStruct->type == TYPE_MALLOC) {
+            auto* mallocInfo = new MallocInfo(memoryStruct->trace);
+            mallocInfo->mallocSize = memoryStruct->byteCount;
+            memoryPtrMap[memoryStruct->ptr] = mallocInfo;
+            auto iterator = mallocRecordMap.find(memoryStruct->index);
+            MallocList * mallocList;
+            if (iterator == mallocRecordMap.end()) {
+                mallocList = new MallocList();
+                mallocRecordMap[memoryStruct->index] = mallocList;
+            } else {
+                mallocList = iterator->second;
+            }
+            mallocList->mallocSize += memoryStruct->byteCount;
+            mallocList->set->insert(memoryStruct->trace);
             auto libWrapper = &libWrapperArray[memoryStruct->index];
             std::string libName = libWrapper->libName;
-            memoryPtrMap[memoryStruct->ptr] = memoryStruct->byteCount;
-            mallocRecordMap[libName] += memoryStruct->byteCount;
+            if ("libappLib.so" == libName) {
+                memoryStruct->trace->log();
+            }
         } else {
-            auto libWrapper = &libWrapperArray[memoryStruct->index];
-            std::string libName = libWrapper->libName;
-            mallocRecordMap[libName] -= memoryPtrMap[memoryStruct->ptr];
+            auto listIterator = mallocRecordMap.find(memoryStruct->index);
+            auto infoIterator = memoryPtrMap.find(memoryStruct->ptr);
+            if (listIterator != mallocRecordMap.end() && infoIterator != memoryPtrMap.end()) {
+                MallocList* mallocList = listIterator->second;
+                MallocInfo* mallocInfo = infoIterator->second;
+                mallocList->mallocSize -= mallocInfo->mallocSize;
+                mallocList->set->erase(mallocInfo->mallocStack);
+                delete mallocInfo;
+            }
             memoryPtrMap.erase(memoryStruct->ptr);
         }
         free(memoryStruct);
     }
 
-    threadsafe_queue<MemoryStruct *> queue;
-
-    void onMalloc(int32_t index, void *ptr, size_t byteCount) {
-        if (ptr) {
-            auto * mallocStruct = static_cast<MemoryStruct *>(malloc(sizeof(MemoryStruct)));
-            mallocStruct->type = TYPE_MALLOC;
-            mallocStruct->index = index;
-            mallocStruct->ptr = ptr;
-            mallocStruct->byteCount = byteCount;
-            queue.push(mallocStruct);
-        }
-    }
-
     void *invokeMalloc(int32_t index, size_t byteCount) {
         void *ptr = malloc(byteCount);
-        onMalloc(index, ptr, byteCount);
+        onMalloc(index, ptr, byteCount, queue)
         return ptr;
-    }
-
-    void onFree(int32_t index, void *ptr) {
-        auto * mallocStruct = static_cast<MemoryStruct *>(malloc(sizeof(MemoryStruct)));
-        mallocStruct->type = TYPE_FREE;
-        mallocStruct->index = index;
-        mallocStruct->ptr = ptr;
-        queue.push(mallocStruct);
     }
 
     void invokeFree(int32_t index, void *ptr) {
         free(ptr);
-        onFree(index, ptr);
+        onFree(index, ptr, queue)
     }
 
     void *invokeCalloc(int32_t index, size_t itemCount, size_t itemSize) {
         void *ptr = calloc(itemCount, itemSize);
         size_t byteCount = (itemCount * itemSize);
-        onMalloc(index, ptr, byteCount);
+        onMalloc(index, ptr, byteCount, queue)
         return ptr;
     }
 
-    void *invokeRealloc(int32_t index, void *ptr, size_t byteCount) {
-        void *newPtr = realloc(ptr, byteCount);
-        onFree(index, ptr);
-        onMalloc(index, newPtr, byteCount);
-        return newPtr;
+    void *invokeRealloc(int32_t index, void *oldPtr, size_t byteCount) {
+        void *ptr = realloc(oldPtr, byteCount);
+        onFree(index, oldPtr, queue)
+        onMalloc(index, ptr, byteCount, queue)
+        return ptr;
     }
 
     void *invokeMemAlign(int32_t index, size_t boundary, size_t byteCount) {
         void *ptr = memalign(boundary, byteCount);
-        onMalloc(index, ptr, byteCount);
+        onMalloc(index, ptr, byteCount, queue)
         return ptr;
     }
 
@@ -112,8 +85,9 @@ namespace nlp {
 
     int invokePosixMemAlign(int32_t index, void **memptr, size_t boundary, size_t byteCount) {
         int ret = posix_memalign(memptr, boundary, byteCount);
+        void *ptr = *memptr;
         if (!ret) {
-            onMalloc(index, *memptr, byteCount);
+            onMalloc(index, ptr, byteCount, queue)
         }
         return ret;
     }
@@ -163,8 +137,8 @@ namespace nlp {
         pthread_create(&thd, NULL, handleThread, NULL);
     }
 
-    bool cmp(const pair<std::string, int64_t> &p1, const pair<std::string, int64_t> &p2) {
-        return p1.second > p2.second;
+    bool cmp(const pair<int32_t, MallocList*> &p1, const pair<int32_t, MallocList*> &p2) {
+        return p1.second->mallocSize > p2.second->mallocSize;
     }
 
     std::string currentRecordInfoStr() {
@@ -177,19 +151,19 @@ namespace nlp {
         }
         localSet.clear();
 
-        std::map<std::string, int64_t> localMap = mallocRecordMap;
+        std::map<int32_t, MallocList*> localMap = mallocRecordMap;
 
         std::string result;
 
         int64_t totalByteCount = 0;
-        std::map<std::string, int64_t>::iterator iterator;
-        vector<pair<std::string, int64_t> > arr;
+        std::map<int32_t , MallocList*>::iterator iterator;
+        vector<pair<int32_t, MallocList*> > arr;
         iterator = localMap.begin();
         bool isFind = false;
         while (iterator != localMap.end()) {
-            if (iterator->second > 0) {
+            if (iterator->second->mallocSize > 0) {
                 isFind = true;
-                totalByteCount += iterator->second;
+                totalByteCount += iterator->second->mallocSize;
                 arr.emplace_back(iterator->first, iterator->second);
             }
             iterator++;
@@ -197,7 +171,9 @@ namespace nlp {
 
         sort(arr.begin(), arr.end(), cmp);
         for (auto & it : arr) {
-            result += (it.first + " leak: " + convertAutoUnit(it.second) + "\n");
+            auto libWrapper = &libWrapperArray[it.first];
+            std::string libName = libWrapper->libName;
+            result += (libName + " leak: " + convertAutoUnit(it.second->mallocSize) + "\n");
         }
 
         if (isFind) {

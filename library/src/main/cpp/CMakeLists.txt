@@ -43,6 +43,7 @@ add_library( # Sets the name of the library.
         xhook/xhook.c
 
         common/unit.cpp
+        common/unwind_.cpp
         )
 
 # Searches for a specified prebuilt library and stores the path as a
