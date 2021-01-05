@@ -15,6 +15,10 @@ Android  Native代码（C/C++）内存泄露分析
 3. hook内存申请释放函数: `malloc  calloc realloc memalign aligned_alloc posix_memalign free`
 4. 采用消息队列的方式，使用异步线程来不断记录内存的操作
 5. 提供导出当前泄露内存信息的native接口
+6. 在内存操作函数中获取调用堆栈
 
 # 下一步工作
-在内存操作函数中获取调用堆栈
+1. 将调用栈数据做聚合
+2. 导出调用栈数据
+3. 解析调用栈数据(脚本+addr2line  或者   GUI+addr2line）
+4. 生成[FlameGraph](https://github.com/brendangregg/FlameGraph)格式数据，并解析得到火焰图
