@@ -646,8 +646,8 @@ void* popFreeMethod() {
 }
 
 void initDiyFreeMethod() {
-    freeStk.push((void *) myFree1);
     freeStk.push((void *) myFree0);
+    freeStk.push((void *) myFree1);
     freeStk.push((void *) myFree2);
     freeStk.push((void *) myFree3);
     freeStk.push((void *) myFree4);
