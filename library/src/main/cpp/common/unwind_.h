@@ -49,6 +49,10 @@ public:
         return mDLInfo;
     }
 
+    uintptr_t getRelativePc() {
+        return pc - (uintptr_t) mDLInfo->dli_fbase;
+    }
+
     void dladdr_() {
         dladdr((void *) pc, mDLInfo.get());
     }
@@ -65,6 +69,7 @@ private:
     shared_ptr<list<shared_ptr<StackElement>>> mStackElementList = make_shared<list<shared_ptr<StackElement>>>();
     size_t mMaxSize;
     size_t mSkipCount;
+    bool isDLAddr = false;
 
 public:
     explicit Backtrace(size_t maxSize) : mMaxSize(maxSize) {
@@ -77,6 +82,8 @@ public:
     void log();
 
     void dladdr_();
+
+    void loopElement(const std::function<void(shared_ptr<StackElement> element)>& lambda);
 
     bool hasRemainSpace() const {
         return mStackElementList->size() < mMaxSize;

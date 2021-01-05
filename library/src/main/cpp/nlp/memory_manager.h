@@ -32,6 +32,13 @@ namespace nlp {
 #define TYPE_FREE 1
 #define SKIP_COUNT 2
 
+#define STACK_FILE_LIB_NAME "libName:"
+#define STACK_FILE_LEAK_SIZE "leakSize:"
+#define STACK_FILE_STACK "stack:"
+
+#define STACK_FILE_STACK_SPLIT "^"
+#define STACK_FILE_ELEMENT_SPLIT "|"
+
     using namespace std;
 
     class MallocList {
@@ -119,6 +126,8 @@ namespace nlp {
      * 当前内存申请情况
      */
     std::string currentRecordInfoStr();
+
+    void dumpLeakStackToFile(const char* outputFile);
 
     void initNLP();
 

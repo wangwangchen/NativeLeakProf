@@ -10,7 +10,9 @@
 
 void method4() {
     void *memory = malloc(1024);
-    free(memory);
+    malloc(1024);
+    malloc(1024);malloc(1024);malloc(1024);malloc(1024);
+//    free(memory);
 }
 
 extern "C" JNIEXPORT jstring JNICALL

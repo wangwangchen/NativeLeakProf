@@ -84,6 +84,14 @@ Java_com_qiu_liang_leak_XHook_hookELFs(JNIEnv *env, jclass clazz, jobjectArray e
     return true;
 }
 
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_qiu_liang_leak_XHook_dumpLeakStack(JNIEnv *env, jclass clazz, jstring outputFile) {
+    const char *str = env->GetStringUTFChars(outputFile, 0);
+    dumpLeakStackToFile(str);
+    env->ReleaseStringUTFChars(outputFile, str);
+}
+
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     onJNILoad(vm, reserved);
     nlp::initNLP();

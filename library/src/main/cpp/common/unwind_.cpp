@@ -49,6 +49,10 @@ static std::string format_string(const char* format, Args... args) {
 }
 
 void Backtrace::dladdr_() {
+    if (isDLAddr) {
+        return;
+    }
+    isDLAddr = true;
     list<shared_ptr<StackElement>>::iterator iter;
     for (iter = mStackElementList->begin(); iter != mStackElementList->end(); iter++) {
         auto stackElement = *iter;
@@ -93,5 +97,13 @@ void Backtrace::log() {
         }
 
         i++;
+    }
+}
+
+void Backtrace::loopElement(const std::function<void(shared_ptr<StackElement>)>& lambda) {
+    list<shared_ptr<StackElement>>::iterator iter;
+    for (iter = mStackElementList->begin(); iter != mStackElementList->end(); iter++) {
+        auto stackElement = *iter;
+        lambda(stackElement);
     }
 }

@@ -1,5 +1,7 @@
 #include "memory_manager.h"
 
+#include <fstream>
+
 namespace nlp {
 
     int32_t libIndex = 0;
@@ -26,11 +28,11 @@ namespace nlp {
             }
             mallocList->mallocSize += memoryStruct->byteCount;
             mallocList->set->insert(memoryStruct->trace);
-            auto libWrapper = &libWrapperArray[memoryStruct->index];
-            std::string libName = libWrapper->libName;
-            if ("libappLib.so" == libName) {
-                memoryStruct->trace->log();
-            }
+//            auto libWrapper = &libWrapperArray[memoryStruct->index];
+//            std::string libName = libWrapper->libName;
+//            if ("libappLib.so" == libName) {
+//                memoryStruct->trace->log();
+//            }
         } else {
             auto listIterator = mallocRecordMap.find(memoryStruct->index);
             auto infoIterator = memoryPtrMap.find(memoryStruct->ptr);
@@ -137,8 +139,7 @@ namespace nlp {
         return p1.second->mallocSize > p2.second->mallocSize;
     }
 
-    std::string currentRecordInfoStr() {
-//        _LOGI_("dump currentRecordInfoStr, queue size: %d", queue.size());
+    void loopLeakItem(std::function<void(LibWrapper *, shared_ptr<MallocList>)> lambda) {
         // 处理所有数据
         std::unordered_set<shared_ptr<MemoryStruct>> localSet;
         queue.drop(localSet);
@@ -149,17 +150,11 @@ namespace nlp {
 
         std::map<int32_t, shared_ptr<MallocList>> localMap = mallocRecordMap;
 
-        std::string result;
-
-        int64_t totalByteCount = 0;
         std::map<int32_t , shared_ptr<MallocList>>::iterator iterator;
         vector<pair<int32_t, shared_ptr<MallocList>> > arr;
         iterator = localMap.begin();
-        bool isFind = false;
         while (iterator != localMap.end()) {
             if (iterator->second->mallocSize > 0) {
-                isFind = true;
-                totalByteCount += iterator->second->mallocSize;
                 arr.emplace_back(iterator->first, iterator->second);
             }
             iterator++;
@@ -168,15 +163,62 @@ namespace nlp {
         sort(arr.begin(), arr.end(), cmp);
         for (auto & it : arr) {
             auto libWrapper = &libWrapperArray[it.first];
-            std::string libName = libWrapper->libName;
-            result += (libName + " leak: " + convertAutoUnit(it.second->mallocSize) + "\n");
+            lambda(libWrapper, it.second);
         }
+    }
 
-        if (isFind) {
+    std::string currentRecordInfoStr() {
+//        _LOGI_("dump currentRecordInfoStr, queue size: %d", queue.size());
+        std::string result;
+        int64_t totalByteCount = 0;
+
+        loopLeakItem([&result, &totalByteCount](LibWrapper *lib, const shared_ptr<MallocList>& leakList) {
+            totalByteCount += leakList->mallocSize;
+            std::string libName = lib->libName;
+            result.append(libName + " leak: " + convertAutoUnit(leakList->mallocSize) + "\n");
+        });
+
+        if (!result.empty()) {
             return result + "\ntotal leak: " + nlp::convertAutoUnit(totalByteCount);
         } else {
             return "leak map is empty";
         }
+    }
+
+    void dumpLeakStackToFile(const char *outputFile) {
+        ofstream out;
+        out.open(outputFile, ios::out|ios::trunc);
+
+        loopLeakItem([&out](LibWrapper *lib, const shared_ptr<MallocList>& leakList) {
+            std::string libName = lib->libName;
+            // lib name
+            out << STACK_FILE_LIB_NAME << libName << "\n";
+            // leak size
+            out << STACK_FILE_LEAK_SIZE << convertAutoUnit(leakList->mallocSize) << "\n";
+            // stack
+            for (auto & it : *leakList->set) {
+                // pc | fname | sname ^ pc | fname | sname ^ pc | fname | sname ^ pc | fname | sname
+                // 每个stack的每一帧之间"^"符号分割，每个stack的每一帧的信息之间用"|"符号分割
+                out << STACK_FILE_STACK;
+                it->dladdr_();
+                it->loopElement([&out](const shared_ptr<StackElement>& element) {
+                    out << element->getRelativePc();
+                    const shared_ptr<Dl_info> &dlInfo = element->getDLInfo();
+                    out << STACK_FILE_ELEMENT_SPLIT;
+                    if (dlInfo->dli_fname) {
+                        out << dlInfo->dli_fname;
+                    }
+                    out << STACK_FILE_ELEMENT_SPLIT;
+                    if (dlInfo->dli_sname) {
+                        out << dlInfo->dli_sname;
+                    }
+                    out << STACK_FILE_STACK_SPLIT;
+                });
+                out << "\n";
+            }
+        });
+
+        out.close();
     }
 
 }

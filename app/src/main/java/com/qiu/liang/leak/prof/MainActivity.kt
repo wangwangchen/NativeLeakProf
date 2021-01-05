@@ -16,11 +16,15 @@ class MainActivity : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.sample_text)
         textView.text = stringFromJNI()
 
+        textView.setOnClickListener {
+            NativeLeakProf.dumpLeakStack()
+        }
+
         thread {
             while (true) {
                 val currentTimeMillis = System.currentTimeMillis();
                 val dumpLeakInfo = NativeLeakProf.dumpLeakInfo()
-                Log.i("NativeLeakProf", "dumpLeakInfo cast time: " + (System.currentTimeMillis() - currentTimeMillis));
+//                Log.i("NativeLeakProf", "dumpLeakInfo cast time: " + (System.currentTimeMillis() - currentTimeMillis));
                 runOnUiThread {
                     textView.text = dumpLeakInfo
                 }
