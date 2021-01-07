@@ -32,7 +32,7 @@ void backtraceToLogcat() {
 }
 
 template <typename ...Args>
-static std::string format_string(const char* format, Args... args) {
+std::string format_string(const char* format, Args... args) {
     constexpr size_t oldlen = BUFSIZ;
     char buffer[oldlen];  // 默认栈上的缓冲区
 
@@ -106,4 +106,12 @@ void Backtrace::loopElement(const std::function<void(shared_ptr<StackElement>)>&
         auto stackElement = *iter;
         lambda(stackElement);
     }
+}
+
+std::string StackElement::getRelativePc() {
+    return format_string("%0" XCC_UTIL_FMT_ADDR"", uintptr_t (pc - (uintptr_t) mDLInfo->dli_fbase));
+}
+
+void StackElement::dladdr_() {
+    dladdr((void *) pc, mDLInfo.get());
 }

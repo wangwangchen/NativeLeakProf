@@ -216,6 +216,7 @@ namespace nlp {
                 });
                 out << "\n";
             }
+            out << STACK_FILE_LIB_SPLIT << "\n";
         });
 
         out.close();

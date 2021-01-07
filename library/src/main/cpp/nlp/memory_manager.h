@@ -35,6 +35,7 @@ namespace nlp {
 #define STACK_FILE_LIB_NAME "libName:"
 #define STACK_FILE_LEAK_SIZE "leakSize:"
 #define STACK_FILE_STACK "stack:"
+#define STACK_FILE_LIB_SPLIT "libSplit!!!"
 
 #define STACK_FILE_STACK_SPLIT "^"
 #define STACK_FILE_ELEMENT_SPLIT "|"

@@ -19,6 +19,7 @@
 #include <dlfcn.h>
 #include <unwind.h>
 
+void backtraceToLogcat();
 
 using namespace std;
 
@@ -49,13 +50,9 @@ public:
         return mDLInfo;
     }
 
-    uintptr_t getRelativePc() {
-        return pc - (uintptr_t) mDLInfo->dli_fbase;
-    }
+    std::string getRelativePc();
 
-    void dladdr_() {
-        dladdr((void *) pc, mDLInfo.get());
-    }
+    void dladdr_();
 
     uint32_t getDladdr() const {
         return mDladdr;
@@ -102,7 +99,5 @@ public:
     }
 
 };
-
-void backtraceToLogcat();
 
 #endif //NATIVELEAKPROF_UNWIND__H
