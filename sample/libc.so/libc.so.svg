@@ -1,0 +1,852 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1200" height="326" onload="init(evt)" viewBox="0 0 1200 326" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Flame graph stack visualization. See https://github.com/brendangregg/FlameGraph for latest version, and http://www.brendangregg.com/flamegraphs.html for examples. -->
+<!-- NOTES:  -->
+<defs>
+	<linearGradient id="background" y1="0" y2="1" x1="0" x2="0" >
+		<stop stop-color="#eeeeee" offset="5%" />
+		<stop stop-color="#eeeeb0" offset="95%" />
+	</linearGradient>
+</defs>
+<style type="text/css">
+	text { font-family:Verdana; font-size:12px; fill:rgb(0,0,0); }
+	#search, #ignorecase { opacity:0.5; cursor:pointer; }
+	#search:hover, #search.show, #ignorecase:hover, #ignorecase.show { opacity:1; }
+	#subtitle { text-anchor:middle; font-color:rgb(160,160,160); }
+	#title { text-anchor:middle; font-size:17px}
+	#unzoom { cursor:pointer; }
+	#frames > *:hover { stroke:black; stroke-width:0.5; cursor:pointer; }
+	.hide { display:none; }
+	.parent { opacity:0.5; }
+</style>
+<script type="text/ecmascript">
+<![CDATA[
+	"use strict";
+	var details, searchbtn, unzoombtn, matchedtxt, svg, searching, currentSearchTerm, ignorecase, ignorecaseBtn;
+	function init(evt) {
+		details = document.getElementById("details").firstChild;
+		searchbtn = document.getElementById("search");
+		ignorecaseBtn = document.getElementById("ignorecase");
+		unzoombtn = document.getElementById("unzoom");
+		matchedtxt = document.getElementById("matched");
+		svg = document.getElementsByTagName("svg")[0];
+		searching = 0;
+		currentSearchTerm = null;
+	}
+
+	window.addEventListener("click", function(e) {
+		var target = find_group(e.target);
+		if (target) {
+			if (target.nodeName == "a") {
+				if (e.ctrlKey === false) return;
+				e.preventDefault();
+			}
+			if (target.classList.contains("parent")) unzoom();
+			zoom(target);
+		}
+		else if (e.target.id == "unzoom") unzoom();
+		else if (e.target.id == "search") search_prompt();
+		else if (e.target.id == "ignorecase") toggle_ignorecase();
+	}, false)
+
+	// mouse-over for info
+	// show
+	window.addEventListener("mouseover", function(e) {
+		var target = find_group(e.target);
+		if (target) details.nodeValue = "Function: " + g_to_text(target);
+	}, false)
+
+	// clear
+	window.addEventListener("mouseout", function(e) {
+		var target = find_group(e.target);
+		if (target) details.nodeValue = ' ';
+	}, false)
+
+	// ctrl-F for search
+	window.addEventListener("keydown",function (e) {
+		if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+			e.preventDefault();
+			search_prompt();
+		}
+	}, false)
+
+	// ctrl-I to toggle case-sensitive search
+	window.addEventListener("keydown",function (e) {
+		if (e.ctrlKey && e.keyCode === 73) {
+			e.preventDefault();
+			toggle_ignorecase();
+		}
+	}, false)
+
+	// functions
+	function find_child(node, selector) {
+		var children = node.querySelectorAll(selector);
+		if (children.length) return children[0];
+		return;
+	}
+	function find_group(node) {
+		var parent = node.parentElement;
+		if (!parent) return;
+		if (parent.id == "frames") return node;
+		return find_group(parent);
+	}
+	function orig_save(e, attr, val) {
+		if (e.attributes["_orig_" + attr] != undefined) return;
+		if (e.attributes[attr] == undefined) return;
+		if (val == undefined) val = e.attributes[attr].value;
+		e.setAttribute("_orig_" + attr, val);
+	}
+	function orig_load(e, attr) {
+		if (e.attributes["_orig_"+attr] == undefined) return;
+		e.attributes[attr].value = e.attributes["_orig_" + attr].value;
+		e.removeAttribute("_orig_"+attr);
+	}
+	function g_to_text(e) {
+		var text = find_child(e, "title").firstChild.nodeValue;
+		return (text)
+	}
+	function g_to_func(e) {
+		var func = g_to_text(e);
+		// if there's any manipulation we want to do to the function
+		// name before it's searched, do it here before returning.
+		return (func);
+	}
+	function update_text(e) {
+		var r = find_child(e, "rect");
+		var t = find_child(e, "text");
+		var w = parseFloat(r.attributes.width.value);
+		var txt = find_child(e, "title").textContent.replace(/\([^(]*\)$/,"");
+		t.attributes.x.value = parseFloat(r.attributes.x.value) + 3;
+
+		//rect width adapt charts
+		var charts = parseInt(w/(12 * 0.59))
+
+		// Smaller than this size won't fit anything
+		if (charts<=2 ){
+			t.textContent = "";
+			return;
+		}
+
+		t.textContent = txt;
+		// Fit in full text width
+		if (/^ *$/.test(txt) || txt.length<=charts){
+			return;
+		}else {
+			t.textContent = txt.substring(0, charts-2) + "..";
+			return;
+		}
+
+		t.textContent = "";
+	}
+
+	// zoom
+	function zoom_reset(e) {
+		if (e.attributes != undefined) {
+			orig_load(e, "x");
+			orig_load(e, "width");
+		}
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_reset(c[i]);
+		}
+	}
+	function zoom_child(e, x, ratio) {
+		if (e.attributes != undefined) {
+			if (e.attributes.x != undefined) {
+				orig_save(e, "x");
+				e.attributes.x.value = (parseFloat(e.attributes.x.value) - x - 10) * ratio + 10;
+				if (e.tagName == "text")
+					e.attributes.x.value = find_child(e.parentNode, "rect[x]").attributes.x.value + 3;
+			}
+			if (e.attributes.width != undefined) {
+				orig_save(e, "width");
+				e.attributes.width.value = parseFloat(e.attributes.width.value) * ratio;
+			}
+		}
+
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_child(c[i], x - 10, ratio);
+		}
+	}
+	function zoom_parent(e) {
+		if (e.attributes) {
+			if (e.attributes.x != undefined) {
+				orig_save(e, "x");
+				e.attributes.x.value = 10;
+			}
+			if (e.attributes.width != undefined) {
+				orig_save(e, "width");
+				e.attributes.width.value = parseInt(svg.width.baseVal.value) - (10 * 2);
+			}
+		}
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_parent(c[i]);
+		}
+	}
+	function zoom(node) {
+		var attr = find_child(node, "rect").attributes;
+		var width = parseFloat(attr.width.value);
+		var xmin = parseFloat(attr.x.value);
+		var xmax = parseFloat(xmin + width);
+		var ymin = parseFloat(attr.y.value);
+		var ratio = (svg.width.baseVal.value - 2 * 10) / width;
+
+		// XXX: Workaround for JavaScript float issues (fix me)
+		var fudge = 0.0001;
+
+		unzoombtn.classList.remove("hide");
+
+		var el = document.getElementById("frames").children;
+		for (var i = 0; i < el.length; i++) {
+			var e = el[i];
+			var a = find_child(e, "rect").attributes;
+			var ex = parseFloat(a.x.value);
+			var ew = parseFloat(a.width.value);
+			var upstack;
+			// Is it an ancestor
+			if (0 == 0) {
+				upstack = parseFloat(a.y.value) > ymin;
+			} else {
+				upstack = parseFloat(a.y.value) < ymin;
+			}
+			if (upstack) {
+				// Direct ancestor
+				if (ex <= xmin && (ex+ew+fudge) >= xmax) {
+					e.classList.add("parent");
+					zoom_parent(e);
+					update_text(e);
+				}
+				// not in current path
+				else
+					e.classList.add("hide");
+			}
+			// Children maybe
+			else {
+				// no common path
+				if (ex < xmin || ex + fudge >= xmax) {
+					e.classList.add("hide");
+				}
+				else {
+					zoom_child(e, xmin, ratio);
+					update_text(e);
+				}
+			}
+		}
+		search();
+	}
+	function unzoom() {
+		unzoombtn.classList.add("hide");
+		var el = document.getElementById("frames").children;
+		for(var i = 0; i < el.length; i++) {
+			el[i].classList.remove("parent");
+			el[i].classList.remove("hide");
+			zoom_reset(el[i]);
+			update_text(el[i]);
+		}
+		search();
+	}
+
+	// search
+	function toggle_ignorecase() {
+		ignorecase = !ignorecase;
+		if (ignorecase) {
+			ignorecaseBtn.classList.add("show");
+		} else {
+			ignorecaseBtn.classList.remove("show");
+		}
+		reset_search();
+		search();
+	}
+	function reset_search() {
+		var el = document.querySelectorAll("#frames rect");
+		for (var i = 0; i < el.length; i++) {
+			orig_load(el[i], "fill")
+		}
+	}
+	function search_prompt() {
+		if (!searching) {
+			var term = prompt("输入一个搜索项 (支持正则表达式）"
+			    + (ignorecase ? ", 忽略大小写" : "大小写敏感")
+			    + "\n使用快捷键 Ctrl-i 切换忽略大小写功能", "");
+			if (term != null) {
+				currentSearchTerm = term;
+				search();
+			}
+		} else {
+			reset_search();
+			searching = 0;
+			currentSearchTerm = null;
+			searchbtn.classList.remove("show");
+			searchbtn.firstChild.nodeValue = "搜索"
+			matchedtxt.classList.add("hide");
+			matchedtxt.firstChild.nodeValue = ""
+		}
+	}
+	function search(term) {
+		if (currentSearchTerm === null) return;
+		var term = currentSearchTerm;
+
+		var re = new RegExp(term, ignorecase ? 'i' : '');
+		var el = document.getElementById("frames").children;
+		var matches = new Object();
+		var maxwidth = 0;
+		for (var i = 0; i < el.length; i++) {
+			var e = el[i];
+			var func = g_to_func(e);
+			var rect = find_child(e, "rect");
+			if (func == null || rect == null)
+				continue;
+
+			// Save max width. Only works as we have a root frame
+			var w = parseFloat(rect.attributes.width.value);
+			if (w > maxwidth)
+				maxwidth = w;
+
+			if (func.match(re)) {
+				// highlight
+				var x = parseFloat(rect.attributes.x.value);
+				orig_save(rect, "fill");
+				rect.attributes.fill.value = "rgb(230,0,230)";
+
+				// remember matches
+				if (matches[x] == undefined) {
+					matches[x] = w;
+				} else {
+					if (w > matches[x]) {
+						// overwrite with parent
+						matches[x] = w;
+					}
+				}
+				searching = 1;
+			}
+		}
+		if (!searching)
+			return;
+
+		searchbtn.classList.add("show");
+		searchbtn.firstChild.nodeValue = "重置搜索";
+
+		// calculate percent matched, excluding vertical overlap
+		var count = 0;
+		var lastx = -1;
+		var lastw = 0;
+		var keys = Array();
+		for (k in matches) {
+			if (matches.hasOwnProperty(k))
+				keys.push(k);
+		}
+		// sort the matched frames by their x location
+		// ascending, then width descending
+		keys.sort(function(a, b){
+			return a - b;
+		});
+		// Step through frames saving only the biggest bottom-up frames
+		// thanks to the sort order. This relies on the tree property
+		// where children are always smaller than their parents.
+		var fudge = 0.0001;	// JavaScript floating point
+		for (var k in keys) {
+			var x = parseFloat(keys[k]);
+			var w = matches[keys[k]];
+			if (x >= lastx + lastw - fudge) {
+				count += w;
+				lastx = x;
+				lastw = w;
+			}
+		}
+		// display matched percent
+		matchedtxt.classList.remove("hide");
+		var pct = 100 * count / maxwidth;
+		if (pct != 100) pct = pct.toFixed(1)
+		matchedtxt.firstChild.nodeValue = "Matched: " + pct + "%";
+	}
+]]>
+</script>
+<rect x="0.0" y="0" width="1200.0" height="326.0" fill="url(#background)"  />
+<text id="title" x="600.00" y="24" ></text>
+<text id="details" x="10.00" y="309" > </text>
+<text id="unzoom" x="10.00" y="24" class="hide">取消放大</text>
+<text id="search" x="1070.00" y="24" >搜索</text>
+<text id="ignorecase" x="1130.00" y="24" >忽略大小写</text>
+<text id="matched" x="1090.00" y="309" > </text>
+<g id="frames">
+<g >
+<title>_ZNSt6__ndk113basic_filebufIcNS_11char_traitsIcEEE8overflowEi (1 samples, 0.53%)</title><rect x="262.4" y="197" width="6.3" height="15.0" fill="rgb(238,98,22)" rx="2" ry="2" />
+<text  x="265.41" y="207.5" ></text>
+</g>
+<g >
+<title>000000000013ced8 (6 samples, 3.21%)</title><rect x="798.8" y="181" width="37.8" height="15.0" fill="rgb(226,175,39)" rx="2" ry="2" />
+<text  x="801.77" y="191.5" >000..</text>
+</g>
+<g >
+<title>00000000000b6fac (1 samples, 0.53%)</title><rect x="268.7" y="149" width="6.3" height="15.0" fill="rgb(253,131,30)" rx="2" ry="2" />
+<text  x="271.72" y="159.5" ></text>
+</g>
+<g >
+<title>00000000001337ec (40 samples, 21.39%)</title><rect x="937.6" y="181" width="252.4" height="15.0" fill="rgb(231,110,22)" rx="2" ry="2" />
+<text  x="940.59" y="191.5" >00000000001337ec</text>
+</g>
+<g >
+<title>00000000001337ec (82 samples, 43.85%)</title><rect x="281.3" y="181" width="517.5" height="15.0" fill="rgb(225,134,16)" rx="2" ry="2" />
+<text  x="284.34" y="191.5" >00000000001337ec</text>
+</g>
+<g >
+<title>_ZN7android13egl_display_t10initializeEPiS1_ (1 samples, 0.53%)</title><rect x="275.0" y="197" width="6.3" height="15.0" fill="rgb(226,46,34)" rx="2" ry="2" />
+<text  x="278.03" y="207.5" ></text>
+</g>
+<g >
+<title>000000000013ced8 (40 samples, 21.39%)</title><rect x="937.6" y="197" width="252.4" height="15.0" fill="rgb(217,81,47)" rx="2" ry="2" />
+<text  x="940.59" y="207.5" >000000000013ced8</text>
+</g>
+<g >
+<title>00000000000d4288 (1 samples, 0.53%)</title><rect x="262.4" y="37" width="6.3" height="15.0" fill="rgb(216,137,47)" rx="2" ry="2" />
+<text  x="265.41" y="47.5" ></text>
+</g>
+<g >
+<title>_ZNSt6__ndk16localeC1Ev (1 samples, 0.53%)</title><rect x="268.7" y="197" width="6.3" height="15.0" fill="rgb(224,16,13)" rx="2" ry="2" />
+<text  x="271.72" y="207.5" ></text>
+</g>
+<g >
+<title>xh_core_register (40 samples, 21.39%)</title><rect x="937.6" y="245" width="252.4" height="15.0" fill="rgb(254,212,14)" rx="2" ry="2" />
+<text  x="940.59" y="255.5" >xh_core_register</text>
+</g>
+<g >
+<title>MterpInvokeStatic (6 samples, 3.21%)</title><rect x="798.8" y="101" width="37.8" height="15.0" fill="rgb(243,7,50)" rx="2" ry="2" />
+<text  x="801.77" y="111.5" >Mte..</text>
+</g>
+<g >
+<title>MterpInvokeStatic (40 samples, 21.39%)</title><rect x="937.6" y="117" width="252.4" height="15.0" fill="rgb(237,10,40)" rx="2" ry="2" />
+<text  x="940.59" y="127.5" >MterpInvokeStatic</text>
+</g>
+<g >
+<title>_ZN3art11interpreter6DoCallILb0ELb0EEEbPNS_9ArtMethodEPNS_6ThreadERNS_11ShadowFrameEPKNS_11InstructionEtPNS_6JValueE (1 samples, 0.53%)</title><rect x="268.7" y="37" width="6.3" height="15.0" fill="rgb(241,223,35)" rx="2" ry="2" />
+<text  x="271.72" y="47.5" ></text>
+</g>
+<g >
+<title>Java_com_qiu_liang_leak_XHook_hookELFs (6 samples, 3.21%)</title><rect x="798.8" y="197" width="37.8" height="15.0" fill="rgb(254,173,25)" rx="2" ry="2" />
+<text  x="801.77" y="207.5" >Jav..</text>
+</g>
+<g >
+<title>_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc (82 samples, 43.85%)</title><rect x="281.3" y="165" width="517.5" height="15.0" fill="rgb(241,82,32)" rx="2" ry="2" />
+<text  x="284.34" y="175.5" >_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc</text>
+</g>
+<g >
+<title>00000000000a335c (1 samples, 0.53%)</title><rect x="268.7" y="261" width="6.3" height="15.0" fill="rgb(224,106,39)" rx="2" ry="2" />
+<text  x="271.72" y="271.5" ></text>
+</g>
+<g >
+<title>000000000012d998 (6 samples, 3.21%)</title><rect x="798.8" y="85" width="37.8" height="15.0" fill="rgb(205,216,30)" rx="2" ry="2" />
+<text  x="801.77" y="95.5" >000..</text>
+</g>
+<g >
+<title>000000000012d998 (40 samples, 21.39%)</title><rect x="937.6" y="101" width="252.4" height="15.0" fill="rgb(217,228,23)" rx="2" ry="2" />
+<text  x="940.59" y="111.5" >000000000012d998</text>
+</g>
+<g >
+<title>00000000001337ec (6 samples, 3.21%)</title><rect x="798.8" y="165" width="37.8" height="15.0" fill="rgb(250,21,11)" rx="2" ry="2" />
+<text  x="801.77" y="175.5" >000..</text>
+</g>
+<g >
+<title>Java_com_qiu_liang_leak_XHook_dumpLeakStack (1 samples, 0.53%)</title><rect x="268.7" y="117" width="6.3" height="15.0" fill="rgb(206,167,46)" rx="2" ry="2" />
+<text  x="271.72" y="127.5" ></text>
+</g>
+<g >
+<title>realpath (1 samples, 0.53%)</title><rect x="931.3" y="245" width="6.3" height="15.0" fill="rgb(211,71,13)" rx="2" ry="2" />
+<text  x="934.28" y="255.5" ></text>
+</g>
+<g >
+<title>_ZN3art12ProfileSaver23ResolveTrackedLocationsEv (1 samples, 0.53%)</title><rect x="931.3" y="229" width="6.3" height="15.0" fill="rgb(207,139,9)" rx="2" ry="2" />
+<text  x="934.28" y="239.5" ></text>
+</g>
+<g >
+<title>_ZN3art12ProfileSaver3RunEv (1 samples, 0.53%)</title><rect x="931.3" y="197" width="6.3" height="15.0" fill="rgb(232,222,35)" rx="2" ry="2" />
+<text  x="934.28" y="207.5" ></text>
+</g>
+<g >
+<title>00000000000d566c (1 samples, 0.53%)</title><rect x="262.4" y="85" width="6.3" height="15.0" fill="rgb(212,58,6)" rx="2" ry="2" />
+<text  x="265.41" y="95.5" ></text>
+</g>
+<g >
+<title>_ZN3art11interpreter34ArtInterpreterToCompiledCodeBridgeEPNS_6ThreadEPNS_9ArtMethodEPNS_11ShadowFrameEtPNS_6JValueE (82 samples, 43.85%)</title><rect x="281.3" y="149" width="517.5" height="15.0" fill="rgb(228,137,7)" rx="2" ry="2" />
+<text  x="284.34" y="159.5" >_ZN3art11interpreter34ArtInterpreterToCompiledCodeBridgeEPNS_6ThreadEPN..</text>
+</g>
+<g >
+<title>_ZN3nlp19dumpLeakStackToFileEPKc (1 samples, 0.53%)</title><rect x="268.7" y="133" width="6.3" height="15.0" fill="rgb(220,67,48)" rx="2" ry="2" />
+<text  x="271.72" y="143.5" ></text>
+</g>
+<g >
+<title>00000000001f8110 (14 samples, 7.49%)</title><rect x="836.6" y="197" width="88.4" height="15.0" fill="rgb(224,77,0)" rx="2" ry="2" />
+<text  x="839.63" y="207.5" >0000000000..</text>
+</g>
+<g >
+<title>_ZN3art11interpreter34ArtInterpreterToCompiledCodeBridgeEPNS_6ThreadEPNS_9ArtMethodEPNS_11ShadowFrameEtPNS_6JValueE (40 samples, 21.39%)</title><rect x="10.0" y="133" width="252.4" height="15.0" fill="rgb(244,145,4)" rx="2" ry="2" />
+<text  x="13.00" y="143.5" >_ZN3art11interpreter34ArtInterpre..</text>
+</g>
+<g >
+<title>fwrite (1 samples, 0.53%)</title><rect x="262.4" y="213" width="6.3" height="15.0" fill="rgb(249,127,34)" rx="2" ry="2" />
+<text  x="265.41" y="223.5" ></text>
+</g>
+<g >
+<title>Java_com_qiu_liang_leak_XHook_hookELFs (40 samples, 21.39%)</title><rect x="10.0" y="197" width="252.4" height="15.0" fill="rgb(226,149,1)" rx="2" ry="2" />
+<text  x="13.00" y="207.5" >Java_com_qiu_liang_leak_XHook_hoo..</text>
+</g>
+<g >
+<title>0000000000030dc4 (1 samples, 0.53%)</title><rect x="925.0" y="229" width="6.3" height="15.0" fill="rgb(238,83,35)" rx="2" ry="2" />
+<text  x="927.97" y="239.5" ></text>
+</g>
+<g >
+<title>000000000012d998 (40 samples, 21.39%)</title><rect x="10.0" y="85" width="252.4" height="15.0" fill="rgb(219,115,51)" rx="2" ry="2" />
+<text  x="13.00" y="95.5" >000000000012d998</text>
+</g>
+<g >
+<title>xh_core_register (40 samples, 21.39%)</title><rect x="10.0" y="229" width="252.4" height="15.0" fill="rgb(218,78,15)" rx="2" ry="2" />
+<text  x="13.00" y="239.5" >xh_core_register</text>
+</g>
+<g >
+<title>00000000001337ec (1 samples, 0.53%)</title><rect x="268.7" y="85" width="6.3" height="15.0" fill="rgb(236,106,32)" rx="2" ry="2" />
+<text  x="271.72" y="95.5" ></text>
+</g>
+<g >
+<title>strdup (62 samples, 33.16%)</title><rect x="798.8" y="261" width="391.2" height="15.0" fill="rgb(251,191,41)" rx="2" ry="2" />
+<text  x="801.77" y="271.5" >strdup</text>
+</g>
+<g >
+<title>0000000000305c38 (6 samples, 3.21%)</title><rect x="798.8" y="37" width="37.8" height="15.0" fill="rgb(239,159,30)" rx="2" ry="2" />
+<text  x="801.77" y="47.5" >000..</text>
+</g>
+<g >
+<title>00000000000d60c0 (1 samples, 0.53%)</title><rect x="262.4" y="149" width="6.3" height="15.0" fill="rgb(211,15,5)" rx="2" ry="2" />
+<text  x="265.41" y="159.5" ></text>
+</g>
+<g >
+<title>000000000012d998 (40 samples, 21.39%)</title><rect x="937.6" y="69" width="252.4" height="15.0" fill="rgb(252,114,35)" rx="2" ry="2" />
+<text  x="940.59" y="79.5" >000000000012d998</text>
+</g>
+<g >
+<title>000000000013cb14 (1 samples, 0.53%)</title><rect x="268.7" y="229" width="6.3" height="15.0" fill="rgb(245,38,42)" rx="2" ry="2" />
+<text  x="271.72" y="239.5" ></text>
+</g>
+<g >
+<title>regcomp (40 samples, 21.39%)</title><rect x="10.0" y="245" width="252.4" height="15.0" fill="rgb(214,189,2)" rx="2" ry="2" />
+<text  x="13.00" y="255.5" >regcomp</text>
+</g>
+<g >
+<title>0000000000097700 (1 samples, 0.53%)</title><rect x="262.4" y="261" width="6.3" height="15.0" fill="rgb(254,199,0)" rx="2" ry="2" />
+<text  x="265.41" y="271.5" ></text>
+</g>
+<g >
+<title>00000000000991f8 (1 samples, 0.53%)</title><rect x="262.4" y="245" width="6.3" height="15.0" fill="rgb(207,28,0)" rx="2" ry="2" />
+<text  x="265.41" y="255.5" ></text>
+</g>
+<g >
+<title>_ZN3art11interpreter33ArtInterpreterToInterpreterBridgeEPNS_6ThreadERKNS_20CodeItemDataAccessorEPNS_11ShadowFrameEPNS_6JValueE (40 samples, 21.39%)</title><rect x="937.6" y="37" width="252.4" height="15.0" fill="rgb(223,30,47)" rx="2" ry="2" />
+<text  x="940.59" y="47.5" >_ZN3art11interpreter33ArtInterpre..</text>
+</g>
+<g >
+<title>000000000020ed98 (1 samples, 0.53%)</title><rect x="275.0" y="101" width="6.3" height="15.0" fill="rgb(241,19,16)" rx="2" ry="2" />
+<text  x="278.03" y="111.5" ></text>
+</g>
+<g >
+<title>000000000013ced8 (40 samples, 21.39%)</title><rect x="10.0" y="181" width="252.4" height="15.0" fill="rgb(209,117,1)" rx="2" ry="2" />
+<text  x="13.00" y="191.5" >000000000013ced8</text>
+</g>
+<g >
+<title>00000000001f7e98 (1 samples, 0.53%)</title><rect x="925.0" y="197" width="6.3" height="15.0" fill="rgb(242,95,24)" rx="2" ry="2" />
+<text  x="927.97" y="207.5" ></text>
+</g>
+<g >
+<title>000000000013ced8 (82 samples, 43.85%)</title><rect x="281.3" y="197" width="517.5" height="15.0" fill="rgb(241,153,47)" rx="2" ry="2" />
+<text  x="284.34" y="207.5" >000000000013ced8</text>
+</g>
+<g >
+<title>regcomp (82 samples, 43.85%)</title><rect x="281.3" y="261" width="517.5" height="15.0" fill="rgb(218,74,27)" rx="2" ry="2" />
+<text  x="284.34" y="271.5" >regcomp</text>
+</g>
+<g >
+<title>00000000000af88c (1 samples, 0.53%)</title><rect x="931.3" y="165" width="6.3" height="15.0" fill="rgb(226,190,11)" rx="2" ry="2" />
+<text  x="934.28" y="175.5" ></text>
+</g>
+<g >
+<title>_ZN3art11interpreter6DoCallILb0ELb0EEEbPNS_9ArtMethodEPNS_6ThreadERNS_11ShadowFrameEPKNS_11InstructionEtPNS_6JValueE (40 samples, 21.39%)</title><rect x="937.6" y="133" width="252.4" height="15.0" fill="rgb(215,70,21)" rx="2" ry="2" />
+<text  x="940.59" y="143.5" >_ZN3art11interpreter6DoCallILb0EL..</text>
+</g>
+<g >
+<title>xhook_register (82 samples, 43.85%)</title><rect x="281.3" y="229" width="517.5" height="15.0" fill="rgb(239,56,30)" rx="2" ry="2" />
+<text  x="284.34" y="239.5" >xhook_register</text>
+</g>
+<g >
+<title>000000000012d998 (82 samples, 43.85%)</title><rect x="281.3" y="69" width="517.5" height="15.0" fill="rgb(229,225,34)" rx="2" ry="2" />
+<text  x="284.34" y="79.5" >000000000012d998</text>
+</g>
+<g >
+<title>0000000000305c38 (82 samples, 43.85%)</title><rect x="281.3" y="53" width="517.5" height="15.0" fill="rgb(225,50,20)" rx="2" ry="2" />
+<text  x="284.34" y="63.5" >0000000000305c38</text>
+</g>
+<g >
+<title>000000000022f7d8 (1 samples, 0.53%)</title><rect x="275.0" y="165" width="6.3" height="15.0" fill="rgb(234,17,34)" rx="2" ry="2" />
+<text  x="278.03" y="175.5" ></text>
+</g>
+<g >
+<title>000000000012d998 (6 samples, 3.21%)</title><rect x="798.8" y="53" width="37.8" height="15.0" fill="rgb(210,222,2)" rx="2" ry="2" />
+<text  x="801.77" y="63.5" >000..</text>
+</g>
+<g >
+<title>_ZN3art11interpreter34ArtInterpreterToCompiledCodeBridgeEPNS_6ThreadEPNS_9ArtMethodEPNS_11ShadowFrameEtPNS_6JValueE (1 samples, 0.53%)</title><rect x="268.7" y="53" width="6.3" height="15.0" fill="rgb(232,5,39)" rx="2" ry="2" />
+<text  x="271.72" y="63.5" ></text>
+</g>
+<g >
+<title>00000000000d55e4 (1 samples, 0.53%)</title><rect x="262.4" y="69" width="6.3" height="15.0" fill="rgb(220,3,50)" rx="2" ry="2" />
+<text  x="265.41" y="79.5" ></text>
+</g>
+<g >
+<title>Java_com_qiu_liang_leak_XHook_hookELFs (82 samples, 43.85%)</title><rect x="281.3" y="213" width="517.5" height="15.0" fill="rgb(234,86,23)" rx="2" ry="2" />
+<text  x="284.34" y="223.5" >Java_com_qiu_liang_leak_XHook_hookELFs</text>
+</g>
+<g >
+<title>000000000008a74c (40 samples, 21.39%)</title><rect x="10.0" y="261" width="252.4" height="15.0" fill="rgb(250,195,3)" rx="2" ry="2" />
+<text  x="13.00" y="271.5" >000000000008a74c</text>
+</g>
+<g >
+<title>_ZN3art12ProfileSaver38FetchAndCacheResolvedClassesAndMethodsEb (1 samples, 0.53%)</title><rect x="931.3" y="213" width="6.3" height="15.0" fill="rgb(214,17,11)" rx="2" ry="2" />
+<text  x="934.28" y="223.5" ></text>
+</g>
+<g >
+<title>0000000000096fc0 (1 samples, 0.53%)</title><rect x="262.4" y="229" width="6.3" height="15.0" fill="rgb(240,171,34)" rx="2" ry="2" />
+<text  x="265.41" y="239.5" ></text>
+</g>
+<g >
+<title>xhook_register (40 samples, 21.39%)</title><rect x="10.0" y="213" width="252.4" height="15.0" fill="rgb(244,175,24)" rx="2" ry="2" />
+<text  x="13.00" y="223.5" >xhook_register</text>
+</g>
+<g >
+<title>0000000000223288 (1 samples, 0.53%)</title><rect x="275.0" y="229" width="6.3" height="15.0" fill="rgb(213,154,29)" rx="2" ry="2" />
+<text  x="278.03" y="239.5" ></text>
+</g>
+<g >
+<title>00000000000af88c (1 samples, 0.53%)</title><rect x="275.0" y="37" width="6.3" height="15.0" fill="rgb(220,107,14)" rx="2" ry="2" />
+<text  x="278.03" y="47.5" ></text>
+</g>
+<g >
+<title>MterpInvokeStatic (82 samples, 43.85%)</title><rect x="281.3" y="85" width="517.5" height="15.0" fill="rgb(247,116,32)" rx="2" ry="2" />
+<text  x="284.34" y="95.5" >MterpInvokeStatic</text>
+</g>
+<g >
+<title>_ZN3art11interpreter6DoCallILb0ELb0EEEbPNS_9ArtMethodEPNS_6ThreadERNS_11ShadowFrameEPKNS_11InstructionEtPNS_6JValueE (6 samples, 3.21%)</title><rect x="798.8" y="117" width="37.8" height="15.0" fill="rgb(239,70,39)" rx="2" ry="2" />
+<text  x="801.77" y="127.5" >_ZN..</text>
+</g>
+<g >
+<title>000000000004fe0c (1 samples, 0.53%)</title><rect x="931.3" y="149" width="6.3" height="15.0" fill="rgb(225,75,44)" rx="2" ry="2" />
+<text  x="934.28" y="159.5" ></text>
+</g>
+<g >
+<title>Java_com_qiu_liang_leak_XHook_hookELFs (40 samples, 21.39%)</title><rect x="937.6" y="213" width="252.4" height="15.0" fill="rgb(224,124,10)" rx="2" ry="2" />
+<text  x="940.59" y="223.5" >Java_com_qiu_liang_leak_XHook_hoo..</text>
+</g>
+<g >
+<title>_ZN3art12ProfileSaver21RunProfileSaverThreadEPv (1 samples, 0.53%)</title><rect x="931.3" y="181" width="6.3" height="15.0" fill="rgb(216,67,29)" rx="2" ry="2" />
+<text  x="934.28" y="191.5" ></text>
+</g>
+<g >
+<title>xh_core_refresh (6 samples, 3.21%)</title><rect x="798.8" y="229" width="37.8" height="15.0" fill="rgb(246,103,18)" rx="2" ry="2" />
+<text  x="801.77" y="239.5" >xh_..</text>
+</g>
+<g >
+<title>_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc (40 samples, 21.39%)</title><rect x="10.0" y="149" width="252.4" height="15.0" fill="rgb(221,195,42)" rx="2" ry="2" />
+<text  x="13.00" y="159.5" >_ZN3art9ArtMethod6InvokeEPNS_6Thr..</text>
+</g>
+<g >
+<title>_ZNSt6__ndk16locale8__globalEv (1 samples, 0.53%)</title><rect x="268.7" y="213" width="6.3" height="15.0" fill="rgb(221,208,27)" rx="2" ry="2" />
+<text  x="271.72" y="223.5" ></text>
+</g>
+<g >
+<title>00000000000d38ac (1 samples, 0.53%)</title><rect x="268.7" y="181" width="6.3" height="15.0" fill="rgb(225,64,14)" rx="2" ry="2" />
+<text  x="271.72" y="191.5" ></text>
+</g>
+<g >
+<title>0000000000030d28 (14 samples, 7.49%)</title><rect x="836.6" y="229" width="88.4" height="15.0" fill="rgb(233,184,26)" rx="2" ry="2" />
+<text  x="839.63" y="239.5" >0000000000..</text>
+</g>
+<g >
+<title>00000000000d3650 (1 samples, 0.53%)</title><rect x="268.7" y="165" width="6.3" height="15.0" fill="rgb(224,32,40)" rx="2" ry="2" />
+<text  x="271.72" y="175.5" ></text>
+</g>
+<g >
+<title>__register_atfork (1 samples, 0.53%)</title><rect x="275.0" y="261" width="6.3" height="15.0" fill="rgb(241,21,48)" rx="2" ry="2" />
+<text  x="278.03" y="271.5" ></text>
+</g>
+<g >
+<title>_ZN3art11interpreter34ArtInterpreterToCompiledCodeBridgeEPNS_6ThreadEPNS_9ArtMethodEPNS_11ShadowFrameEtPNS_6JValueE (40 samples, 21.39%)</title><rect x="937.6" y="149" width="252.4" height="15.0" fill="rgb(234,6,21)" rx="2" ry="2" />
+<text  x="940.59" y="159.5" >_ZN3art11interpreter34ArtInterpre..</text>
+</g>
+<g >
+<title>MterpInvokeStatic (40 samples, 21.39%)</title><rect x="10.0" y="69" width="252.4" height="15.0" fill="rgb(222,9,2)" rx="2" ry="2" />
+<text  x="13.00" y="79.5" >MterpInvokeStatic</text>
+</g>
+<g >
+<title>_ZN3art11interpreter34ArtInterpreterToCompiledCodeBridgeEPNS_6ThreadEPNS_9ArtMethodEPNS_11ShadowFrameEtPNS_6JValueE (6 samples, 3.21%)</title><rect x="798.8" y="133" width="37.8" height="15.0" fill="rgb(243,205,20)" rx="2" ry="2" />
+<text  x="801.77" y="143.5" >_ZN..</text>
+</g>
+<g >
+<title>xhook_register (40 samples, 21.39%)</title><rect x="937.6" y="229" width="252.4" height="15.0" fill="rgb(237,93,46)" rx="2" ry="2" />
+<text  x="940.59" y="239.5" >xhook_register</text>
+</g>
+<g >
+<title>xh_core_register (82 samples, 43.85%)</title><rect x="281.3" y="245" width="517.5" height="15.0" fill="rgb(246,1,33)" rx="2" ry="2" />
+<text  x="284.34" y="255.5" >xh_core_register</text>
+</g>
+<g >
+<title>0000000000220c8c (1 samples, 0.53%)</title><rect x="275.0" y="181" width="6.3" height="15.0" fill="rgb(247,32,3)" rx="2" ry="2" />
+<text  x="278.03" y="191.5" ></text>
+</g>
+<g >
+<title>_ZNSt6__ndk124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m (1 samples, 0.53%)</title><rect x="262.4" y="133" width="6.3" height="15.0" fill="rgb(219,75,6)" rx="2" ry="2" />
+<text  x="265.41" y="143.5" ></text>
+</g>
+<g >
+<title>0000000000014d78 (1 samples, 0.53%)</title><rect x="275.0" y="53" width="6.3" height="15.0" fill="rgb(226,152,31)" rx="2" ry="2" />
+<text  x="278.03" y="63.5" ></text>
+</g>
+<g >
+<title>000000000021d150 (1 samples, 0.53%)</title><rect x="275.0" y="133" width="6.3" height="15.0" fill="rgb(247,179,33)" rx="2" ry="2" />
+<text  x="278.03" y="143.5" ></text>
+</g>
+<g >
+<title>000000000011b0dc (14 samples, 7.49%)</title><rect x="836.6" y="213" width="88.4" height="15.0" fill="rgb(228,16,19)" rx="2" ry="2" />
+<text  x="839.63" y="223.5" >0000000000..</text>
+</g>
+<g >
+<title>000000000012d998 (82 samples, 43.85%)</title><rect x="281.3" y="101" width="517.5" height="15.0" fill="rgb(251,187,15)" rx="2" ry="2" />
+<text  x="284.34" y="111.5" >000000000012d998</text>
+</g>
+<g >
+<title>00000000000d5580 (1 samples, 0.53%)</title><rect x="262.4" y="53" width="6.3" height="15.0" fill="rgb(208,72,7)" rx="2" ry="2" />
+<text  x="265.41" y="63.5" ></text>
+</g>
+<g >
+<title>0000000000223458 (1 samples, 0.53%)</title><rect x="275.0" y="245" width="6.3" height="15.0" fill="rgb(250,35,12)" rx="2" ry="2" />
+<text  x="278.03" y="255.5" ></text>
+</g>
+<g >
+<title>00000000000d56e8 (1 samples, 0.53%)</title><rect x="262.4" y="101" width="6.3" height="15.0" fill="rgb(234,108,0)" rx="2" ry="2" />
+<text  x="265.41" y="111.5" ></text>
+</g>
+<g >
+<title>_ZN7android7FileMap6createEPKcilmb (15 samples, 8.02%)</title><rect x="836.6" y="245" width="94.7" height="15.0" fill="rgb(222,153,20)" rx="2" ry="2" />
+<text  x="839.63" y="255.5" >_ZN7android..</text>
+</g>
+<g >
+<title>_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc (6 samples, 3.21%)</title><rect x="798.8" y="149" width="37.8" height="15.0" fill="rgb(243,210,8)" rx="2" ry="2" />
+<text  x="801.77" y="159.5" >_ZN..</text>
+</g>
+<g >
+<title>000000000022c9f0 (1 samples, 0.53%)</title><rect x="275.0" y="117" width="6.3" height="15.0" fill="rgb(212,38,37)" rx="2" ry="2" />
+<text  x="278.03" y="127.5" ></text>
+</g>
+<g >
+<title>000000000012d998 (40 samples, 21.39%)</title><rect x="10.0" y="53" width="252.4" height="15.0" fill="rgb(215,55,44)" rx="2" ry="2" />
+<text  x="13.00" y="63.5" >000000000012d998</text>
+</g>
+<g >
+<title>_ZN3art11interpreter33ArtInterpreterToInterpreterBridgeEPNS_6ThreadERKNS_20CodeItemDataAccessorEPNS_11ShadowFrameEPNS_6JValueE (82 samples, 43.85%)</title><rect x="281.3" y="37" width="517.5" height="15.0" fill="rgb(248,114,52)" rx="2" ry="2" />
+<text  x="284.34" y="47.5" >_ZN3art11interpreter33ArtInterpreterToInterpreterBridgeEPNS_6ThreadERKN..</text>
+</g>
+<g >
+<title>0000000000219654 (1 samples, 0.53%)</title><rect x="275.0" y="213" width="6.3" height="15.0" fill="rgb(237,6,7)" rx="2" ry="2" />
+<text  x="278.03" y="223.5" ></text>
+</g>
+<g >
+<title>0000000000305c38 (40 samples, 21.39%)</title><rect x="937.6" y="53" width="252.4" height="15.0" fill="rgb(254,51,9)" rx="2" ry="2" />
+<text  x="940.59" y="63.5" >0000000000305c38</text>
+</g>
+<g >
+<title>MterpInvokeStatic (40 samples, 21.39%)</title><rect x="937.6" y="85" width="252.4" height="15.0" fill="rgb(239,185,52)" rx="2" ry="2" />
+<text  x="940.59" y="95.5" >MterpInvokeStatic</text>
+</g>
+<g >
+<title>0000000000305c38 (40 samples, 21.39%)</title><rect x="10.0" y="37" width="252.4" height="15.0" fill="rgb(251,110,49)" rx="2" ry="2" />
+<text  x="13.00" y="47.5" >0000000000305c38</text>
+</g>
+<g >
+<title>newlocale (1 samples, 0.53%)</title><rect x="268.7" y="245" width="6.3" height="15.0" fill="rgb(237,86,37)" rx="2" ry="2" />
+<text  x="271.72" y="255.5" ></text>
+</g>
+<g >
+<title>_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc (1 samples, 0.53%)</title><rect x="268.7" y="69" width="6.3" height="15.0" fill="rgb(250,91,43)" rx="2" ry="2" />
+<text  x="271.72" y="79.5" ></text>
+</g>
+<g >
+<title>000000000011aaa8 (1 samples, 0.53%)</title><rect x="925.0" y="213" width="6.3" height="15.0" fill="rgb(231,55,48)" rx="2" ry="2" />
+<text  x="927.97" y="223.5" ></text>
+</g>
+<g >
+<title>MterpInvokeStatic (6 samples, 3.21%)</title><rect x="798.8" y="69" width="37.8" height="15.0" fill="rgb(247,62,19)" rx="2" ry="2" />
+<text  x="801.77" y="79.5" >Mte..</text>
+</g>
+<g >
+<title>all (187 samples, 100%)</title><rect x="10.0" y="277" width="1180.0" height="15.0" fill="rgb(234,208,12)" rx="2" ry="2" />
+<text  x="13.00" y="287.5" ></text>
+</g>
+<g >
+<title>_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc (40 samples, 21.39%)</title><rect x="937.6" y="165" width="252.4" height="15.0" fill="rgb(235,207,5)" rx="2" ry="2" />
+<text  x="940.59" y="175.5" >_ZN3art9ArtMethod6InvokeEPNS_6Thr..</text>
+</g>
+<g >
+<title>_ZNSt6__ndk115basic_streambufIcNS_11char_traitsIcEEE6xsputnEPKcl (1 samples, 0.53%)</title><rect x="262.4" y="181" width="6.3" height="15.0" fill="rgb(226,9,21)" rx="2" ry="2" />
+<text  x="265.41" y="191.5" ></text>
+</g>
+<g >
+<title>00000000001337ec (40 samples, 21.39%)</title><rect x="10.0" y="165" width="252.4" height="15.0" fill="rgb(221,118,8)" rx="2" ry="2" />
+<text  x="13.00" y="175.5" >00000000001337ec</text>
+</g>
+<g >
+<title>000000000013ced8 (1 samples, 0.53%)</title><rect x="268.7" y="101" width="6.3" height="15.0" fill="rgb(228,81,51)" rx="2" ry="2" />
+<text  x="271.72" y="111.5" ></text>
+</g>
+<g >
+<title>_ZN3art11interpreter6DoCallILb0ELb0EEEbPNS_9ArtMethodEPNS_6ThreadERNS_11ShadowFrameEPKNS_11InstructionEtPNS_6JValueE (40 samples, 21.39%)</title><rect x="10.0" y="117" width="252.4" height="15.0" fill="rgb(240,169,39)" rx="2" ry="2" />
+<text  x="13.00" y="127.5" >_ZN3art11interpreter6DoCallILb0EL..</text>
+</g>
+<g >
+<title>_ZN3art11interpreter6DoCallILb0ELb0EEEbPNS_9ArtMethodEPNS_6ThreadERNS_11ShadowFrameEPKNS_11InstructionEtPNS_6JValueE (82 samples, 43.85%)</title><rect x="281.3" y="133" width="517.5" height="15.0" fill="rgb(234,173,54)" rx="2" ry="2" />
+<text  x="284.34" y="143.5" >_ZN3art11interpreter6DoCallILb0ELb0EEEbPNS_9ArtMethodEPNS_6ThreadERNS_1..</text>
+</g>
+<g >
+<title>0000000000215684 (1 samples, 0.53%)</title><rect x="275.0" y="149" width="6.3" height="15.0" fill="rgb(252,214,15)" rx="2" ry="2" />
+<text  x="278.03" y="159.5" ></text>
+</g>
+<g >
+<title>MterpInvokeStatic (40 samples, 21.39%)</title><rect x="10.0" y="101" width="252.4" height="15.0" fill="rgb(205,65,34)" rx="2" ry="2" />
+<text  x="13.00" y="111.5" >MterpInvokeStatic</text>
+</g>
+<g >
+<title>_ZNSt6__ndk1lsINS_11char_traitsIcEEEERNS_13basic_ostreamIcT_EES6_PKc (1 samples, 0.53%)</title><rect x="262.4" y="117" width="6.3" height="15.0" fill="rgb(249,209,42)" rx="2" ry="2" />
+<text  x="265.41" y="127.5" ></text>
+</g>
+<g >
+<title>xhook_refresh (6 samples, 3.21%)</title><rect x="798.8" y="213" width="37.8" height="15.0" fill="rgb(235,225,17)" rx="2" ry="2" />
+<text  x="801.77" y="223.5" >xho..</text>
+</g>
+<g >
+<title>_ZN7android6Thread11_threadLoopEPv (1 samples, 0.53%)</title><rect x="275.0" y="69" width="6.3" height="15.0" fill="rgb(229,195,25)" rx="2" ry="2" />
+<text  x="278.03" y="79.5" ></text>
+</g>
+<g >
+<title>00000000000d6630 (1 samples, 0.53%)</title><rect x="262.4" y="165" width="6.3" height="15.0" fill="rgb(205,9,25)" rx="2" ry="2" />
+<text  x="265.41" y="175.5" ></text>
+</g>
+<g >
+<title>0000000000230020 (1 samples, 0.53%)</title><rect x="275.0" y="85" width="6.3" height="15.0" fill="rgb(225,79,27)" rx="2" ry="2" />
+<text  x="278.03" y="95.5" ></text>
+</g>
+<g >
+<title>000000000010e7a0 (6 samples, 3.21%)</title><rect x="798.8" y="245" width="37.8" height="15.0" fill="rgb(237,141,28)" rx="2" ry="2" />
+<text  x="801.77" y="255.5" >000..</text>
+</g>
+<g >
+<title>MterpInvokeStatic (82 samples, 43.85%)</title><rect x="281.3" y="117" width="517.5" height="15.0" fill="rgb(215,64,1)" rx="2" ry="2" />
+<text  x="284.34" y="127.5" >MterpInvokeStatic</text>
+</g>
+</g>
+</svg>
