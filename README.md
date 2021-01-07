@@ -47,6 +47,9 @@ NativeLeakProf.dumpLeakStack();
 /usr/bin/python ~/Documents/AndroidProject/NativeLeakProf/nlp_stack_parser.py "android ndk路径" "stack文件路径" "arm架构（armeabi/armeabi-v7a/arm64-v8a）" "带符号表so所在目录"
 ```
 
+### 样例（有待完善）
+![demo](https://github.com/wangwangchen/NativeLeakProf/blob/master/sample/sample.jpg)
+
 # 下一步工作
 1. 完善addr2line的兼容架构类型
 2. 完善堆栈解析结果
