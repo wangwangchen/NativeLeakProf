@@ -1,6 +1,11 @@
 # NativeLeakProf
 Android  Native代码（C/C++）内存泄露分析
 
+- Hook内存申请本地函数，在替换函数中获取堆栈，在内存中记录申请的内存大小以及堆栈信息
+- 提供API导出动态库泄露（申请了但是未释放）的内存大小
+- 提供API导出动态库泄露堆栈到文件
+- 提供python脚本解析导出的泄露堆栈信息，并生成火焰图，[python脚本](https://github.com/wangwangchen/NativeLeakProf/blob/master/nlp_stack_parser.py)
+
 # 使用
 ### 初始化
 在Application的attachBaseContext方法里调用
