@@ -36,14 +36,21 @@ def printSVG(reportHtmlFile, svgPath):
 def ParseStack(currentPath, ndkPath, stackFile, architecture, symbolsDir):
     print "currentPath: " + currentPath
     # 查找addr2line文件
+    print "architecture is " + architecture
     if architecture == "arm64-v8a":
-        print "architecture is " + architecture
         addr2line = ndkPath + "/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64/bin/aarch64-linux-android-addr2line"
-        print "addr2line path: " + addr2line
-        if not os.path.exists(addr2line):
-            print "can not find arm64-v8a addr2line"
-        else:
-            print "find arm64-v8a addr2line"
+    elif architecture == "armeabi" or architecture == "armeabi-v7a":
+        addr2line = ndkPath + "/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-addr2line"
+    else:
+        print "do not support architecture type for " + architecture
+        print "only support armeabi/armeabi-v7a/arm64-v8a"
+        return
+
+    print "addr2line path: " + addr2line
+    if not os.path.exists(addr2line):
+        print "can not find " + architecture + " addr2line"
+    else:
+        print "find " + architecture + " addr2line"
 
     reportHtmlPath = os.path.split(stackFile)[0] + "/leakReport.html"
     if os.path.exists(reportHtmlPath):
