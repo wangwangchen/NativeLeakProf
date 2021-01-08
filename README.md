@@ -1,24 +1,10 @@
 # NativeLeakProf
 Android  Native代码（C/C++）内存泄露分析
 
-
-# 主要思路
-- 使用PTL方式Hook内存申请，参考：[XHook](https://github.com/iqiyi/xHook)                
-- 释放内存时，需要移除对应的申请堆栈                                                
-- 借鉴XCrash获取线程堆栈数据，参考：[XCrash](https://github.com/iqiyi/xCrash)      
-- 最后导出的内存申请堆栈做成火焰图，参考：[如何读懂火焰图？](http://www.ruanyifeng.com/blog/2017/09/flame-graph.html)以及[FlameGraph](https://github.com/brendangregg/FlameGraph)                                  
-
-
-# 已完成
-1. 轮询监控proc/pid/maps内容，解析出包含包名的动态库，并调用native方法注册hook函数
-2. hook函数需要是一个`void*`类型的函数，这里采用占坑的方式提前注册好
-3. hook内存申请释放函数: `malloc  calloc realloc memalign aligned_alloc posix_memalign free`
-4. 采用消息队列的方式，使用异步线程来不断记录内存的操作
-5. 提供导出当前泄露内存信息的native接口
-6. 在内存操作函数中获取调用堆栈
-7. 导出调用栈数据
-8. 解析调用栈数据(脚本+addr2line  或者   GUI+addr2line）
-9. 生成[FlameGraph](https://github.com/brendangregg/FlameGraph)格式数据，并解析得到火焰图
+- Hook内存申请本地函数，在替换函数中获取堆栈，在内存中记录申请的内存大小以及堆栈信息
+- 提供API导出动态库泄露（申请了但是未释放）的内存大小
+- 提供API导出动态库泄露堆栈到文件
+- 提供python脚本解析导出的泄露堆栈信息，并生成火焰图，[python脚本](https://github.com/wangwangchen/NativeLeakProf/blob/master/nlp_stack_parser.py)
 
 # 使用
 ### 初始化
@@ -29,6 +15,19 @@ protected void attachBaseContext(Context base) {
     super.attachBaseContext(base);
     NativeLeakProf.init(this);
 }
+```
+
+### 获取动态库泄露内存大小列表信息
+```
+NativeLeakProf.dumpLeakInfo();
+```
+通过`dumpLeakInfo`方法，可以导出如下的字符串信息
+```
+libGLESv2_adreno.so leak: 2.258709MB
+libhwui.so leak: 439.270508KB
+libc.so leak: 26.500000KB
+
+total leak: 2.713563MB
 ```
 
 ### 堆栈导出
@@ -49,7 +48,3 @@ NativeLeakProf.dumpLeakStack();
 
 ### 样例（有待完善）
 ![demo](https://github.com/wangwangchen/NativeLeakProf/blob/master/sample/sample.jpg)
-
-# 下一步工作
-1. 完善addr2line的兼容架构类型
-2. 完善堆栈解析结果
