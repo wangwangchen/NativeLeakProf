@@ -7,6 +7,11 @@ Android  Native代码（C/C++）内存泄露分析
 - 提供python脚本解析导出的泄露堆栈信息，并生成火焰图，[python脚本](https://github.com/wangwangchen/NativeLeakProf/blob/master/nlp_stack_parser.py)
 
 # 使用
+### 添加依赖
+```
+implementation 'com.liang.qiu:nativeleakprof:1.0.1'
+```
+
 ### 初始化
 在Application的attachBaseContext方法里调用
 ```
